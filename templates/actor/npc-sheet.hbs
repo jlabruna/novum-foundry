@@ -1,0 +1,66 @@
+<div class="novum-sheet-body npc-layout">
+  <header class="identity-bar compact">
+    <div class="brand-mark"><img src="systems/novum/assets/branding/novum-logo-dark.webp" alt="Novum"></div>
+    <div class="identity-fields">
+      <input class="actor-name" name="name" type="text" value="{{actor.name}}">
+      <div class="inline-fields">
+        <label>Level <input name="system.level" type="number" min="1" max="10" value="{{system.level}}"></label>
+        <label>Tier <input name="system.tier" type="number" min="1" max="4" value="{{system.tier}}"></label>
+        <label>Move <input name="system.movement.metres" type="number" min="0" value="{{system.movement.metres}}">m</label>
+      </div>
+    </div>
+  </header>
+
+  <section class="resource-strip">
+    <div class="resource health"><span class="label">HP</span><input name="system.resources.health.value" type="number" min="0" value="{{system.resources.health.value}}"><span>/</span><input name="system.resources.health.max" type="number" min="0" value="{{system.resources.health.max}}"></div>
+    <div class="resource shield"><span class="label">Shield</span><input name="system.resources.shield.value" type="number" min="0" value="{{system.resources.shield.value}}"><span>/ {{profile.shieldMax}}</span></div>
+    <div class="stat"><span>SP</span><strong>{{profile.rangedSP}}</strong></div>
+    <div class="stat"><span>Floor</span><strong>{{profile.floor}}</strong></div>
+    <div class="stat"><span>Melee AC</span><strong>{{profile.meleeAC}}</strong></div>
+    <button type="button" data-action="restoreResources"><i class="fa-solid fa-rotate"></i></button>
+  </section>
+
+  {{#if profile.warnings.length}}<aside class="warning-panel">{{#each profile.warnings}}<p>{{this}}</p>{{/each}}</aside>{{/if}}
+  {{#if effects.length}}<section class="status-strip"><span class="eyebrow">Status</span>{{#each effects}}<span class="effect-chip {{#if disabled}}is-disabled{{/if}}" data-effect-id="{{id}}">{{name}} <button type="button" data-action="toggleEffect"><i class="fa-solid fa-power-off"></i></button><button type="button" data-action="deleteEffect"><i class="fa-solid fa-xmark"></i></button></span>{{/each}}</section>{{/if}}
+
+  <section class="panel action-centre">
+    <div class="section-heading"><div><span class="eyebrow">NPC combat</span><h2>Quick Actions</h2></div>{{#if readiedRangedWeapon}}<button type="button" class="range-toggle {{#if rangeOverlayEnabled}}is-active{{/if}}" data-action="toggleRangeOverlay" title="Toggle {{readiedRangedWeapon.name}} range bands"><i class="fa-solid fa-bullseye"></i> Ranges</button>{{/if}}</div>
+    <div class="weapon-list item-list">
+      {{#each weapons}}
+      <article class="item-row weapon-row {{#if system.equipped}}is-equipped{{/if}}" data-item-id="{{id}}" draggable="true">
+        <div class="item-main"><strong>{{name}}</strong><span>{{system.damage}} · C{{system.range.close.dv}} M{{system.range.medium.dv}} L{{system.range.long.dv}}</span></div>
+        <div class="row-actions">
+          <button type="button" class="primary attack" data-action="rollWeapon"><i class="fa-solid fa-crosshairs"></i> Attack</button>
+          <button type="button" data-action="editItem"><i class="fa-solid fa-pen-to-square"></i></button>
+        </div>
+      </article>
+      {{/each}}
+    </div>
+    <button type="button" class="add-control" data-action="createItem" data-item-type="weapon">+ Weapon</button>
+  </section>
+
+  <div class="npc-lower-grid">
+    <section class="panel protection-panel">
+      <div class="section-heading"><h2>Gear</h2></div>
+      {{#each armours}}<article class="item-row {{#if system.equipped}}is-equipped{{/if}}" data-item-id="{{id}}" draggable="true"><div class="item-main"><strong>{{name}}</strong><span>AC {{system.meleeAC}} · Shield {{system.shieldMax}}</span></div><div class="row-actions"><button type="button" data-action="toggleEquipment"><i class="fa-solid fa-shield-halved"></i></button><button type="button" data-action="editItem"><i class="fa-solid fa-pen"></i></button></div></article>{{/each}}
+      {{#each armourMods}}<article class="item-row {{#if system.installed}}is-equipped{{/if}}" data-item-id="{{id}}" draggable="true"><div class="item-main"><strong>{{name}}</strong><span>Floor +{{system.floor}}</span></div><div class="row-actions"><button type="button" data-action="toggleEquipment"><i class="fa-solid fa-screwdriver-wrench"></i></button><button type="button" data-action="editItem"><i class="fa-solid fa-pen"></i></button></div></article>{{/each}}
+      <div class="button-row"><button type="button" class="add-control" data-action="createItem" data-item-type="armour">+ Armour</button><button type="button" class="add-control" data-action="createItem" data-item-type="armourMod">+ Mod</button></div>
+    </section>
+
+    <section class="panel overrides-panel">
+      <div class="section-heading"><h2>Overrides</h2></div>
+      <div class="override-grid">
+        <label>AC <input name="system.combat.meleeACOverride" type="number" min="-1" value="{{system.combat.meleeACOverride}}"></label>
+        <label>Floor <input name="system.combat.armourFloorOverride" type="number" min="-1" value="{{system.combat.armourFloorOverride}}"></label>
+        <label>Shield <input name="system.combat.shieldMaxOverride" type="number" min="-1" value="{{system.combat.shieldMaxOverride}}"></label>
+        <label>Crit <input name="system.combat.critThreshold" type="number" min="18" max="20" value="{{system.combat.critThreshold}}"></label>
+      </div>
+    </section>
+  </div>
+
+  <details class="panel npc-details">
+    <summary>Attributes and Skills</summary>
+    <div class="score-grid attributes">{{#each attributes}}<label><span>{{label}}</span><input name="system.attributes.{{key}}.value" type="number" min="0" max="4" value="{{value}}"></label>{{/each}}</div>
+    <div class="score-grid skills">{{#each skills}}<label><span>{{label}}</span><input name="system.skills.{{key}}.value" type="number" min="0" max="6" value="{{value}}"></label>{{/each}}</div>
+  </details>
+</div>

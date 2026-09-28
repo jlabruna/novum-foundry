@@ -1,0 +1,13 @@
+{
+  "name": "novum-foundry",
+  "private": true,
+  "version": "0.1.1",
+  "type": "module",
+  "description": "Novum combat playtest game system for Foundry VTT v14.",
+  "scripts": {
+    "build:content": "node tools/build-playtest-content.mjs",
+    "check": "node tools/validate-package.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "validate": "npm run build:content && npm run check && npm test"
+  }
+}

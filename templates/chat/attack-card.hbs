@@ -1,0 +1,64 @@
+<article class="novum-chat-card">
+  <header>
+    <span class="eyebrow">Novum</span>
+    <h3>{{attackType}}</h3>
+    <p>{{weaponName}} · {{actorName}} → {{targetName}}</p>
+  </header>
+
+  <section class="roll-result {{#if hit}}is-hit{{else}}is-miss{{/if}} {{#if critical}}is-critical{{/if}}">
+    <strong>{{#if critical}}Critical Hit{{else}}{{#if hit}}Hit{{else}}Miss{{/if}}{{/if}}</strong>
+    <span>Natural {{natural}} · Total {{attackTotal}} vs {{targetLabel}} {{targetNumber}}</span>
+  </section>
+
+  <details open>
+    <summary>Attack breakdown</summary>
+    <dl class="math-grid">
+      <dt>d20</dt><dd>{{natural}}</dd>
+      <dt>{{parts.attributeLabel}}</dt><dd>+{{parts.attribute}}</dd>
+      <dt>{{parts.skillLabel}}</dt><dd>+{{parts.skill}}</dd>
+      <dt>Precision</dt><dd>{{precision}}</dd>
+      <dt>Situational</dt><dd>{{situational}}</dd>
+      <dt>Mode</dt><dd>{{modeModifier}}</dd>
+      <dt>Total</dt><dd><strong>{{attackTotal}}</strong></dd>
+      <dt>{{targetLabel}}</dt><dd>{{targetNumber}}</dd>
+      <dt>Crit threshold</dt><dd>{{critThreshold}}–20</dd>
+    </dl>
+    <p class="card-note">{{fireMode}}{{#if isRanged}} · {{band}}{{#if distance}} · {{distance}}m{{/if}}{{/if}}</p>
+  </details>
+
+  {{#if hit}}
+  <details open>
+    <summary>Damage and protection</summary>
+    <dl class="math-grid">
+      <dt>Damage</dt><dd>{{damageFormula}} = <strong>{{damage}}</strong></dd>
+      {{#if protection}}
+        {{#if shieldIgnored}}
+          <dt>Shield</dt><dd>Ignored</dd>
+          <dt>Armour Floor</dt><dd>{{protection.floor}}</dd>
+        {{else}}
+          <dt>Shield before</dt><dd>{{protection.shield}}</dd>
+          <dt>Armour Floor</dt><dd>{{protection.floor}}</dd>
+          <dt>Current Ranged SP</dt><dd>{{protection.rangedSP}}</dd>
+          <dt>Ablation</dt><dd>{{protection.ablation}}</dd>
+        {{/if}}
+        <dt>HP damage</dt><dd><strong>{{protection.hpDamage}}</strong></dd>
+        <dt>HP</dt><dd>{{protection.hp}} → {{protection.nextHP}}</dd>
+        <dt>Shield</dt><dd>{{protection.shield}} → {{protection.nextShield}}</dd>
+      {{else}}
+        <dt>Target protection</dt><dd>Not calculated (manual/no target)</dd>
+      {{/if}}
+    </dl>
+  </details>
+  {{/if}}
+
+  {{#if traumaPending}}
+  <p class="trauma-note"><i class="fa-solid fa-burst"></i> Trauma triggered; effect remains unresolved for v0.1.</p>
+  {{/if}}
+
+  {{#if hasApplication}}
+  <button type="button" class="apply-result" data-action="apply-novum-result">
+    <i class="fa-solid fa-check"></i> Apply Result
+  </button>
+  {{/if}}
+</article>
+

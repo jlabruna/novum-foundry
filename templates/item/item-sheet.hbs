@@ -1,0 +1,71 @@
+<div class="novum-sheet-body item-layout">
+  <header class="identity-bar compact">
+    <div class="brand-mark"><img src="systems/novum/assets/branding/novum-logo-dark.webp" alt="Novum"></div>
+    <div class="identity-fields">
+      <input class="actor-name" name="name" type="text" value="{{item.name}}">
+      <p>{{item.type}}</p>
+    </div>
+  </header>
+
+  <section class="panel item-fields">
+    <div class="form-grid two-column">
+      <label>Tier
+        <select name="system.tier">{{#each tiers}}<option value="{{value}}" {{#if selected}}selected{{/if}}>T{{value}}</option>{{/each}}</select>
+      </label>
+      <label>Traits <input name="system.traits" type="text" value="{{system.traits}}"></label>
+    </div>
+
+    {{#if isWeapon}}
+    <div class="section-heading"><div><span class="eyebrow">Attack profile</span><h2>Weapon</h2></div></div>
+    <div class="form-grid three-column">
+      <label>Kind <select name="system.kind">{{#each weaponKinds}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>Category <input name="system.category" type="text" value="{{system.category}}"></label>
+      <label>Damage <input name="system.damage" type="text" value="{{system.damage}}"></label>
+      <label>Attribute <select name="system.attribute">{{#each attributes}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>Skill <select name="system.skill">{{#each skills}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>Crit threshold <input name="system.critThreshold" type="number" min="18" max="20" value="{{system.critThreshold}}"></label>
+      <label>Ablation <input name="system.ablation" type="number" min="0" value="{{system.ablation}}"></label>
+      <label>Penetration <input name="system.penetration" type="number" min="0" value="{{system.penetration}}"></label>
+      <label>Magazine <span class="joined"><input name="system.magazine.current" type="number" min="0" value="{{system.magazine.current}}"><i>/</i><input name="system.magazine.max" type="number" min="0" value="{{system.magazine.max}}"></span></label>
+    </div>
+    <div class="range-editor">
+      <div><strong>Close</strong><label>DV <input name="system.range.close.dv" type="number" value="{{system.range.close.dv}}"></label><label>Max m <input name="system.range.close.max" type="number" value="{{system.range.close.max}}"></label></div>
+      <div><strong>Medium</strong><label>DV <input name="system.range.medium.dv" type="number" value="{{system.range.medium.dv}}"></label><label>Max m <input name="system.range.medium.max" type="number" value="{{system.range.medium.max}}"></label></div>
+      <div><strong>Long</strong><label>DV <input name="system.range.long.dv" type="number" value="{{system.range.long.dv}}"></label><label>Max m <input name="system.range.long.max" type="number" value="{{system.range.long.max}}"></label></div>
+      <div><strong>Extreme</strong><label><input name="system.range.extreme.enabled" type="checkbox" {{#if system.range.extreme.enabled}}checked{{/if}}> Enabled</label><label>DV <input name="system.range.extreme.dv" type="number" value="{{system.range.extreme.dv}}"></label><label>Max m <input name="system.range.extreme.max" type="number" value="{{system.range.extreme.max}}"></label></div>
+    </div>
+    <div class="check-row">
+      <label><input name="system.equipped" type="checkbox" {{#if system.equipped}}checked{{/if}}> Readied</label>
+      <label><input name="system.modes.standard" type="checkbox" {{#if system.modes.standard}}checked{{/if}}> Standard fire</label>
+      <label><input name="system.modes.auto" type="checkbox" {{#if system.modes.auto}}checked{{/if}}> Auto test mode</label>
+    </div>
+    {{/if}}
+
+    {{#if isArmour}}
+    <div class="section-heading"><div><span class="eyebrow">Defensive chassis</span><h2>Armour</h2></div></div>
+    <div class="form-grid two-column">
+      <label>Melee AC <input name="system.meleeAC" type="number" min="0" value="{{system.meleeAC}}"></label>
+      <label>Shield Max <input name="system.shieldMax" type="number" min="0" value="{{system.shieldMax}}"></label>
+      <label>Mod capacity <input name="system.modCapacity" type="number" min="0" value="{{system.modCapacity}}"></label>
+      <label>Mobility penalty <input name="system.mobilityPenalty" type="number" max="0" value="{{system.mobilityPenalty}}"></label>
+      <label>Concealability <input name="system.concealability" type="text" value="{{system.concealability}}"></label>
+      <label><input name="system.equipped" type="checkbox" {{#if system.equipped}}checked{{/if}}> Equipped</label>
+    </div>
+    {{/if}}
+
+    {{#if isArmourMod}}
+    <div class="section-heading"><div><span class="eyebrow">Installed system</span><h2>Armour Mod</h2></div></div>
+    <div class="form-grid two-column">
+      <label>Compatible tier <select name="system.compatibleTier">{{#each compatibleTiers}}<option value="{{value}}" {{#if selected}}selected{{/if}}>T{{value}}</option>{{/each}}</select></label>
+      <label>Capacity cost <input name="system.capacityCost" type="number" min="0" value="{{system.capacityCost}}"></label>
+      <label>Armour Floor + <input name="system.floor" type="number" min="0" value="{{system.floor}}"></label>
+      <label>Shield Max + <input name="system.shieldBonus" type="number" min="0" value="{{system.shieldBonus}}"></label>
+      <label><input name="system.installed" type="checkbox" {{#if system.installed}}checked{{/if}}> Installed</label>
+    </div>
+    {{/if}}
+
+    <label class="description-field">Description / playtest notes
+      <textarea name="system.description" rows="7">{{system.description}}</textarea>
+    </label>
+  </section>
+</div>
