@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.2 — 2026-09-28
+
+- Split Actor sheet portraits from prototype-token textures and converted all
+  seeded tokens to circular, alpha-transparent Novum-ring assets.
+- Replaced seven overly similar archetype portraits with a visibly broader mix
+  of ages, genders, ethnicities, silhouettes, hair, and cybernetic details.
+- Audited all 32 seeded ranged weapons and replaced oversized or indistinct
+  range envelopes with class-specific pistol, SMG, shotgun, rifle, precision,
+  and heavy-support profiles.
+- Made Extreme Range optional and enabled it only for precision and selected
+  heavy-support weapons.
+- Unified token measurement and overlay radii through one Scene-unit-to-metre
+  conversion path, including feet and other common configured units.
+- Replaced stacked range circles with distinct translucent annular zones.
+- Added Toggle/Hold activation, Foundry-configurable keybinding behaviour,
+  per-band colour settings, and shared opacity.
+- Updated seeded-content refresh handling for existing v0.1.1 playtest worlds.
+- Preserved all v0.1.1 HP, Shield, melee, Standard, and Auto calibration.
+- Expanded validation to 26 passing tests.
+
 ## 0.1.1 — 2026-09-28
 
 - Renamed the complete product, system ID, namespace, repository metadata, and

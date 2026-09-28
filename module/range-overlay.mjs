@@ -1,7 +1,11 @@
-const COLOURS = Object.freeze({
-  close: 0xF2EEE6,
-  medium: 0xC58A5B,
-  long: 0xA7653C
+import { scenePixelsPerMetre } from "./range.mjs";
+
+const BANDS = Object.freeze(["close", "medium", "long", "extreme"]);
+const DEFAULT_COLOURS = Object.freeze({
+  close: "#C58A5B",
+  medium: "#D3AE68",
+  long: "#6E99A3",
+  extreme: "#A65D5D"
 });
 
 let enabled = false;
@@ -15,7 +19,26 @@ export function rangeRadii(range, pixelsPerMetre) {
     if (!Number.isFinite(distance) || distance <= 0) return null;
     result[band] = distance * pixelsPerMetre;
   }
+  if (!(result.close < result.medium && result.medium < result.long)) return null;
+  if (range.extreme?.enabled) {
+    const distance = Number(range.extreme.max);
+    if (!Number.isFinite(distance) || distance <= Number(range.long.max)) return null;
+    result.extreme = distance * pixelsPerMetre;
+  }
   return result;
+}
+
+export function rangeZones(radii) {
+  if (!radii) return [];
+  const zones = [];
+  let inner = 0;
+  for (const band of BANDS) {
+    const outer = Number(radii[band]);
+    if (!Number.isFinite(outer)) continue;
+    zones.push({ band, inner, outer });
+    inner = outer;
+  }
+  return zones;
 }
 
 export function getReadiedRangedWeapon(actor) {
@@ -28,6 +51,11 @@ export function isRangeOverlayEnabled() {
   return enabled;
 }
 
+export function rangeOverlayKeyAction(mode, phase) {
+  if (mode === "hold") return phase === "down" ? "enable" : "disable";
+  return phase === "down" ? "toggle" : "none";
+}
+
 function clearGraphics() {
   if (!graphics) return;
   if (graphics.parent) graphics.parent.removeChild(graphics);
@@ -35,18 +63,50 @@ function clearGraphics() {
   graphics = null;
 }
 
-function drawCircle(target, x, y, radius, colour, alpha, width = 2) {
-  if (typeof target.circle === "function" && typeof target.fill === "function") {
-    target.circle(x, y, radius).fill({ color: colour, alpha });
-    target.circle(x, y, radius).stroke({ color: colour, alpha: 0.82, width });
+function setting(key, fallback) {
+  try {
+    return game.settings.get("novum", key) ?? fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function colourNumber(value, fallback) {
+  const match = /^#?([0-9a-f]{6})$/i.exec(String(value ?? ""));
+  return Number.parseInt(match?.[1] ?? fallback.slice(1), 16);
+}
+
+function bandStyle(band) {
+  const fallback = DEFAULT_COLOURS[band];
+  const configuredOpacity = Number(setting("rangeOverlayOpacity", 0.12));
+  const opacity = Number.isFinite(configuredOpacity) ? configuredOpacity : 0.12;
+  return {
+    colour: colourNumber(setting(`rangeOverlay${band[0].toUpperCase()}${band.slice(1)}Colour`, fallback), fallback),
+    alpha: Math.max(0.02, Math.min(0.35, opacity))
+  };
+}
+
+function drawAnnulus(target, x, y, inner, outer, colour, alpha, width = 2) {
+  if (typeof target.circle === "function" && typeof target.fill === "function" && typeof target.cut === "function") {
+    target.circle(x, y, outer).fill({ color: colour, alpha });
+    if (inner > 0) target.circle(x, y, inner).cut();
+    target.circle(x, y, outer).stroke({ color: colour, alpha: 0.9, width });
+    if (inner > 0) target.circle(x, y, inner).stroke({ color: colour, alpha: 0.55, width: 1 });
     return;
   }
 
-  target.beginFill?.(colour, alpha);
-  target.drawCircle?.(x, y, radius);
-  target.endFill?.();
-  target.lineStyle?.(width, colour, 0.82);
-  target.drawCircle?.(x, y, radius);
+  if (typeof target.beginHole === "function") {
+    target.beginFill?.(colour, alpha);
+    target.drawCircle?.(x, y, outer);
+    if (inner > 0) {
+      target.beginHole();
+      target.drawCircle?.(x, y, inner);
+      target.endHole();
+    }
+    target.endFill?.();
+  }
+  target.lineStyle?.(width, colour, 0.9);
+  target.drawCircle?.(x, y, outer);
 }
 
 export function refreshRangeOverlay({ notify = false } = {}) {
@@ -66,9 +126,7 @@ export function refreshRangeOverlay({ notify = false } = {}) {
     return false;
   }
 
-  const sceneDistance = Number(canvas.scene?.grid?.distance);
-  const gridSize = Number(canvas.grid?.size);
-  const radii = rangeRadii(weapon.system.range, gridSize / sceneDistance);
+  const radii = rangeRadii(weapon.system.range, scenePixelsPerMetre(canvas.scene, canvas.grid));
   if (!radii || !globalThis.PIXI?.Graphics || !canvas.interface) {
     if (notify) ui.notifications.warn("Range bands are unavailable on this Scene.");
     return false;
@@ -80,9 +138,10 @@ export function refreshRangeOverlay({ notify = false } = {}) {
   graphics.zIndex = 5;
 
   const { x, y } = token.center;
-  drawCircle(graphics, x, y, radii.long, COLOURS.long, 0.055, 3);
-  drawCircle(graphics, x, y, radii.medium, COLOURS.medium, 0.07, 3);
-  drawCircle(graphics, x, y, radii.close, COLOURS.close, 0.085, 3);
+  for (const zone of rangeZones(radii).reverse()) {
+    const style = bandStyle(zone.band);
+    drawAnnulus(graphics, x, y, zone.inner, zone.outer, style.colour, style.alpha, zone.band === "extreme" ? 2 : 3);
+  }
   canvas.interface.addChild(graphics);
   return true;
 }
@@ -101,7 +160,13 @@ export function registerRangeOverlay() {
     hint: "NOVUM.RangeOverlayHint",
     editable: [{ key: "KeyR", modifiers: ["Shift"] }],
     onDown: () => {
-      toggleRangeOverlay();
+      const action = rangeOverlayKeyAction(setting("rangeOverlayActivation", "toggle"), "down");
+      toggleRangeOverlay(action === "enable" ? true : undefined);
+      return true;
+    },
+    onUp: () => {
+      const action = rangeOverlayKeyAction(setting("rangeOverlayActivation", "toggle"), "up");
+      if (action === "disable") toggleRangeOverlay(false);
       return true;
     },
     restricted: false,
@@ -123,6 +188,7 @@ export function registerRangeOverlay() {
 
   Hooks.on("canvasReady", () => refreshRangeOverlay());
   Hooks.on("canvasTearDown", clearGraphics);
+  Hooks.on("novumRangeOverlayRefresh", () => refreshRangeOverlay());
   Hooks.on("controlToken", () => refreshRangeOverlay());
   Hooks.on("updateToken", () => refreshRangeOverlay());
   for (const hook of ["createItem", "updateItem", "deleteItem"]) {

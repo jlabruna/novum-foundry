@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const manifest = JSON.parse(await readFile(path.join(root, "system.json"), "utf8"));
 if (manifest.id !== "novum") throw new Error("system.json id must be novum");
-if (manifest.version !== "0.1.1") throw new Error("Unexpected system version");
+if (manifest.version !== "0.1.2") throw new Error("Unexpected system version");
 if (manifest.compatibility.verified !== "14.368") throw new Error("Verified Foundry build must be 14.368");
 
 const required = [
@@ -44,7 +44,10 @@ const data = JSON.parse(await readFile(path.join(root, "data/playtest-content.js
 if (data.actors.length !== 48 || data.items.length !== 80) throw new Error("Seed content count mismatch");
 for (const actor of data.actors) {
   const source = actor.document.prototypeToken?.texture?.src;
+  const portrait = actor.document.img;
   if (!source?.startsWith("systems/novum/")) throw new Error(`Missing Novum token path for ${actor.document.name}`);
+  if (!portrait?.startsWith("systems/novum/assets/portraits/")) throw new Error(`Missing Novum portrait path for ${actor.document.name}`);
   await access(path.join(root, source.replace("systems/novum/", "")));
+  await access(path.join(root, portrait.replace("systems/novum/", "")));
 }
 console.log(`Validated Novum ${manifest.version}: ${data.items.length} Items, ${data.actors.length} Actors, Foundry ${manifest.compatibility.verified}.`);

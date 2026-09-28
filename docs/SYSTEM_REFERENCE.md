@@ -338,6 +338,25 @@ Examples of intended identities:
 
 Weapon-specific range DVs are part of Combat Maths Baseline v1.0. The shared provisional DV vocabulary is approximately **13 / 15 / 17 / 19 / 21**. Exact Close / Medium / Long profiles remain weapon content values rather than one universal table. Do not add universal target Readiness or level-derived defence to ordinary firearm attacks.
 
+### Current Foundry v0.1.2 seeded range profiles — PROVISIONAL CONTENT
+
+| Weapon | Close | Medium | Long | Extreme |
+|---|---:|---:|---:|---:|
+| Service Pistol | 10 m / DV 13 | 25 m / DV 17 | 50 m / DV 21 | — |
+| Military Revolver | 12 m / DV 13 | 30 m / DV 15 | 60 m / DV 19 | — |
+| Compact SMG | 12 m / DV 13 | 30 m / DV 15 | 55 m / DV 19 | — |
+| Heavy Assault Rifle | 12 m / DV 15 | 40 m / DV 13 | 90 m / DV 15 | — |
+| Breach Shotgun | 8 m / DV 13 | 18 m / DV 17 | 35 m / DV 21 | — |
+| Precision Sniper Rifle | 10 m / DV 19 | 50 m / DV 15 | 120 m / DV 13 | 240 m / DV 15 |
+| Heavy Support Rifle | 10 m / DV 17 | 45 m / DV 15 | 100 m / DV 15 | 180 m / DV 17 |
+| Auto Support Gun | 10 m / DV 17 | 40 m / DV 15 | 90 m / DV 17 | 160 m / DV 19 |
+
+These replace the oversized first-build playtest envelopes. They keep distance
+and DV separate: a weapon may physically reach a band while remaining awkward
+there. Only the precision rifle and selected heavy-support weapons currently
+enable Extreme. The table is canonical for the v0.1.2 playtest package but does
+not lock the final equipment catalogue.
+
 ## EXTREME RANGE — CONFIRMED CONCEPT
 
 Extreme Range is NOT a universal fourth range band.
@@ -921,7 +940,7 @@ The structural model is locked under Combat Maths Baseline v1.0 and is ready for
 
 Standard ranged-hit ablation is **1** unless a weapon, mode or effect explicitly changes it. Final Auto numbers, penetration procedure, recharge economics, movement/engagement/retreat, Trauma, cover, concealment, suppression and mixed-party encounter tuning remain provisional or TBD.
 
-### Current Foundry v0.1.1 playtest calibration — PROVISIONAL
+### Current Foundry v0.1.2 playtest calibration — PROVISIONAL
 
 The current implemented calibration deliberately moves survivability from HP
 into degrading protection:
@@ -1752,10 +1771,12 @@ These numbers support the current level-1–10 design and builder tests; they ar
 
 A local Pathbuilder-style Novum character-builder prototype and a standalone
 Foundry v14 Novum game system now exist. The current Foundry playtest build is
-**Novum v0.1.1**, system ID `novum`, targeted at Foundry **v14.368**. It contains
+**Novum v0.1.2**, system ID `novum`, targeted at Foundry **v14.368**. It contains
 the combat engine, Character/NPC/Item sheets, 80 seeded gear Items, 48 pregens,
-original token portraits, auditable attack cards, guarded Apply Result and an
-optional readied-weapon range overlay. A licensed live-runtime smoke test remains
+separate full portraits and circular alpha-transparent prototype tokens,
+auditable attack cards, guarded Apply Result, and a coloured readied-weapon
+range overlay with Toggle/Hold controls. Attack measurement and overlay radii
+share one Scene-unit-aware metric conversion. Live v0.1.2 acceptance remains
 pending; implemented content values remain provisional unless separately
 confirmed in this reference.
 
@@ -1911,3 +1932,4 @@ Their presence does not establish wholesale adoption of their rules or settings.
 - 28 September 2026: “WORK HANDOVER — FORMALISE NOVUM COMBAT MATHS BASELINE v1.0”. Declared foundational combat maths stable for content/subsystem development; locked the d20 attack engine, natural-die critical structure, weapon-specific Range DVs without universal Readiness, integrated armour/shield package, Shield SP plus Armour Floor degradation, melee shield bypass with Floor reduction, persistent battery-recharged shields, Standard ablation 1, four fuzzy gear tiers and moderate overlap philosophy. Added stable calibration anchors and provisional content envelopes, superseded the older routine 5d6 weapon examples and independent best-armour/best-shield default, and established evidence-based change control. No blocker remained to the Baseline v1.0 milestone.
 
 - 28 September 2026: “WORK HANDOVER — NOVUM FOUNDRY v0.1.1 REBRAND, RECALIBRATION, UX + PLAYTEST PASS”. Confirmed Novum as the current product identity and Afterlight as a superseded working title; implemented the provisional Shield 7/8/9/10 and HP 14/16/18/20 centreline; preserved Standard Ablation 1 and provisional Auto; recorded the explicitly tested lower melee damage scale; and documented the v0.1.1 Foundry system, visual direction, range overlay and pregen token-art pass. The numerical calibration remains subject to live playtesting and does not rewrite Combat Maths Baseline v1.0.
+- 28 September 2026: “WORK HANDOVER — NOVUM FOUNDRY v0.1.2 QUICK-FIX PLAYTEST RELEASE”. Preserved the v0.1.1 combat calibration; split sheet portraits from circular alpha-transparent Scene tokens; materially diversified the twelve archetype families; audited every seeded ranged weapon into distinct class-specific profiles; unified attack/overlay Scene-unit conversion; and added coloured annular range zones with Toggle/Hold, keybinding, colour and opacity controls. The corrected weapon table is canonical only for the current playtest package.

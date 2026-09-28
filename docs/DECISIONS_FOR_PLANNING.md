@@ -16,7 +16,8 @@
   Trauma pending.
 - T1/T2/T3/T4 premades use Levels 1/5/9/10 so the first three align with the
   planned test bands while preserving a top-tier Level 10 anchor.
-- The v0.1.1 playtest centreline is Shield 7/8/9/10 and HP 14/16/18/20.
+- The v0.1.2 build preserves the v0.1.1 playtest centreline of Shield
+  7/8/9/10 and HP 14/16/18/20.
   These are implemented calibration values, not final character-building rules.
 - Melee uses its own lower damage progression because it bypasses Shield SP.
   Melee AC and Armour Floor did not require a global increase in this pass.
@@ -24,6 +25,11 @@
   Ablation 3.
 - One readied weapon at a time provides an unambiguous source for the Scene
   range-band overlay.
+- v0.1.2 weapon profiles intentionally separate physical band limits from DVs;
+  precision and selected heavy-support weapons alone receive Extreme.
+- Attacks and overlay radii share one metre-normalised Scene-distance source.
+- Seeded Actors keep full sheet portraits and use separate circular
+  alpha-transparent prototype tokens.
 
 ## Decisions still needed
 

@@ -15,6 +15,7 @@ const onceHooks = new Map();
 const onHooks = new Map();
 const registrations = [];
 const keybindings = [];
+const settings = [];
 
 globalThis.Actor = ActorDocument;
 globalThis.Item = ItemDocument;
@@ -25,7 +26,7 @@ globalThis.Hooks = {
 globalThis.CONFIG = { Actor: { dataModels: {} }, Item: { dataModels: {} } };
 globalThis.CONST = { KEYBINDING_PRECEDENCE: { NORMAL: 0 } };
 globalThis.game = {
-  settings: { register() {} },
+  settings: { register: (...args) => settings.push(args) },
   keybindings: { register: (...args) => keybindings.push(args) }
 };
 globalThis.foundry = {
@@ -69,6 +70,12 @@ test("system entrypoint registers current v14 document models and AppV2 sheets",
   assert.ok(onHooks.has("getSceneControlButtons"));
   assert.equal(keybindings.length, 1);
   assert.deepEqual(keybindings[0].slice(0, 2), ["novum", "toggleRangeOverlay"]);
+  assert.equal(typeof keybindings[0][2].onUp, "function");
+  assert.ok(settings.some(([namespace, key]) => namespace === "novum" && key === "rangeOverlayActivation"));
+  for (const band of ["Close", "Medium", "Long", "Extreme"]) {
+    assert.ok(settings.some(([namespace, key]) => namespace === "novum" && key === `rangeOverlay${band}Colour`));
+  }
+  assert.ok(settings.some(([namespace, key]) => namespace === "novum" && key === "rangeOverlayOpacity"));
 });
 
 test("actor schemas expose exactly six Attributes and sixteen Skills", () => {

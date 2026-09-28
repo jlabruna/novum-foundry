@@ -150,7 +150,7 @@ Planning and implementation should remain separated according to the Chat / Work
 - Former working title: **Afterlight**, now superseded. Use it only when a
   historical note requires provenance.
 - Standalone Foundry game-system ID: `novum`.
-- Current playtest build: **Novum Foundry v0.1.1**.
+- Current playtest build: **Novum Foundry v0.1.2**.
 - Current Foundry target: **v14.368**; do not silently target v15.
 - Preferred public repository: `jlabruna/novum-foundry`.
 - Distribution uses a browser-based GitHub workflow. Do not direct the user to
@@ -167,6 +167,13 @@ Current implemented playtest calibration:
 - Auto: provisional **−3 attack / Ablation 3 / normal ranged damage**.
 - Melee bypasses Shield SP, subtracts Armour Floor once, and uses a separate
   lower provisional damage scale validated against the new HP/Shield values.
+- v0.1.2 preserves that combat calibration while correcting pregen token art,
+  ranged-weapon identities, Scene-unit conversion, and range-overlay UX.
+- Seeded Actors use separate full portraits and circular alpha-transparent
+  prototype tokens. The twelve archetype families are visually distinct.
+- Attack resolution and overlay radii share one metre-normalised Scene-distance
+  path. The overlay supports Toggle/Hold, a Foundry keybinding, per-band colours,
+  shared opacity, and optional Extreme zones.
 
 These numbers are implemented test calibration, not final character-building
 formulas. Future work must preserve that distinction.

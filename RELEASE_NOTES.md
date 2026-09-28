@@ -1,14 +1,23 @@
-# Novum Foundry v0.1.1 — Rebrand and Recalibration Playtest Release
+# Novum Foundry v0.1.2 — Token & Range UX Fixes
 
-This release rebuilds the original v0.1.0 implementation under the clean
-`novum` system identity and targets Foundry v14.368. It is intended for repeated
-Level 1/5/9/10, T1–T4 combat encounters rather than final campaign play.
+This focused playtest release addresses the first live Foundry smoke-test
+findings without reopening combat balance.
 
-The release prioritises visible calculations, rapid equipment changes, premade
-combatants, token-based range handling, and safe application of HP/Shield
-outcomes. It adds the Novum ivory/copper/near-black interface, readable
-dark/light-theme cards, the 7/8/9/10 Shield and 14/16/18/20 HP playtest
-calibration, shield-bypassing melee damage profiles, weapon-range overlays, and
-original token portraits for all 48 pregens. All unresolved rules remain
-editable, labelled provisional, or deferred rather than being silently
-canonised.
+All 48 pregens now use proper circular, alpha-transparent Scene tokens with a
+restrained Novum ring, while their Actor sheets retain separate full portraits.
+Seven archetype families received new art so the twelve-family pool no longer
+clusters around one face.
+
+All 32 ranged weapons were audited. Pistols and shotguns now fall away quickly,
+SMGs own short and medium engagements, assault rifles are generalists,
+precision rifles dominate Long and selected Extreme engagements, and heavy
+support weapons reach the battlefield without behaving like oversized SMGs.
+
+The range overlay now draws distinct translucent annuli, respects the Scene's
+configured units through the same conversion used by attacks, and offers
+Toggle/Hold activation, a normal Foundry keybinding, four band colours, and
+shared opacity.
+
+The v0.1.1 HP, Shield, melee, Standard Ablation 1, and provisional Auto
+calibration is unchanged. Automated validation passes 26 tests; final live
+acceptance still requires installing v0.1.2 in Foundry v14.368.

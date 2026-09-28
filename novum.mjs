@@ -10,7 +10,7 @@ import { registerRangeOverlay, toggleRangeOverlay } from "./module/range-overlay
 import * as combatEngine from "./module/combat-engine.mjs";
 
 Hooks.once("init", () => {
-  console.info("Novum | Initialising v0.1.1 for Foundry VTT v14.368");
+  console.info("Novum | Initialising v0.1.2 for Foundry VTT v14.368");
   CONFIG.NOVUM = NOVUM;
   registerDocumentClasses();
   registerTrackableAttributes();

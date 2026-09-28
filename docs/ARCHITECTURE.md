@@ -56,16 +56,19 @@ the target has changed since the roll.
 
 ## Range
 
-`module/range.mjs` uses `canvas.grid.measurePath` between token centres. It uses
-the Scene's configured distance units, while the system manifest makes new
-Scenes default to 2 metres per square. Range bands remain weapon data and can be
-overridden in the roll dialog.
+`module/range.mjs` owns the shared Scene-distance conversion. It uses
+`canvas.grid.measurePath` between token centres, converts the returned Scene
+units to metres, and exposes the same pixels-per-metre calculation to the
+overlay. The manifest makes new Scenes default to 2 metres per square, while
+common non-metric Scene units remain safe. Range bands remain weapon Item data
+and can be overridden in the roll dialog.
 
 `module/range-overlay.mjs` uses the same weapon range data to draw temporary
-Close/Medium/Long circles in the interface canvas group. It converts metres to
-pixels from the active Scene's grid size and distance, requires one controlled
-token and one readied ranged weapon, and clears safely when either disappears.
-It does not create persistent Drawing documents.
+Close/Medium/Long/optional Extreme annuli in the interface canvas group. It
+requires one controlled token and one readied ranged weapon, updates on weapon
+or token changes, and clears safely when either disappears. Client settings
+control Toggle/Hold activation, colour, and opacity. It does not create
+persistent Drawing documents.
 
 ## Content
 
@@ -75,12 +78,15 @@ Item, and Folder documents. This was chosen over committing opaque LevelDB pack
 files so seeded values remain reviewable, testable, and easy to regenerate
 during early balance iteration.
 
-Seed identities live in `flags.novum.seedId`; reruns skip existing seeded
-documents rather than duplicating them.
+Seed identities live in `flags.novum.seedId`; reruns update existing seeded
+documents rather than duplicating them. Seeded Actor refreshes rebuild embedded
+playtest equipment, so unrelated Actors remain untouched but customised
+pregens should be copied before refresh.
 
-Twelve original archetype portraits are packaged in `assets/tokens/` and reused
-across tier-scaled versions. Actor images and prototype-token textures are
-assigned by the deterministic content generator.
+Twelve archetype portraits are packaged in `assets/portraits/` and reused
+across tier-scaled versions. Matching circular alpha-transparent prototype
+tokens live in `assets/tokens/`. Actor images and token textures are assigned
+separately by the deterministic content generator.
 
 ## Future extension points
 

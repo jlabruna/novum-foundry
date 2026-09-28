@@ -1,4 +1,4 @@
-# Novum Foundry v0.1.1 implementation report
+# Novum Foundry v0.1.2 implementation report
 
 ## Outcome
 
@@ -15,8 +15,8 @@ uses system ID `novum`.
 - Levels 1–10 and T1–T4.
 - Gear-derived Melee AC, Shield Max, Armour Floor, and current Ranged SP.
 - Same-tier and mod-capacity validation.
-- Token target measurement using the current Scene grid.
-- Weapon-specific Close/Medium/Long range DVs plus manual overrides.
+- Token target measurement normalised from the current Scene units to metres.
+- Audited weapon-specific Close/Medium/Long/optional Extreme distances and DVs.
 - Standard, provisional Auto, precision penalties, and situational modifiers.
 - Natural 1 miss, configurable 20/19–20/18–20 crit threshold, no margin crit.
 - Combined ranged soak, Shield ablation, melee Shield bypass, and Floor soak.
@@ -24,8 +24,10 @@ uses system ID `novum`.
 - Manual out-of-combat Shield recharge and complete resource reset.
 - ActiveEffect display/toggle/delete surface.
 - 80 world-importable gear Items and 48 premade Actors.
-- Original token portraits assigned to every pregen and prototype token.
-- Configurable Shift+R, token-control, and sheet-button range overlay.
+- Separate full portraits and circular alpha-transparent ringed tokens assigned
+  to every pregen, with a materially diversified twelve-archetype cast.
+- Configurable keybinding, Toggle/Hold, token-control, sheet-button, band-colour,
+  and opacity support for the annular range overlay.
 - Explicit Novum semantic colour tokens for theme-independent readability.
 - Recalibrated Shield 7/8/9/10 and HP 14/16/18/20 centreline.
 - Separate melee damage progression validated against all armour profiles.
@@ -40,15 +42,16 @@ uses system ID `novum`.
 - Four-tier Actor and gear coverage, 6/16 Attribute/Skill shape, embedded gear,
   same-tier mod, and capacity tests.
 - Same-tier and cross-tier ranged/Auto/melee simulations.
-- Range conversion, keybind registration, packaged token paths, and dark/light
-  contrast checks.
+- Shared Scene-unit conversion, Toggle/Hold behaviour, settings registration,
+  packaged portrait/token alpha paths, and dark/light contrast checks.
 
 ## Runtime limitation
 
 This workspace does not include a licensed Foundry v14 executable or test
-server. Consequently the package could not be launched into an actual world in
-this run. The implementation follows the official 14.368 APIs, but the first
-live Foundry/Forge smoke test is explicitly pending.
+server. v0.1.1 was launched successfully enough for the reported live visual
+inspection, but the completed v0.1.2 package could not be launched in this
+workspace. Final token, overlay, Hold-mode, refresh, and Forge-update acceptance
+is explicitly pending.
 
 ## Intentionally deferred
 

@@ -18,14 +18,14 @@ const tierStats = {
 };
 
 const weaponBlueprints = [
-  { key: "service-pistol", name: "Service Pistol", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "standard", profile: [[13, 12], [15, 30], [19, 60]], magazine: 12 },
-  { key: "military-revolver", name: "Military Revolver", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "standard", profile: [[13, 14], [17, 36], [21, 70]], magazine: 6 },
-  { key: "compact-smg", name: "Compact SMG", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "light", profile: [[13, 14], [15, 38], [19, 80]], magazine: 30, auto: true },
-  { key: "assault-rifle", name: "Heavy Assault Rifle", category: "longArms", skill: "longArms", attribute: "dex", damage: "standard", profile: [[15, 14], [13, 70], [15, 190]], magazine: 30 },
-  { key: "breach-shotgun", name: "Breach Shotgun", category: "longArms", skill: "longArms", attribute: "dex", damage: "heavy", profile: [[13, 10], [17, 30], [21, 65]], magazine: 8 },
-  { key: "precision-rifle", name: "Precision Sniper Rifle", category: "longArms", skill: "longArms", attribute: "dex", damage: "heavy", profile: [[17, 12], [15, 100], [13, 360]], magazine: 8 },
-  { key: "support-rifle", name: "Heavy Support Rifle", category: "heavyWeapons", skill: "heavyWeapons", attribute: "str", damage: "heavy", profile: [[17, 16], [15, 85], [15, 220]], magazine: 20 },
-  { key: "auto-support", name: "Auto Support Gun", category: "heavyWeapons", skill: "heavyWeapons", attribute: "str", damage: "standard", profile: [[15, 16], [15, 75], [17, 180]], magazine: 60, auto: true },
+  { key: "service-pistol", name: "Service Pistol", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "standard", profile: [[13, 10], [17, 25], [21, 50]], magazine: 12 },
+  { key: "military-revolver", name: "Military Revolver", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "standard", profile: [[13, 12], [15, 30], [19, 60]], magazine: 6 },
+  { key: "compact-smg", name: "Compact SMG", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "light", profile: [[13, 12], [15, 30], [19, 55]], magazine: 30, auto: true },
+  { key: "assault-rifle", name: "Heavy Assault Rifle", category: "longArms", skill: "longArms", attribute: "dex", damage: "standard", profile: [[15, 12], [13, 40], [15, 90]], magazine: 30 },
+  { key: "breach-shotgun", name: "Breach Shotgun", category: "longArms", skill: "longArms", attribute: "dex", damage: "heavy", profile: [[13, 8], [17, 18], [21, 35]], magazine: 8 },
+  { key: "precision-rifle", name: "Precision Sniper Rifle", category: "longArms", skill: "longArms", attribute: "dex", damage: "heavy", profile: [[19, 10], [15, 50], [13, 120]], extreme: [15, 240], magazine: 8 },
+  { key: "support-rifle", name: "Heavy Support Rifle", category: "heavyWeapons", skill: "heavyWeapons", attribute: "str", damage: "heavy", profile: [[17, 10], [15, 45], [15, 100]], extreme: [17, 180], magazine: 20 },
+  { key: "auto-support", name: "Auto Support Gun", category: "heavyWeapons", skill: "heavyWeapons", attribute: "str", damage: "standard", profile: [[17, 10], [15, 40], [17, 90]], extreme: [19, 160], magazine: 60, auto: true },
   { key: "combat-knife", name: "Combat Knife", category: "meleeWeapons", skill: "meleeWeapons", attribute: "dex", damage: "light", kind: "melee" },
   { key: "shock-baton", name: "Shock Baton", category: "meleeWeapons", skill: "meleeWeapons", attribute: "str", damage: "standard", kind: "melee" },
   { key: "breach-blade", name: "Composite Breach Blade", category: "meleeWeapons", skill: "meleeWeapons", attribute: "str", damage: "heavy", kind: "melee" },
@@ -46,12 +46,16 @@ const modBlueprints = [
   { key: "capacitor", name: "Tactical Shield Capacitor", floor: () => 0, shieldBonus: 1, capacity: 1 }
 ];
 
-function range(profile = [[13, 2], [15, 2], [19, 2]]) {
+function range(profile = [[13, 2], [15, 4], [19, 6]], extreme = null) {
   return {
     close: { dv: profile[0][0], max: profile[0][1] },
     medium: { dv: profile[1][0], max: profile[1][1] },
     long: { dv: profile[2][0], max: profile[2][1] },
-    extreme: { enabled: false, dv: 21, max: profile[2][1] * 2 }
+    extreme: {
+      enabled: Boolean(extreme),
+      dv: extreme?.[0] ?? 21,
+      max: extreme?.[1] ?? profile[2][1]
+    }
   };
 }
 
@@ -76,7 +80,7 @@ function weaponDocument(blueprint, tier, equipped = false) {
       penetration: 0,
       critThreshold: 20,
       equipped,
-      range: range(blueprint.profile),
+      range: range(blueprint.profile, blueprint.extreme),
       modes: { standard: true, auto: Boolean(blueprint.auto) },
       magazine: { current: blueprint.magazine ?? 0, max: blueprint.magazine ?? 0 }
     }
@@ -212,11 +216,12 @@ function actorDocument(archetype, type, tier) {
   }
 
   const name = `T${tier} ${archetype.name}`;
+  const portraitPath = `systems/novum/assets/portraits/${tokenArt[type][archetype.key]}`;
   const tokenPath = `systems/novum/assets/tokens/${tokenArt[type][archetype.key]}`;
   return {
     name,
     type,
-    img: tokenPath,
+    img: portraitPath,
     prototypeToken: {
       name,
       actorLink: type === "character",
@@ -254,9 +259,9 @@ for (const tier of [1, 2, 3, 4]) {
 }
 
 const payload = {
-  version: "0.1.1",
+  version: "0.1.2",
   generated: "2026-09-28",
-  note: "Generic provisional playtest content for Novum Combat Maths Baseline v1.0 using the v0.1.1 Shield/HP and melee calibration.",
+  note: "Generic provisional playtest content for Novum Combat Maths Baseline v1.0 using the preserved v0.1.1 combat calibration and v0.1.2 token/range audit.",
   items,
   actors
 };

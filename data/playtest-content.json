@@ -1,7 +1,7 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.2",
   "generated": "2026-09-28",
-  "note": "Generic provisional playtest content for Novum Combat Maths Baseline v1.0 using the v0.1.1 Shield/HP and melee calibration.",
+  "note": "Generic provisional playtest content for Novum Combat Maths Baseline v1.0 using the preserved v0.1.1 combat calibration and v0.1.2 token/range audit.",
   "items": [
     {
       "seedId": "weapon-t1-service-pistol",
@@ -27,20 +27,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 12
+              "max": 10
             },
             "medium": {
-              "dv": 15,
-              "max": 30
+              "dv": 17,
+              "max": 25
             },
             "long": {
-              "dv": 19,
-              "max": 60
+              "dv": 21,
+              "max": 50
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 120
+              "max": 50
             }
           },
           "modes": {
@@ -78,20 +78,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 14
+              "max": 12
             },
             "medium": {
-              "dv": 17,
-              "max": 36
+              "dv": 15,
+              "max": 30
             },
             "long": {
-              "dv": 21,
-              "max": 70
+              "dv": 19,
+              "max": 60
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 140
+              "max": 60
             }
           },
           "modes": {
@@ -129,20 +129,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 14
+              "max": 12
             },
             "medium": {
               "dv": 15,
-              "max": 38
+              "max": 30
             },
             "long": {
               "dv": 19,
-              "max": 80
+              "max": 55
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 160
+              "max": 55
             }
           },
           "modes": {
@@ -180,20 +180,20 @@
           "range": {
             "close": {
               "dv": 15,
-              "max": 14
+              "max": 12
             },
             "medium": {
               "dv": 13,
-              "max": 70
+              "max": 40
             },
             "long": {
               "dv": 15,
-              "max": 190
+              "max": 90
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 380
+              "max": 90
             }
           },
           "modes": {
@@ -231,20 +231,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 10
+              "max": 8
             },
             "medium": {
               "dv": 17,
-              "max": 30
+              "max": 18
             },
             "long": {
               "dv": 21,
-              "max": 65
+              "max": 35
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 130
+              "max": 35
             }
           },
           "modes": {
@@ -281,21 +281,21 @@
           "equipped": false,
           "range": {
             "close": {
-              "dv": 17,
-              "max": 12
+              "dv": 19,
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 100
+              "max": 50
             },
             "long": {
               "dv": 13,
-              "max": 360
+              "max": 120
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 720
+              "enabled": true,
+              "dv": 15,
+              "max": 240
             }
           },
           "modes": {
@@ -333,20 +333,20 @@
           "range": {
             "close": {
               "dv": 17,
-              "max": 16
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 85
+              "max": 45
             },
             "long": {
               "dv": 15,
-              "max": 220
+              "max": 100
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 440
+              "enabled": true,
+              "dv": 17,
+              "max": 180
             }
           },
           "modes": {
@@ -383,21 +383,21 @@
           "equipped": false,
           "range": {
             "close": {
-              "dv": 15,
-              "max": 16
+              "dv": 17,
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 75
+              "max": 40
             },
             "long": {
               "dv": 17,
-              "max": 180
+              "max": 90
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 360
+              "enabled": true,
+              "dv": 19,
+              "max": 160
             }
           },
           "modes": {
@@ -439,16 +439,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -490,16 +490,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -541,16 +541,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -592,16 +592,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -804,20 +804,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 12
+              "max": 10
             },
             "medium": {
-              "dv": 15,
-              "max": 30
+              "dv": 17,
+              "max": 25
             },
             "long": {
-              "dv": 19,
-              "max": 60
+              "dv": 21,
+              "max": 50
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 120
+              "max": 50
             }
           },
           "modes": {
@@ -855,20 +855,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 14
+              "max": 12
             },
             "medium": {
-              "dv": 17,
-              "max": 36
+              "dv": 15,
+              "max": 30
             },
             "long": {
-              "dv": 21,
-              "max": 70
+              "dv": 19,
+              "max": 60
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 140
+              "max": 60
             }
           },
           "modes": {
@@ -906,20 +906,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 14
+              "max": 12
             },
             "medium": {
               "dv": 15,
-              "max": 38
+              "max": 30
             },
             "long": {
               "dv": 19,
-              "max": 80
+              "max": 55
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 160
+              "max": 55
             }
           },
           "modes": {
@@ -957,20 +957,20 @@
           "range": {
             "close": {
               "dv": 15,
-              "max": 14
+              "max": 12
             },
             "medium": {
               "dv": 13,
-              "max": 70
+              "max": 40
             },
             "long": {
               "dv": 15,
-              "max": 190
+              "max": 90
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 380
+              "max": 90
             }
           },
           "modes": {
@@ -1008,20 +1008,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 10
+              "max": 8
             },
             "medium": {
               "dv": 17,
-              "max": 30
+              "max": 18
             },
             "long": {
               "dv": 21,
-              "max": 65
+              "max": 35
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 130
+              "max": 35
             }
           },
           "modes": {
@@ -1058,21 +1058,21 @@
           "equipped": false,
           "range": {
             "close": {
-              "dv": 17,
-              "max": 12
+              "dv": 19,
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 100
+              "max": 50
             },
             "long": {
               "dv": 13,
-              "max": 360
+              "max": 120
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 720
+              "enabled": true,
+              "dv": 15,
+              "max": 240
             }
           },
           "modes": {
@@ -1110,20 +1110,20 @@
           "range": {
             "close": {
               "dv": 17,
-              "max": 16
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 85
+              "max": 45
             },
             "long": {
               "dv": 15,
-              "max": 220
+              "max": 100
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 440
+              "enabled": true,
+              "dv": 17,
+              "max": 180
             }
           },
           "modes": {
@@ -1160,21 +1160,21 @@
           "equipped": false,
           "range": {
             "close": {
-              "dv": 15,
-              "max": 16
+              "dv": 17,
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 75
+              "max": 40
             },
             "long": {
               "dv": 17,
-              "max": 180
+              "max": 90
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 360
+              "enabled": true,
+              "dv": 19,
+              "max": 160
             }
           },
           "modes": {
@@ -1216,16 +1216,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -1267,16 +1267,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -1318,16 +1318,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -1369,16 +1369,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -1581,20 +1581,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 12
+              "max": 10
             },
             "medium": {
-              "dv": 15,
-              "max": 30
+              "dv": 17,
+              "max": 25
             },
             "long": {
-              "dv": 19,
-              "max": 60
+              "dv": 21,
+              "max": 50
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 120
+              "max": 50
             }
           },
           "modes": {
@@ -1632,20 +1632,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 14
+              "max": 12
             },
             "medium": {
-              "dv": 17,
-              "max": 36
+              "dv": 15,
+              "max": 30
             },
             "long": {
-              "dv": 21,
-              "max": 70
+              "dv": 19,
+              "max": 60
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 140
+              "max": 60
             }
           },
           "modes": {
@@ -1683,20 +1683,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 14
+              "max": 12
             },
             "medium": {
               "dv": 15,
-              "max": 38
+              "max": 30
             },
             "long": {
               "dv": 19,
-              "max": 80
+              "max": 55
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 160
+              "max": 55
             }
           },
           "modes": {
@@ -1734,20 +1734,20 @@
           "range": {
             "close": {
               "dv": 15,
-              "max": 14
+              "max": 12
             },
             "medium": {
               "dv": 13,
-              "max": 70
+              "max": 40
             },
             "long": {
               "dv": 15,
-              "max": 190
+              "max": 90
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 380
+              "max": 90
             }
           },
           "modes": {
@@ -1785,20 +1785,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 10
+              "max": 8
             },
             "medium": {
               "dv": 17,
-              "max": 30
+              "max": 18
             },
             "long": {
               "dv": 21,
-              "max": 65
+              "max": 35
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 130
+              "max": 35
             }
           },
           "modes": {
@@ -1835,21 +1835,21 @@
           "equipped": false,
           "range": {
             "close": {
-              "dv": 17,
-              "max": 12
+              "dv": 19,
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 100
+              "max": 50
             },
             "long": {
               "dv": 13,
-              "max": 360
+              "max": 120
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 720
+              "enabled": true,
+              "dv": 15,
+              "max": 240
             }
           },
           "modes": {
@@ -1887,20 +1887,20 @@
           "range": {
             "close": {
               "dv": 17,
-              "max": 16
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 85
+              "max": 45
             },
             "long": {
               "dv": 15,
-              "max": 220
+              "max": 100
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 440
+              "enabled": true,
+              "dv": 17,
+              "max": 180
             }
           },
           "modes": {
@@ -1937,21 +1937,21 @@
           "equipped": false,
           "range": {
             "close": {
-              "dv": 15,
-              "max": 16
+              "dv": 17,
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 75
+              "max": 40
             },
             "long": {
               "dv": 17,
-              "max": 180
+              "max": 90
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 360
+              "enabled": true,
+              "dv": 19,
+              "max": 160
             }
           },
           "modes": {
@@ -1993,16 +1993,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -2044,16 +2044,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -2095,16 +2095,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -2146,16 +2146,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -2358,20 +2358,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 12
+              "max": 10
             },
             "medium": {
-              "dv": 15,
-              "max": 30
+              "dv": 17,
+              "max": 25
             },
             "long": {
-              "dv": 19,
-              "max": 60
+              "dv": 21,
+              "max": 50
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 120
+              "max": 50
             }
           },
           "modes": {
@@ -2409,20 +2409,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 14
+              "max": 12
             },
             "medium": {
-              "dv": 17,
-              "max": 36
+              "dv": 15,
+              "max": 30
             },
             "long": {
-              "dv": 21,
-              "max": 70
+              "dv": 19,
+              "max": 60
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 140
+              "max": 60
             }
           },
           "modes": {
@@ -2460,20 +2460,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 14
+              "max": 12
             },
             "medium": {
               "dv": 15,
-              "max": 38
+              "max": 30
             },
             "long": {
               "dv": 19,
-              "max": 80
+              "max": 55
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 160
+              "max": 55
             }
           },
           "modes": {
@@ -2511,20 +2511,20 @@
           "range": {
             "close": {
               "dv": 15,
-              "max": 14
+              "max": 12
             },
             "medium": {
               "dv": 13,
-              "max": 70
+              "max": 40
             },
             "long": {
               "dv": 15,
-              "max": 190
+              "max": 90
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 380
+              "max": 90
             }
           },
           "modes": {
@@ -2562,20 +2562,20 @@
           "range": {
             "close": {
               "dv": 13,
-              "max": 10
+              "max": 8
             },
             "medium": {
               "dv": 17,
-              "max": 30
+              "max": 18
             },
             "long": {
               "dv": 21,
-              "max": 65
+              "max": 35
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 130
+              "max": 35
             }
           },
           "modes": {
@@ -2612,21 +2612,21 @@
           "equipped": false,
           "range": {
             "close": {
-              "dv": 17,
-              "max": 12
+              "dv": 19,
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 100
+              "max": 50
             },
             "long": {
               "dv": 13,
-              "max": 360
+              "max": 120
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 720
+              "enabled": true,
+              "dv": 15,
+              "max": 240
             }
           },
           "modes": {
@@ -2664,20 +2664,20 @@
           "range": {
             "close": {
               "dv": 17,
-              "max": 16
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 85
+              "max": 45
             },
             "long": {
               "dv": 15,
-              "max": 220
+              "max": 100
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 440
+              "enabled": true,
+              "dv": 17,
+              "max": 180
             }
           },
           "modes": {
@@ -2714,21 +2714,21 @@
           "equipped": false,
           "range": {
             "close": {
-              "dv": 15,
-              "max": 16
+              "dv": 17,
+              "max": 10
             },
             "medium": {
               "dv": 15,
-              "max": 75
+              "max": 40
             },
             "long": {
               "dv": 17,
-              "max": 180
+              "max": 90
             },
             "extreme": {
-              "enabled": false,
-              "dv": 21,
-              "max": 360
+              "enabled": true,
+              "dv": 19,
+              "max": 160
             }
           },
           "modes": {
@@ -2770,16 +2770,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -2821,16 +2821,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -2872,16 +2872,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -2923,16 +2923,16 @@
             },
             "medium": {
               "dv": 15,
-              "max": 2
+              "max": 4
             },
             "long": {
               "dv": 19,
-              "max": 2
+              "max": 6
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 4
+              "max": 6
             }
           },
           "modes": {
@@ -3120,7 +3120,7 @@
       "document": {
         "name": "T1 Balanced Rifle Operator",
         "type": "character",
-        "img": "systems/novum/assets/tokens/balanced-rifle.webp",
+        "img": "systems/novum/assets/portraits/balanced-rifle.webp",
         "prototypeToken": {
           "name": "T1 Balanced Rifle Operator",
           "actorLink": true,
@@ -3252,20 +3252,20 @@
               "range": {
                 "close": {
                   "dv": 15,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 13,
-                  "max": 70
+                  "max": 40
                 },
                 "long": {
                   "dv": 15,
-                  "max": 190
+                  "max": 90
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 380
+                  "max": 90
                 }
               },
               "modes": {
@@ -3321,7 +3321,7 @@
       "document": {
         "name": "T1 Small-Arms Agile Skirmisher",
         "type": "character",
-        "img": "systems/novum/assets/tokens/agile-skirmisher.webp",
+        "img": "systems/novum/assets/portraits/agile-skirmisher.webp",
         "prototypeToken": {
           "name": "T1 Small-Arms Agile Skirmisher",
           "actorLink": true,
@@ -3453,20 +3453,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 38
+                  "max": 30
                 },
                 "long": {
                   "dv": 19,
-                  "max": 80
+                  "max": 55
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 160
+                  "max": 55
                 }
               },
               "modes": {
@@ -3522,7 +3522,7 @@
       "document": {
         "name": "T1 Melee Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/melee-specialist.webp",
+        "img": "systems/novum/assets/portraits/melee-specialist.webp",
         "prototypeToken": {
           "name": "T1 Melee Specialist",
           "actorLink": true,
@@ -3658,16 +3658,16 @@
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 2
+                  "max": 4
                 },
                 "long": {
                   "dv": 19,
-                  "max": 2
+                  "max": 6
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 4
+                  "max": 6
                 }
               },
               "modes": {
@@ -3723,7 +3723,7 @@
       "document": {
         "name": "T1 Heavy Auto Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/auto-specialist.webp",
+        "img": "systems/novum/assets/portraits/auto-specialist.webp",
         "prototypeToken": {
           "name": "T1 Heavy Auto Specialist",
           "actorLink": true,
@@ -3854,21 +3854,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 15,
-                  "max": 16
+                  "dv": 17,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 75
+                  "max": 40
                 },
                 "long": {
                   "dv": 17,
-                  "max": 180
+                  "max": 90
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 360
+                  "enabled": true,
+                  "dv": 19,
+                  "max": 160
                 }
               },
               "modes": {
@@ -3924,7 +3924,7 @@
       "document": {
         "name": "T1 Precision Long-Range Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/precision-specialist.webp",
+        "img": "systems/novum/assets/portraits/precision-specialist.webp",
         "prototypeToken": {
           "name": "T1 Precision Long-Range Specialist",
           "actorLink": true,
@@ -4055,21 +4055,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 17,
-                  "max": 12
+                  "dv": 19,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 100
+                  "max": 50
                 },
                 "long": {
                   "dv": 13,
-                  "max": 360
+                  "max": 120
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 720
+                  "enabled": true,
+                  "dv": 15,
+                  "max": 240
                 }
               },
               "modes": {
@@ -4125,7 +4125,7 @@
       "document": {
         "name": "T1 Support-Ready Generalist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/support-generalist.webp",
+        "img": "systems/novum/assets/portraits/support-generalist.webp",
         "prototypeToken": {
           "name": "T1 Support-Ready Generalist",
           "actorLink": true,
@@ -4257,20 +4257,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 12
+                  "max": 10
                 },
                 "medium": {
-                  "dv": 15,
-                  "max": 30
+                  "dv": 17,
+                  "max": 25
                 },
                 "long": {
-                  "dv": 19,
-                  "max": 60
+                  "dv": 21,
+                  "max": 50
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 120
+                  "max": 50
                 }
               },
               "modes": {
@@ -4342,7 +4342,7 @@
       "document": {
         "name": "T1 Street Gunner",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/street-gunner.webp",
+        "img": "systems/novum/assets/portraits/street-gunner.webp",
         "prototypeToken": {
           "name": "T1 Street Gunner",
           "actorLink": false,
@@ -4474,20 +4474,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 12
+                  "max": 10
                 },
                 "medium": {
-                  "dv": 15,
-                  "max": 30
+                  "dv": 17,
+                  "max": 25
                 },
                 "long": {
-                  "dv": 19,
-                  "max": 60
+                  "dv": 21,
+                  "max": 50
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 120
+                  "max": 50
                 }
               },
               "modes": {
@@ -4543,7 +4543,7 @@
       "document": {
         "name": "T1 Shielded Enforcer",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/shielded-enforcer.webp",
+        "img": "systems/novum/assets/portraits/shielded-enforcer.webp",
         "prototypeToken": {
           "name": "T1 Shielded Enforcer",
           "actorLink": false,
@@ -4675,20 +4675,20 @@
               "range": {
                 "close": {
                   "dv": 17,
-                  "max": 16
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 85
+                  "max": 45
                 },
                 "long": {
                   "dv": 15,
-                  "max": 220
+                  "max": 100
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 440
+                  "enabled": true,
+                  "dv": 17,
+                  "max": 180
                 }
               },
               "modes": {
@@ -4760,7 +4760,7 @@
       "document": {
         "name": "T1 Melee Breacher",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/melee-breacher.webp",
+        "img": "systems/novum/assets/portraits/melee-breacher.webp",
         "prototypeToken": {
           "name": "T1 Melee Breacher",
           "actorLink": false,
@@ -4896,16 +4896,16 @@
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 2
+                  "max": 4
                 },
                 "long": {
                   "dv": 19,
-                  "max": 2
+                  "max": 6
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 4
+                  "max": 6
                 }
               },
               "modes": {
@@ -4961,7 +4961,7 @@
       "document": {
         "name": "T1 Auto Gunner",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/auto-gunner.webp",
+        "img": "systems/novum/assets/portraits/auto-gunner.webp",
         "prototypeToken": {
           "name": "T1 Auto Gunner",
           "actorLink": false,
@@ -5092,21 +5092,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 15,
-                  "max": 16
+                  "dv": 17,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 75
+                  "max": 40
                 },
                 "long": {
                   "dv": 17,
-                  "max": 180
+                  "max": 90
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 360
+                  "enabled": true,
+                  "dv": 19,
+                  "max": 160
                 }
               },
               "modes": {
@@ -5162,7 +5162,7 @@
       "document": {
         "name": "T1 Precision Shooter",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/precision-shooter.webp",
+        "img": "systems/novum/assets/portraits/precision-shooter.webp",
         "prototypeToken": {
           "name": "T1 Precision Shooter",
           "actorLink": false,
@@ -5293,21 +5293,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 17,
-                  "max": 12
+                  "dv": 19,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 100
+                  "max": 50
                 },
                 "long": {
                   "dv": 13,
-                  "max": 360
+                  "max": 120
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 720
+                  "enabled": true,
+                  "dv": 15,
+                  "max": 240
                 }
               },
               "modes": {
@@ -5363,7 +5363,7 @@
       "document": {
         "name": "T1 Tactical Operator",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/tactical-operator.webp",
+        "img": "systems/novum/assets/portraits/tactical-operator.webp",
         "prototypeToken": {
           "name": "T1 Tactical Operator",
           "actorLink": false,
@@ -5495,20 +5495,20 @@
               "range": {
                 "close": {
                   "dv": 15,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 13,
-                  "max": 70
+                  "max": 40
                 },
                 "long": {
                   "dv": 15,
-                  "max": 190
+                  "max": 90
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 380
+                  "max": 90
                 }
               },
               "modes": {
@@ -5564,7 +5564,7 @@
       "document": {
         "name": "T2 Balanced Rifle Operator",
         "type": "character",
-        "img": "systems/novum/assets/tokens/balanced-rifle.webp",
+        "img": "systems/novum/assets/portraits/balanced-rifle.webp",
         "prototypeToken": {
           "name": "T2 Balanced Rifle Operator",
           "actorLink": true,
@@ -5696,20 +5696,20 @@
               "range": {
                 "close": {
                   "dv": 15,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 13,
-                  "max": 70
+                  "max": 40
                 },
                 "long": {
                   "dv": 15,
-                  "max": 190
+                  "max": 90
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 380
+                  "max": 90
                 }
               },
               "modes": {
@@ -5765,7 +5765,7 @@
       "document": {
         "name": "T2 Small-Arms Agile Skirmisher",
         "type": "character",
-        "img": "systems/novum/assets/tokens/agile-skirmisher.webp",
+        "img": "systems/novum/assets/portraits/agile-skirmisher.webp",
         "prototypeToken": {
           "name": "T2 Small-Arms Agile Skirmisher",
           "actorLink": true,
@@ -5897,20 +5897,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 38
+                  "max": 30
                 },
                 "long": {
                   "dv": 19,
-                  "max": 80
+                  "max": 55
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 160
+                  "max": 55
                 }
               },
               "modes": {
@@ -5966,7 +5966,7 @@
       "document": {
         "name": "T2 Melee Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/melee-specialist.webp",
+        "img": "systems/novum/assets/portraits/melee-specialist.webp",
         "prototypeToken": {
           "name": "T2 Melee Specialist",
           "actorLink": true,
@@ -6102,16 +6102,16 @@
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 2
+                  "max": 4
                 },
                 "long": {
                   "dv": 19,
-                  "max": 2
+                  "max": 6
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 4
+                  "max": 6
                 }
               },
               "modes": {
@@ -6167,7 +6167,7 @@
       "document": {
         "name": "T2 Heavy Auto Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/auto-specialist.webp",
+        "img": "systems/novum/assets/portraits/auto-specialist.webp",
         "prototypeToken": {
           "name": "T2 Heavy Auto Specialist",
           "actorLink": true,
@@ -6298,21 +6298,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 15,
-                  "max": 16
+                  "dv": 17,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 75
+                  "max": 40
                 },
                 "long": {
                   "dv": 17,
-                  "max": 180
+                  "max": 90
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 360
+                  "enabled": true,
+                  "dv": 19,
+                  "max": 160
                 }
               },
               "modes": {
@@ -6368,7 +6368,7 @@
       "document": {
         "name": "T2 Precision Long-Range Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/precision-specialist.webp",
+        "img": "systems/novum/assets/portraits/precision-specialist.webp",
         "prototypeToken": {
           "name": "T2 Precision Long-Range Specialist",
           "actorLink": true,
@@ -6499,21 +6499,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 17,
-                  "max": 12
+                  "dv": 19,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 100
+                  "max": 50
                 },
                 "long": {
                   "dv": 13,
-                  "max": 360
+                  "max": 120
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 720
+                  "enabled": true,
+                  "dv": 15,
+                  "max": 240
                 }
               },
               "modes": {
@@ -6569,7 +6569,7 @@
       "document": {
         "name": "T2 Support-Ready Generalist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/support-generalist.webp",
+        "img": "systems/novum/assets/portraits/support-generalist.webp",
         "prototypeToken": {
           "name": "T2 Support-Ready Generalist",
           "actorLink": true,
@@ -6701,20 +6701,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 12
+                  "max": 10
                 },
                 "medium": {
-                  "dv": 15,
-                  "max": 30
+                  "dv": 17,
+                  "max": 25
                 },
                 "long": {
-                  "dv": 19,
-                  "max": 60
+                  "dv": 21,
+                  "max": 50
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 120
+                  "max": 50
                 }
               },
               "modes": {
@@ -6786,7 +6786,7 @@
       "document": {
         "name": "T2 Street Gunner",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/street-gunner.webp",
+        "img": "systems/novum/assets/portraits/street-gunner.webp",
         "prototypeToken": {
           "name": "T2 Street Gunner",
           "actorLink": false,
@@ -6918,20 +6918,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 12
+                  "max": 10
                 },
                 "medium": {
-                  "dv": 15,
-                  "max": 30
+                  "dv": 17,
+                  "max": 25
                 },
                 "long": {
-                  "dv": 19,
-                  "max": 60
+                  "dv": 21,
+                  "max": 50
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 120
+                  "max": 50
                 }
               },
               "modes": {
@@ -6987,7 +6987,7 @@
       "document": {
         "name": "T2 Shielded Enforcer",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/shielded-enforcer.webp",
+        "img": "systems/novum/assets/portraits/shielded-enforcer.webp",
         "prototypeToken": {
           "name": "T2 Shielded Enforcer",
           "actorLink": false,
@@ -7119,20 +7119,20 @@
               "range": {
                 "close": {
                   "dv": 17,
-                  "max": 16
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 85
+                  "max": 45
                 },
                 "long": {
                   "dv": 15,
-                  "max": 220
+                  "max": 100
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 440
+                  "enabled": true,
+                  "dv": 17,
+                  "max": 180
                 }
               },
               "modes": {
@@ -7204,7 +7204,7 @@
       "document": {
         "name": "T2 Melee Breacher",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/melee-breacher.webp",
+        "img": "systems/novum/assets/portraits/melee-breacher.webp",
         "prototypeToken": {
           "name": "T2 Melee Breacher",
           "actorLink": false,
@@ -7340,16 +7340,16 @@
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 2
+                  "max": 4
                 },
                 "long": {
                   "dv": 19,
-                  "max": 2
+                  "max": 6
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 4
+                  "max": 6
                 }
               },
               "modes": {
@@ -7405,7 +7405,7 @@
       "document": {
         "name": "T2 Auto Gunner",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/auto-gunner.webp",
+        "img": "systems/novum/assets/portraits/auto-gunner.webp",
         "prototypeToken": {
           "name": "T2 Auto Gunner",
           "actorLink": false,
@@ -7536,21 +7536,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 15,
-                  "max": 16
+                  "dv": 17,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 75
+                  "max": 40
                 },
                 "long": {
                   "dv": 17,
-                  "max": 180
+                  "max": 90
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 360
+                  "enabled": true,
+                  "dv": 19,
+                  "max": 160
                 }
               },
               "modes": {
@@ -7606,7 +7606,7 @@
       "document": {
         "name": "T2 Precision Shooter",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/precision-shooter.webp",
+        "img": "systems/novum/assets/portraits/precision-shooter.webp",
         "prototypeToken": {
           "name": "T2 Precision Shooter",
           "actorLink": false,
@@ -7737,21 +7737,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 17,
-                  "max": 12
+                  "dv": 19,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 100
+                  "max": 50
                 },
                 "long": {
                   "dv": 13,
-                  "max": 360
+                  "max": 120
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 720
+                  "enabled": true,
+                  "dv": 15,
+                  "max": 240
                 }
               },
               "modes": {
@@ -7807,7 +7807,7 @@
       "document": {
         "name": "T2 Tactical Operator",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/tactical-operator.webp",
+        "img": "systems/novum/assets/portraits/tactical-operator.webp",
         "prototypeToken": {
           "name": "T2 Tactical Operator",
           "actorLink": false,
@@ -7939,20 +7939,20 @@
               "range": {
                 "close": {
                   "dv": 15,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 13,
-                  "max": 70
+                  "max": 40
                 },
                 "long": {
                   "dv": 15,
-                  "max": 190
+                  "max": 90
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 380
+                  "max": 90
                 }
               },
               "modes": {
@@ -8008,7 +8008,7 @@
       "document": {
         "name": "T3 Balanced Rifle Operator",
         "type": "character",
-        "img": "systems/novum/assets/tokens/balanced-rifle.webp",
+        "img": "systems/novum/assets/portraits/balanced-rifle.webp",
         "prototypeToken": {
           "name": "T3 Balanced Rifle Operator",
           "actorLink": true,
@@ -8140,20 +8140,20 @@
               "range": {
                 "close": {
                   "dv": 15,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 13,
-                  "max": 70
+                  "max": 40
                 },
                 "long": {
                   "dv": 15,
-                  "max": 190
+                  "max": 90
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 380
+                  "max": 90
                 }
               },
               "modes": {
@@ -8209,7 +8209,7 @@
       "document": {
         "name": "T3 Small-Arms Agile Skirmisher",
         "type": "character",
-        "img": "systems/novum/assets/tokens/agile-skirmisher.webp",
+        "img": "systems/novum/assets/portraits/agile-skirmisher.webp",
         "prototypeToken": {
           "name": "T3 Small-Arms Agile Skirmisher",
           "actorLink": true,
@@ -8341,20 +8341,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 38
+                  "max": 30
                 },
                 "long": {
                   "dv": 19,
-                  "max": 80
+                  "max": 55
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 160
+                  "max": 55
                 }
               },
               "modes": {
@@ -8410,7 +8410,7 @@
       "document": {
         "name": "T3 Melee Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/melee-specialist.webp",
+        "img": "systems/novum/assets/portraits/melee-specialist.webp",
         "prototypeToken": {
           "name": "T3 Melee Specialist",
           "actorLink": true,
@@ -8546,16 +8546,16 @@
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 2
+                  "max": 4
                 },
                 "long": {
                   "dv": 19,
-                  "max": 2
+                  "max": 6
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 4
+                  "max": 6
                 }
               },
               "modes": {
@@ -8611,7 +8611,7 @@
       "document": {
         "name": "T3 Heavy Auto Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/auto-specialist.webp",
+        "img": "systems/novum/assets/portraits/auto-specialist.webp",
         "prototypeToken": {
           "name": "T3 Heavy Auto Specialist",
           "actorLink": true,
@@ -8742,21 +8742,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 15,
-                  "max": 16
+                  "dv": 17,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 75
+                  "max": 40
                 },
                 "long": {
                   "dv": 17,
-                  "max": 180
+                  "max": 90
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 360
+                  "enabled": true,
+                  "dv": 19,
+                  "max": 160
                 }
               },
               "modes": {
@@ -8812,7 +8812,7 @@
       "document": {
         "name": "T3 Precision Long-Range Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/precision-specialist.webp",
+        "img": "systems/novum/assets/portraits/precision-specialist.webp",
         "prototypeToken": {
           "name": "T3 Precision Long-Range Specialist",
           "actorLink": true,
@@ -8943,21 +8943,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 17,
-                  "max": 12
+                  "dv": 19,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 100
+                  "max": 50
                 },
                 "long": {
                   "dv": 13,
-                  "max": 360
+                  "max": 120
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 720
+                  "enabled": true,
+                  "dv": 15,
+                  "max": 240
                 }
               },
               "modes": {
@@ -9013,7 +9013,7 @@
       "document": {
         "name": "T3 Support-Ready Generalist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/support-generalist.webp",
+        "img": "systems/novum/assets/portraits/support-generalist.webp",
         "prototypeToken": {
           "name": "T3 Support-Ready Generalist",
           "actorLink": true,
@@ -9145,20 +9145,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 12
+                  "max": 10
                 },
                 "medium": {
-                  "dv": 15,
-                  "max": 30
+                  "dv": 17,
+                  "max": 25
                 },
                 "long": {
-                  "dv": 19,
-                  "max": 60
+                  "dv": 21,
+                  "max": 50
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 120
+                  "max": 50
                 }
               },
               "modes": {
@@ -9230,7 +9230,7 @@
       "document": {
         "name": "T3 Street Gunner",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/street-gunner.webp",
+        "img": "systems/novum/assets/portraits/street-gunner.webp",
         "prototypeToken": {
           "name": "T3 Street Gunner",
           "actorLink": false,
@@ -9362,20 +9362,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 12
+                  "max": 10
                 },
                 "medium": {
-                  "dv": 15,
-                  "max": 30
+                  "dv": 17,
+                  "max": 25
                 },
                 "long": {
-                  "dv": 19,
-                  "max": 60
+                  "dv": 21,
+                  "max": 50
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 120
+                  "max": 50
                 }
               },
               "modes": {
@@ -9431,7 +9431,7 @@
       "document": {
         "name": "T3 Shielded Enforcer",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/shielded-enforcer.webp",
+        "img": "systems/novum/assets/portraits/shielded-enforcer.webp",
         "prototypeToken": {
           "name": "T3 Shielded Enforcer",
           "actorLink": false,
@@ -9563,20 +9563,20 @@
               "range": {
                 "close": {
                   "dv": 17,
-                  "max": 16
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 85
+                  "max": 45
                 },
                 "long": {
                   "dv": 15,
-                  "max": 220
+                  "max": 100
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 440
+                  "enabled": true,
+                  "dv": 17,
+                  "max": 180
                 }
               },
               "modes": {
@@ -9648,7 +9648,7 @@
       "document": {
         "name": "T3 Melee Breacher",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/melee-breacher.webp",
+        "img": "systems/novum/assets/portraits/melee-breacher.webp",
         "prototypeToken": {
           "name": "T3 Melee Breacher",
           "actorLink": false,
@@ -9784,16 +9784,16 @@
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 2
+                  "max": 4
                 },
                 "long": {
                   "dv": 19,
-                  "max": 2
+                  "max": 6
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 4
+                  "max": 6
                 }
               },
               "modes": {
@@ -9849,7 +9849,7 @@
       "document": {
         "name": "T3 Auto Gunner",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/auto-gunner.webp",
+        "img": "systems/novum/assets/portraits/auto-gunner.webp",
         "prototypeToken": {
           "name": "T3 Auto Gunner",
           "actorLink": false,
@@ -9980,21 +9980,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 15,
-                  "max": 16
+                  "dv": 17,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 75
+                  "max": 40
                 },
                 "long": {
                   "dv": 17,
-                  "max": 180
+                  "max": 90
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 360
+                  "enabled": true,
+                  "dv": 19,
+                  "max": 160
                 }
               },
               "modes": {
@@ -10050,7 +10050,7 @@
       "document": {
         "name": "T3 Precision Shooter",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/precision-shooter.webp",
+        "img": "systems/novum/assets/portraits/precision-shooter.webp",
         "prototypeToken": {
           "name": "T3 Precision Shooter",
           "actorLink": false,
@@ -10181,21 +10181,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 17,
-                  "max": 12
+                  "dv": 19,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 100
+                  "max": 50
                 },
                 "long": {
                   "dv": 13,
-                  "max": 360
+                  "max": 120
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 720
+                  "enabled": true,
+                  "dv": 15,
+                  "max": 240
                 }
               },
               "modes": {
@@ -10251,7 +10251,7 @@
       "document": {
         "name": "T3 Tactical Operator",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/tactical-operator.webp",
+        "img": "systems/novum/assets/portraits/tactical-operator.webp",
         "prototypeToken": {
           "name": "T3 Tactical Operator",
           "actorLink": false,
@@ -10383,20 +10383,20 @@
               "range": {
                 "close": {
                   "dv": 15,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 13,
-                  "max": 70
+                  "max": 40
                 },
                 "long": {
                   "dv": 15,
-                  "max": 190
+                  "max": 90
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 380
+                  "max": 90
                 }
               },
               "modes": {
@@ -10452,7 +10452,7 @@
       "document": {
         "name": "T4 Balanced Rifle Operator",
         "type": "character",
-        "img": "systems/novum/assets/tokens/balanced-rifle.webp",
+        "img": "systems/novum/assets/portraits/balanced-rifle.webp",
         "prototypeToken": {
           "name": "T4 Balanced Rifle Operator",
           "actorLink": true,
@@ -10584,20 +10584,20 @@
               "range": {
                 "close": {
                   "dv": 15,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 13,
-                  "max": 70
+                  "max": 40
                 },
                 "long": {
                   "dv": 15,
-                  "max": 190
+                  "max": 90
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 380
+                  "max": 90
                 }
               },
               "modes": {
@@ -10653,7 +10653,7 @@
       "document": {
         "name": "T4 Small-Arms Agile Skirmisher",
         "type": "character",
-        "img": "systems/novum/assets/tokens/agile-skirmisher.webp",
+        "img": "systems/novum/assets/portraits/agile-skirmisher.webp",
         "prototypeToken": {
           "name": "T4 Small-Arms Agile Skirmisher",
           "actorLink": true,
@@ -10785,20 +10785,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 38
+                  "max": 30
                 },
                 "long": {
                   "dv": 19,
-                  "max": 80
+                  "max": 55
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 160
+                  "max": 55
                 }
               },
               "modes": {
@@ -10854,7 +10854,7 @@
       "document": {
         "name": "T4 Melee Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/melee-specialist.webp",
+        "img": "systems/novum/assets/portraits/melee-specialist.webp",
         "prototypeToken": {
           "name": "T4 Melee Specialist",
           "actorLink": true,
@@ -10990,16 +10990,16 @@
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 2
+                  "max": 4
                 },
                 "long": {
                   "dv": 19,
-                  "max": 2
+                  "max": 6
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 4
+                  "max": 6
                 }
               },
               "modes": {
@@ -11055,7 +11055,7 @@
       "document": {
         "name": "T4 Heavy Auto Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/auto-specialist.webp",
+        "img": "systems/novum/assets/portraits/auto-specialist.webp",
         "prototypeToken": {
           "name": "T4 Heavy Auto Specialist",
           "actorLink": true,
@@ -11186,21 +11186,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 15,
-                  "max": 16
+                  "dv": 17,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 75
+                  "max": 40
                 },
                 "long": {
                   "dv": 17,
-                  "max": 180
+                  "max": 90
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 360
+                  "enabled": true,
+                  "dv": 19,
+                  "max": 160
                 }
               },
               "modes": {
@@ -11256,7 +11256,7 @@
       "document": {
         "name": "T4 Precision Long-Range Specialist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/precision-specialist.webp",
+        "img": "systems/novum/assets/portraits/precision-specialist.webp",
         "prototypeToken": {
           "name": "T4 Precision Long-Range Specialist",
           "actorLink": true,
@@ -11387,21 +11387,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 17,
-                  "max": 12
+                  "dv": 19,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 100
+                  "max": 50
                 },
                 "long": {
                   "dv": 13,
-                  "max": 360
+                  "max": 120
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 720
+                  "enabled": true,
+                  "dv": 15,
+                  "max": 240
                 }
               },
               "modes": {
@@ -11457,7 +11457,7 @@
       "document": {
         "name": "T4 Support-Ready Generalist",
         "type": "character",
-        "img": "systems/novum/assets/tokens/support-generalist.webp",
+        "img": "systems/novum/assets/portraits/support-generalist.webp",
         "prototypeToken": {
           "name": "T4 Support-Ready Generalist",
           "actorLink": true,
@@ -11589,20 +11589,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 12
+                  "max": 10
                 },
                 "medium": {
-                  "dv": 15,
-                  "max": 30
+                  "dv": 17,
+                  "max": 25
                 },
                 "long": {
-                  "dv": 19,
-                  "max": 60
+                  "dv": 21,
+                  "max": 50
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 120
+                  "max": 50
                 }
               },
               "modes": {
@@ -11674,7 +11674,7 @@
       "document": {
         "name": "T4 Street Gunner",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/street-gunner.webp",
+        "img": "systems/novum/assets/portraits/street-gunner.webp",
         "prototypeToken": {
           "name": "T4 Street Gunner",
           "actorLink": false,
@@ -11806,20 +11806,20 @@
               "range": {
                 "close": {
                   "dv": 13,
-                  "max": 12
+                  "max": 10
                 },
                 "medium": {
-                  "dv": 15,
-                  "max": 30
+                  "dv": 17,
+                  "max": 25
                 },
                 "long": {
-                  "dv": 19,
-                  "max": 60
+                  "dv": 21,
+                  "max": 50
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 120
+                  "max": 50
                 }
               },
               "modes": {
@@ -11875,7 +11875,7 @@
       "document": {
         "name": "T4 Shielded Enforcer",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/shielded-enforcer.webp",
+        "img": "systems/novum/assets/portraits/shielded-enforcer.webp",
         "prototypeToken": {
           "name": "T4 Shielded Enforcer",
           "actorLink": false,
@@ -12007,20 +12007,20 @@
               "range": {
                 "close": {
                   "dv": 17,
-                  "max": 16
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 85
+                  "max": 45
                 },
                 "long": {
                   "dv": 15,
-                  "max": 220
+                  "max": 100
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 440
+                  "enabled": true,
+                  "dv": 17,
+                  "max": 180
                 }
               },
               "modes": {
@@ -12092,7 +12092,7 @@
       "document": {
         "name": "T4 Melee Breacher",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/melee-breacher.webp",
+        "img": "systems/novum/assets/portraits/melee-breacher.webp",
         "prototypeToken": {
           "name": "T4 Melee Breacher",
           "actorLink": false,
@@ -12228,16 +12228,16 @@
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 2
+                  "max": 4
                 },
                 "long": {
                   "dv": 19,
-                  "max": 2
+                  "max": 6
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 4
+                  "max": 6
                 }
               },
               "modes": {
@@ -12293,7 +12293,7 @@
       "document": {
         "name": "T4 Auto Gunner",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/auto-gunner.webp",
+        "img": "systems/novum/assets/portraits/auto-gunner.webp",
         "prototypeToken": {
           "name": "T4 Auto Gunner",
           "actorLink": false,
@@ -12424,21 +12424,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 15,
-                  "max": 16
+                  "dv": 17,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 75
+                  "max": 40
                 },
                 "long": {
                   "dv": 17,
-                  "max": 180
+                  "max": 90
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 360
+                  "enabled": true,
+                  "dv": 19,
+                  "max": 160
                 }
               },
               "modes": {
@@ -12494,7 +12494,7 @@
       "document": {
         "name": "T4 Precision Shooter",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/precision-shooter.webp",
+        "img": "systems/novum/assets/portraits/precision-shooter.webp",
         "prototypeToken": {
           "name": "T4 Precision Shooter",
           "actorLink": false,
@@ -12625,21 +12625,21 @@
               "equipped": true,
               "range": {
                 "close": {
-                  "dv": 17,
-                  "max": 12
+                  "dv": 19,
+                  "max": 10
                 },
                 "medium": {
                   "dv": 15,
-                  "max": 100
+                  "max": 50
                 },
                 "long": {
                   "dv": 13,
-                  "max": 360
+                  "max": 120
                 },
                 "extreme": {
-                  "enabled": false,
-                  "dv": 21,
-                  "max": 720
+                  "enabled": true,
+                  "dv": 15,
+                  "max": 240
                 }
               },
               "modes": {
@@ -12695,7 +12695,7 @@
       "document": {
         "name": "T4 Tactical Operator",
         "type": "npc",
-        "img": "systems/novum/assets/tokens/tactical-operator.webp",
+        "img": "systems/novum/assets/portraits/tactical-operator.webp",
         "prototypeToken": {
           "name": "T4 Tactical Operator",
           "actorLink": false,
@@ -12827,20 +12827,20 @@
               "range": {
                 "close": {
                   "dv": 15,
-                  "max": 14
+                  "max": 12
                 },
                 "medium": {
                   "dv": 13,
-                  "max": 70
+                  "max": 40
                 },
                 "long": {
                   "dv": 15,
-                  "max": 190
+                  "max": 90
                 },
                 "extreme": {
                   "enabled": false,
                   "dv": 21,
-                  "max": 380
+                  "max": 90
                 }
               },
               "modes": {

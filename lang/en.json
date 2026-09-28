@@ -7,8 +7,9 @@
   "NOVUM.ArmourMod": "Armour Mod",
   "NOVUM.ImportTitle": "Novum Playtest Content",
   "NOVUM.ImportPrompt": "Import the T1–T4 playtest gear and 48 premade Actors into this world?",
+  "NOVUM.UpdatePrompt": "Refresh the seeded T1–T4 playtest gear and premade Actors for Novum v0.1.2?",
   "NOVUM.ImportConfirm": "Import Content",
   "NOVUM.ImportLater": "Later",
   "NOVUM.RangeOverlay": "Weapon Range Bands",
-  "NOVUM.RangeOverlayHint": "Toggle the selected token's readied ranged-weapon bands on the Scene"
+  "NOVUM.RangeOverlayHint": "Show the selected token's readied ranged-weapon bands on the Scene"
 }

@@ -1,5 +1,50 @@
 import { determineRangeBand } from "./combat-engine.mjs";
 
+const UNIT_TO_METRES = Object.freeze({
+  m: 1,
+  metre: 1,
+  metres: 1,
+  meter: 1,
+  meters: 1,
+  km: 1000,
+  kilometre: 1000,
+  kilometres: 1000,
+  kilometer: 1000,
+  kilometers: 1000,
+  ft: 0.3048,
+  foot: 0.3048,
+  feet: 0.3048,
+  in: 0.0254,
+  inch: 0.0254,
+  inches: 0.0254,
+  yd: 0.9144,
+  yard: 0.9144,
+  yards: 0.9144,
+  mi: 1609.344,
+  mile: 1609.344,
+  miles: 1609.344
+});
+
+export function sceneUnitsToMetres(distance, units = "m") {
+  const value = Number(distance);
+  if (!Number.isFinite(value)) return null;
+  const factor = UNIT_TO_METRES[String(units ?? "m").trim().toLowerCase()] ?? 1;
+  return value * factor;
+}
+
+export function scenePixelsPerMetre(scene, grid) {
+  const gridSize = Number(grid?.size);
+  const metresPerGrid = sceneUnitsToMetres(scene?.grid?.distance, scene?.grid?.units);
+  if (!Number.isFinite(gridSize) || gridSize <= 0 || !Number.isFinite(metresPerGrid) || metresPerGrid <= 0) return null;
+  return gridSize / metresPerGrid;
+}
+
+export function measurePathMetres(grid, scene, points) {
+  if (!grid?.measurePath) return null;
+  const measurement = grid.measurePath(points);
+  return sceneUnitsToMetres(measurement?.distance, scene?.grid?.units);
+}
+
 export function getAttackTokens(actor) {
   const targets = Array.from(game.user?.targets ?? []);
   let source = actor.token?.object ?? null;
@@ -19,8 +64,10 @@ export function measureAttackRange(actor, weapon) {
     return { source, target, targetCount: targets.length, distance: null, band: null, dv: null, beyond: false };
   }
 
-  const measurement = canvas.grid.measurePath([source.center, target.center]);
-  const distance = Number(measurement.distance);
+  const distance = measurePathMetres(canvas.grid, canvas.scene, [source.center, target.center]);
+  if (!Number.isFinite(distance)) {
+    return { source, target, targetCount: 1, distance: null, band: null, dv: null, beyond: false };
+  }
   return {
     source,
     target,
@@ -33,4 +80,3 @@ export function titleCaseBand(band) {
   if (!band) return "Manual";
   return `${band.charAt(0).toUpperCase()}${band.slice(1)}`;
 }
-

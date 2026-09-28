@@ -1,6 +1,6 @@
 # Novum for Foundry VTT
 
-Novum v0.1.1 is a self-contained Foundry VTT game system for structured
+Novum v0.1.2 is a self-contained Foundry VTT game system for structured
 combat playtests of **Novum Combat Maths Baseline v1.0**.
 
 It is not an SWNR/CWN extension and has no system or module dependencies.
@@ -10,7 +10,7 @@ It is not an SWNR/CWN extension and has no system or module dependencies.
 - Target: Foundry Virtual Tabletop v14
 - Verified manifest build: **14.368 (Stable 10)**
 - System ID: `novum`
-- System version: `0.1.1`
+- System version: `0.1.2`
 
 The repository is intentionally dependency-free at runtime. Node is needed only
 to regenerate seeded content or run the automated validation suite.
@@ -24,15 +24,6 @@ to regenerate seeded content or run the automated validation suite.
 4. Restart Foundry.
 5. Create a new world and select **Novum** as its game system.
 
-For development, link the repository root into the systems directory using the
-link name `novum`. On Windows, from an elevated Command Prompt:
-
-```bat
-mklink /D "%LOCALAPPDATA%\FoundryVTT\Data\systems\novum" "F:\ChatGPT\New TTRPG System\novum-foundry"
-```
-
-Adjust both paths for the actual Foundry data directory and repository location.
-
 ## First launch
 
 When a GM first opens a Novum world, the system offers to import the
@@ -42,12 +33,11 @@ playtest catalogue. Accepting creates organised world folders containing:
 - 24 premade Characters;
 - 24 premade NPCs.
 
-The importer is idempotent and skips existing seeded content. It is also
-available from the browser console as:
-
-```js
-game.novum.importPlaytestContent()
-```
+When the seeded-content version changes, the GM is offered a refresh. This
+updates Novum's flagged playtest Actors and gear without duplicating them or
+changing unrelated world content. Because the embedded equipment on seeded
+pregens is rebuilt, use a fresh world when preserving modifications to old
+pregens matters.
 
 ## Running a combat test
 
@@ -61,10 +51,12 @@ game.novum.importPlaytestContent()
 6. Review the complete calculation in chat.
 7. Click **Apply Result** to commit the projected HP and Shield changes.
 
-The readied ranged weapon can also display translucent Close/Medium/Long zones
+The readied ranged weapon can also display distinct translucent
+Close/Medium/Long zones, plus Extreme where the weapon supports it,
 on the Scene. Use the sheet's **Ranges** button, the Token-controls bullseye, or
-the configurable **Shift+R** keybind. The overlay follows the selected token and
-updates when its readied weapon changes.
+the configurable **Shift+R** keybind. Client settings provide Toggle or Hold
+activation, four band colours, and shared opacity. The overlay follows the
+selected token and updates when its readied weapon changes.
 
 The Apply Result control refuses stale cards if the target's HP or Shield has
 changed since the roll. This prevents an old result from silently overwriting a
@@ -73,7 +65,7 @@ newer combat state.
 ### Melee
 
 Melee attacks compare against Melee AC, ignore Shield SP, and subtract Armour
-Floor once. Because bypass is already powerful, v0.1.1 gives melee weapons a
+Floor once. Because bypass is already powerful, v0.1.1 introduced a
 separate lower damage scale. The chat card labels Shield as ignored.
 
 ### Auto
@@ -112,7 +104,8 @@ npm run validate
 
 This regenerates deterministic playtest content, syntax-checks every JavaScript
 module, validates package and token paths, and runs combat, recalibration,
-range-overlay, theme-contrast, content, and registration tests.
+range/unit, range-overlay, token-alpha, theme-contrast, content, and
+registration tests.
 
 ## Provisional or deferred
 
@@ -129,3 +122,5 @@ See [docs/PLAYTEST.md](docs/PLAYTEST.md) for a focused test checklist and
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for implementation boundaries.
 The numerical rationale is recorded in
 [docs/RECALIBRATION.md](docs/RECALIBRATION.md).
+The v0.1.2 weapon table and range rationale are recorded in
+[docs/RANGE_AUDIT.md](docs/RANGE_AUDIT.md).

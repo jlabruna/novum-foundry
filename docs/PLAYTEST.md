@@ -7,7 +7,8 @@
 3. Drag any mix of the T1–T4 premade Characters and NPCs into the Scene.
 4. Reset each participant from its sheet before a new run.
 5. Ready one ranged weapon and verify the sheet **Ranges** button, Token-control
-   bullseye, and Shift+R keybind draw the same Close/Medium/Long distances.
+   bullseye, and configured keybind draw the same coloured range zones.
+6. Test both **Toggle** and **Hold** activation in client settings.
 
 Recommended initial scenarios:
 
@@ -50,6 +51,8 @@ The complete record is already retained in the chat card and its message flags.
 - Player-owned Actor roll and GM result application.
 - Range overlay with no selected token, multiple selected tokens, a melee
   weapon readied, weapon changes, and gridless Scenes.
+- Range overlay with a metric 2 m grid and a Scene configured in feet.
+- Optional Extreme enabled and disabled, plus customised colours and opacity.
 - Foundry dark and light themes for sheets, dialogs, cards, values, buttons,
   disabled controls, and Apply Result.
 
