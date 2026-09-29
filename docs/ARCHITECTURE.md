@@ -33,6 +33,12 @@ Actor derives one protection profile from an equipped armour chassis and valid
 installed same-tier mods. Explicit override fields use `-1` as the unambiguous
 "derive from gear" sentinel.
 
+`module/progression.mjs` is Foundry-independent and owns the Level 1–10 HP and
+Skill tables, Skill costs, Role catalogue, placeholder Feat trees, cumulative
+Feat-slot rules, A/B exclusion, and progression-state warnings. Actor data
+stores only choices; the sheet derives availability and presentation from that
+small catalogue.
+
 Foundry ActiveEffects remain the future condition/effect mechanism. The Actor
 sheets expose current effects without creating an Novum-specific parallel
 condition store.
@@ -46,13 +52,15 @@ tested without a Foundry runtime:
 - ranged combined-SP soak and Shield ablation;
 - melee Shield bypass and Floor soak;
 - weapon-profile range selection.
+- weapon-technology die conversion, Ablation, fire-mode availability, and
+  ammunition cost.
 
 `module/combat.mjs` integrates those functions with Foundry Roll, DialogV2,
 token targeting, grid measurement, and ChatMessage APIs.
 
-`module/chat.mjs` applies a calculated result only after user review. It stores
-pre/post values in message flags, checks permission, and refuses application if
-the target has changed since the roll.
+`module/chat.mjs` applies one or many calculated results only after user review.
+It stores each target's pre/post values in message flags, checks permission,
+and refuses application if that target has changed since the shared roll.
 
 ## Range
 
@@ -90,10 +98,11 @@ separately by the deterministic content generator.
 
 ## Future extension points
 
-- Additional Item DataModels can be registered for Feats, Roles, cyberware,
-  drugs, drones, programs, and abilities.
+- Additional Item DataModels can be registered for cyberware, drugs, drones,
+  programs, and abilities. Placeholder Feats/Role choices deliberately remain
+  compact Actor data until their effects and final content model are known.
 - ActiveEffects can alter typed Actor fields.
 - Future action providers can populate the existing Action Centre.
-- Penetration, precision effects, Trauma, batteries, and fire-mode procedures
+- Penetration, precision effects, Trauma, batteries, and Suppressive Fire
   can extend the attack payload without changing the review/apply boundary.
 - A data migration version is reserved in both Actor/Item schemas and settings.

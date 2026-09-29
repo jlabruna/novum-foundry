@@ -28,9 +28,10 @@
     <div class="weapon-list item-list">
       {{#each weapons}}
       <article class="item-row weapon-row {{#if system.equipped}}is-equipped{{/if}}" data-item-id="{{id}}" draggable="true">
-        <div class="item-main"><strong>{{name}}</strong><span>{{system.damage}} · C{{system.range.close.dv}} M{{system.range.medium.dv}} L{{system.range.long.dv}}</span></div>
+        <div class="item-main"><strong>{{name}}</strong><span>{{technologyLabel}} · {{system.damage}} · Ammo {{system.magazine.current}}/{{system.magazine.max}}</span></div>
         <div class="row-actions">
           <button type="button" class="primary attack" data-action="rollWeapon"><i class="fa-solid fa-crosshairs"></i> Attack</button>
+          <button type="button" data-action="reloadWeapon" title="Reload — Main Action"><i class="fa-solid fa-rotate-right"></i></button>
           <button type="button" data-action="editItem"><i class="fa-solid fa-pen-to-square"></i></button>
         </div>
       </article>

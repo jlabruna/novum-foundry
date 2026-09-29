@@ -8,7 +8,9 @@ export function resultMatchesActor(result, actor) {
 }
 
 async function applyResult(message, button) {
-  const result = message.getFlag("novum", "result");
+  const results = message.getFlag("novum", "results") ?? [];
+  const index = Number(button.dataset.resultIndex ?? 0);
+  const result = results[index] ?? message.getFlag("novum", "result");
   if (!result || result.applied) return;
   const actor = await fromUuid(result.targetUuid);
   if (!actor) return ui.notifications.error("The target Actor no longer exists.");
@@ -23,28 +25,36 @@ async function applyResult(message, button) {
     "system.resources.health.value": result.post.hp,
     "system.resources.shield.value": result.post.shield
   });
+  const prefix = results.length ? `flags.novum.results.${index}` : "flags.novum.result";
   await message.update({
-    "flags.novum.result.applied": true,
-    "flags.novum.result.appliedBy": game.user.id,
-    "flags.novum.result.appliedAt": Date.now()
+    [`${prefix}.applied`]: true,
+    [`${prefix}.appliedBy`]: game.user.id,
+    [`${prefix}.appliedAt`]: Date.now()
   });
   ui.notifications.info(`Applied result to ${actor.name}.`);
 }
 
 export function installChatCardHooks() {
   Hooks.on("renderChatMessageHTML", async (message, html) => {
-    const result = message.getFlag("novum", "result");
-    if (!result) return;
-    const button = html.querySelector("[data-action='apply-novum-result']");
-    if (!button) return;
-    if (result.applied) {
-      button.disabled = true;
-      button.innerHTML = '<i class="fa-solid fa-check"></i> Applied';
-      return;
+    const results = message.getFlag("novum", "results") ?? [];
+    const legacy = message.getFlag("novum", "result");
+    if (!results.length && !legacy) return;
+    const buttons = html.querySelectorAll("[data-action='apply-novum-result']");
+    for (const button of buttons) {
+      const index = Number(button.dataset.resultIndex ?? 0);
+      const result = results[index] ?? legacy;
+      if (!result) {
+        button.remove();
+        continue;
+      }
+      if (result.applied) {
+        button.disabled = true;
+        button.innerHTML = '<i class="fa-solid fa-check"></i> Applied';
+        continue;
+      }
+      const actor = await fromUuid(result.targetUuid);
+      if (!actor || !canApply(message, actor)) button.remove();
+      else button.addEventListener("click", event => applyResult(message, event.currentTarget));
     }
-
-    const actor = await fromUuid(result.targetUuid);
-    if (!actor || !canApply(message, actor)) button.remove();
-    else button.addEventListener("click", event => applyResult(message, event.currentTarget));
   });
 }

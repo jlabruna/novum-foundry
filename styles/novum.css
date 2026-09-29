@@ -297,6 +297,80 @@
 .trauma-note { margin: 8px; padding: 7px; border: 1px solid rgba(167, 101, 60, 0.5); color: var(--novum-glow); }
 .novum-chat-card button.apply-result { width: calc(100% - 16px); margin: 8px; }
 .novum-chat-card button.apply-result:disabled { background: var(--novum-steel); cursor: default; }
+.multi-target-results { display: grid; gap: 6px; padding: 0 8px 8px; }
+.target-result { padding: 8px; border: 1px solid rgba(108, 104, 97, 0.72); background: rgba(24, 23, 21, 0.62); }
+.target-result > header { display: flex; justify-content: space-between; gap: 8px; }
+.target-result > header span, .target-result p { margin: 3px 0 0; color: var(--novum-muted); font-size: 0.7rem; }
+.target-result.is-hit { border-left: 3px solid var(--novum-success); }
+.target-result.is-miss { border-left: 3px solid var(--novum-danger); }
+.form-grid.four-column { grid-template-columns: repeat(4, 1fr); }
+
+.sheet-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 2px;
+  margin: 12px 0;
+  padding: 4px;
+  border: 1px solid rgba(108, 104, 97, 0.78);
+  border-radius: 5px;
+  background: #151411;
+}
+.novum-sheet-body .sheet-tabs button { border-color: transparent; background: transparent; color: var(--novum-muted); }
+.novum-sheet-body .sheet-tabs button.is-active { border-color: rgba(197, 138, 91, 0.6); background: rgba(167, 101, 60, 0.19); color: var(--novum-value); }
+.tab-panel { display: none; }
+.tab-panel.is-active { display: block; }
+.tab-panel > .panel + .panel { margin-top: 12px; }
+.progression-summary { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; margin-bottom: 12px; }
+.progression-summary article { display: grid; gap: 2px; padding: 9px; border: 1px solid rgba(108, 104, 97, 0.78); border-top-color: var(--novum-accent); background: rgba(27, 26, 23, 0.92); text-align: center; }
+.progression-summary span { color: var(--novum-muted); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.progression-summary strong { color: var(--novum-value); font-size: 1.1rem; }
+.progression-grid .background-panel { grid-column: 1 / -1; }
+.budget { padding: 5px 8px; border: 1px solid rgba(197, 138, 91, 0.4); color: var(--novum-value); font-weight: 700; }
+.milestone-list { display: grid; gap: 8px; margin-top: 12px; }
+.milestone { display: grid; gap: 6px; padding: 9px; border: 1px solid rgba(108, 104, 97, 0.7); background: rgba(24, 23, 21, 0.55); }
+.milestone > span, .milestone > em { color: var(--novum-muted); font-size: 0.7rem; text-transform: uppercase; }
+.milestone > strong { color: var(--novum-accent-highlight); }
+.milestone.is-locked { opacity: 0.64; }
+.attribute-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.attribute-buttons button { min-height: 26px; font-size: 0.68rem; }
+
+.feat-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px; border: 1px solid rgba(197, 138, 91, 0.5); background: linear-gradient(120deg, #27231f, #191815); }
+.feat-header p { max-width: 680px; margin: 5px 0 0; color: var(--novum-muted); }
+.feat-counter { display: grid; min-width: 92px; text-align: center; }
+.feat-counter strong { color: var(--novum-accent-highlight); font-size: 1.5rem; }
+.feat-counter span { color: var(--novum-muted); font-size: 0.65rem; text-transform: uppercase; }
+.role-selectors { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+.role-selectors label { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 9px; padding: 8px 10px; border: 1px solid rgba(108, 104, 97, 0.72); color: var(--novum-muted); font-size: 0.7rem; text-transform: uppercase; }
+.selected-feat-strip { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 10px; padding: 8px; border: 1px solid rgba(108, 104, 97, 0.7); }
+.selected-feat-strip > span { color: var(--novum-muted); font-size: 0.65rem; text-transform: uppercase; }
+.novum-sheet-body .selected-feat-strip button { min-height: 25px; padding: 3px 7px; background: rgba(167, 101, 60, 0.15); font-size: 0.65rem; }
+.role-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.role-panel { min-width: 0; padding: 13px; border: 1px solid rgba(108, 104, 97, 0.9); border-top: 2px solid var(--novum-accent); border-radius: 5px; background: rgba(27, 26, 23, 0.96); }
+.role-panel > header { display: flex; gap: 10px; align-items: center; }
+.role-panel > header > i { color: var(--novum-accent-highlight); font-size: 1.6rem; }
+.role-ability { display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; margin: 10px 0; padding: 9px; border: 1px solid rgba(197, 138, 91, 0.38); background: rgba(167, 101, 60, 0.1); }
+.role-ability span { color: var(--novum-muted); font-size: 0.62rem; text-transform: uppercase; }
+.role-ability strong { color: var(--novum-value); }
+.role-ability p { grid-column: 1 / -1; margin: 3px 0 0; color: var(--novum-muted); font-size: 0.72rem; }
+.branch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.feat-branch { min-width: 0; }
+.feat-branch h3 { margin-bottom: 7px; padding-bottom: 5px; border-bottom: 1px solid rgba(108, 104, 97, 0.66); font-size: 1rem; }
+.feat-decision { margin-bottom: 8px; padding: 7px; border: 1px solid rgba(108, 104, 97, 0.62); background: rgba(18, 17, 15, 0.45); }
+.feat-decision.is-locked { opacity: 0.58; }
+.decision-heading { display: grid; gap: 2px; margin-bottom: 6px; }
+.decision-heading span { color: var(--novum-accent-highlight); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
+.decision-heading em { overflow: hidden; color: var(--novum-muted); font-size: 0.64rem; font-style: normal; text-overflow: ellipsis; white-space: nowrap; }
+.feat-choice-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.novum-sheet-body button.feat-card { display: grid; gap: 2px; min-height: 52px; padding: 6px; background: #23211e; text-align: left; }
+.novum-sheet-body button.feat-card strong { color: var(--novum-text); font-size: 0.7rem; }
+.novum-sheet-body button.feat-card span { color: var(--novum-muted); font-size: 0.58rem; }
+.novum-sheet-body button.feat-card.is-selected { border-color: var(--novum-accent-highlight); background: rgba(167, 101, 60, 0.24); box-shadow: inset 3px 0 var(--novum-accent-highlight); opacity: 1; }
+.novum-sheet-body button.feat-card.is-paired-locked { text-decoration: line-through; }
+.future-gates { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 9px; }
+.locked-gate { padding: 7px; border: 1px dashed rgba(108, 104, 97, 0.75); color: var(--novum-muted); font-size: 0.67rem; text-align: center; text-transform: uppercase; }
+.empty-state.large { min-height: 180px; padding-top: 75px; text-align: center; }
+.tag.future { opacity: 0.68; }
+.tag.ammo { color: var(--novum-value); }
 
 @media (max-width: 760px) {
   .sheet-grid,
@@ -307,4 +381,9 @@
   .range-editor { grid-template-columns: repeat(2, 1fr); }
   .action-centre,
   .notes-panel { grid-column: auto; }
+  .progression-summary { grid-template-columns: repeat(3, 1fr); }
+  .role-panels,
+  .role-selectors,
+  .branch-grid { grid-template-columns: 1fr; }
+  .sheet-tabs { grid-template-columns: repeat(3, 1fr); }
 }

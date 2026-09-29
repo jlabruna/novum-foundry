@@ -12,151 +12,138 @@
   </header>
 
   <section class="resource-strip">
-    <div class="resource health">
-      <span class="label">HP</span>
-      <input name="system.resources.health.value" type="number" min="0" value="{{system.resources.health.value}}">
-      <span>/</span>
-      <input name="system.resources.health.max" type="number" min="0" value="{{system.resources.health.max}}">
-    </div>
-    <div class="resource shield">
-      <span class="label">Shield</span>
-      <input name="system.resources.shield.value" type="number" min="0" value="{{system.resources.shield.value}}">
-      <span>/</span>
-      <strong>{{profile.shieldMax}}</strong>
-    </div>
+    <div class="resource health"><span class="label">HP</span><input name="system.resources.health.value" type="number" min="0" value="{{system.resources.health.value}}"><span>/</span><strong>{{progression.hp}}</strong></div>
+    <div class="resource shield"><span class="label">Shield</span><input name="system.resources.shield.value" type="number" min="0" value="{{system.resources.shield.value}}"><span>/</span><strong>{{profile.shieldMax}}</strong></div>
     <div class="stat"><span>Ranged SP</span><strong>{{profile.rangedSP}}</strong></div>
-    <div class="stat"><span>Armour Floor</span><strong>{{profile.floor}}</strong></div>
+    <div class="stat"><span>Floor</span><strong>{{profile.floor}}</strong></div>
     <div class="stat"><span>Melee AC</span><strong>{{profile.meleeAC}}</strong></div>
-    <button type="button" class="secondary" data-action="restoreResources" title="Restore HP and Shield to maximum"><i class="fa-solid fa-rotate"></i> Reset</button>
+    <button type="button" class="secondary" data-action="restoreResources" title="Restore HP and Shield"><i class="fa-solid fa-rotate"></i> Reset</button>
   </section>
 
-  {{#if profile.warnings.length}}
-  <aside class="warning-panel">
-    {{#each profile.warnings}}<p><i class="fa-solid fa-triangle-exclamation"></i> {{this}}</p>{{/each}}
-  </aside>
-  {{/if}}
+  {{#if profile.warnings.length}}<aside class="warning-panel">{{#each profile.warnings}}<p><i class="fa-solid fa-triangle-exclamation"></i> {{this}}</p>{{/each}}</aside>{{/if}}
+  {{#if progression.warnings.length}}<aside class="warning-panel progression-warnings">{{#each progression.warnings}}<p><i class="fa-solid fa-triangle-exclamation"></i> {{this}}</p>{{/each}}</aside>{{/if}}
 
   {{#if effects.length}}
-  <section class="status-strip" aria-label="Active effects">
-    <span class="eyebrow">Status</span>
-    {{#each effects}}
-    <span class="effect-chip {{#if disabled}}is-disabled{{/if}}" data-effect-id="{{id}}">
-      {{name}}
-      <button type="button" data-action="toggleEffect" title="Toggle effect"><i class="fa-solid fa-power-off"></i></button>
-      <button type="button" data-action="deleteEffect" title="Delete effect"><i class="fa-solid fa-xmark"></i></button>
-    </span>
-    {{/each}}
-  </section>
+  <section class="status-strip" aria-label="Active effects"><span class="eyebrow">Status</span>{{#each effects}}<span class="effect-chip {{#if disabled}}is-disabled{{/if}}" data-effect-id="{{id}}">{{name}}<button type="button" data-action="toggleEffect"><i class="fa-solid fa-power-off"></i></button><button type="button" data-action="deleteEffect"><i class="fa-solid fa-xmark"></i></button></span>{{/each}}</section>
   {{/if}}
 
-  <main class="sheet-grid">
-    <section class="panel action-centre">
-      <div class="section-heading">
-        <div><span class="eyebrow">Combat</span><h2>Main Action</h2></div>
-        <div class="heading-actions">
-          {{#if readiedRangedWeapon}}<button type="button" class="range-toggle {{#if rangeOverlayEnabled}}is-active{{/if}}" data-action="toggleRangeOverlay" title="Toggle {{readiedRangedWeapon.name}} range bands"><i class="fa-solid fa-bullseye"></i> Ranges</button>{{/if}}
-          <span class="move-readout"><i class="fa-solid fa-person-running"></i> Move {{system.movement.metres}}m</span>
+  <nav class="sheet-tabs" aria-label="Character sheet sections">
+    <button type="button" data-action="switchTab" data-tab="combat" class="{{#if tabs.combat}}is-active{{/if}}"><i class="fa-solid fa-crosshairs"></i> Combat</button>
+    <button type="button" data-action="switchTab" data-tab="skills" class="{{#if tabs.skills}}is-active{{/if}}"><i class="fa-solid fa-chart-simple"></i> Progression</button>
+    <button type="button" data-action="switchTab" data-tab="feats" class="{{#if tabs.feats}}is-active{{/if}}"><i class="fa-solid fa-sitemap"></i> Feats</button>
+    <button type="button" data-action="switchTab" data-tab="inventory" class="{{#if tabs.inventory}}is-active{{/if}}"><i class="fa-solid fa-shield-halved"></i> Equipment</button>
+    <button type="button" data-action="switchTab" data-tab="notes" class="{{#if tabs.notes}}is-active{{/if}}"><i class="fa-solid fa-note-sticky"></i> Notes</button>
+  </nav>
+
+  <main class="tab-stack">
+    <section class="tab-panel {{#if tabs.combat}}is-active{{/if}}" data-tab="combat">
+      <section class="panel action-centre">
+        <div class="section-heading"><div><span class="eyebrow">Combat</span><h2>Main Action</h2></div><div class="heading-actions">{{#if readiedRangedWeapon}}<button type="button" class="range-toggle {{#if rangeOverlayEnabled}}is-active{{/if}}" data-action="toggleRangeOverlay"><i class="fa-solid fa-bullseye"></i> Ranges</button>{{/if}}<span class="move-readout"><i class="fa-solid fa-person-running"></i> {{system.movement.metres}}m</span></div></div>
+        {{#if weapons.length}}
+        <div class="weapon-list item-list">
+          {{#each weapons}}
+          <article class="item-row weapon-row {{#if system.equipped}}is-equipped{{/if}}" data-item-id="{{id}}" draggable="true">
+            <div class="item-main"><strong>{{name}}</strong><span>T{{system.tier}} · {{technologyLabel}} {{system.kind}} · {{system.damage}}</span></div>
+            <div class="range-profile">
+              {{#if system.modes.cone}}<span class="tag">Cone 4</span>{{else}}{{#if system.range}}<span>C {{system.range.close.dv}}</span><span>M {{system.range.medium.dv}}</span><span>L {{system.range.long.dv}}</span>{{/if}}{{/if}}
+              {{#if system.modes.auto}}<span class="tag">Auto</span>{{/if}}
+              {{#if system.modes.suppressive}}<span class="tag future">Suppress — future</span>{{/if}}
+              <span class="tag ammo">{{system.magazine.current}}/{{system.magazine.max}}</span>
+            </div>
+            <div class="row-actions">
+              <button type="button" class="primary attack" data-action="rollWeapon"><i class="fa-solid fa-crosshairs"></i> Attack</button>
+              <button type="button" data-action="reloadWeapon" title="Reload — Main Action"><i class="fa-solid fa-rotate-right"></i></button>
+              <button type="button" data-action="toggleEquipment" title="Toggle readied"><i class="fa-solid {{#if system.equipped}}fa-hand{{else}}fa-hand-back-fist{{/if}}"></i></button>
+              <button type="button" data-action="editItem" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button type="button" data-action="deleteItem" title="Delete"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </article>
+          {{/each}}
         </div>
+        {{else}}<div class="empty-state">Drag a weapon here or create one below.</div>{{/if}}
+        <button type="button" class="add-control" data-action="createItem" data-item-type="weapon"><i class="fa-solid fa-plus"></i> Weapon</button>
+        <div class="future-actions"><button type="button" disabled>Hacking — future</button><button type="button" disabled>Drone — future</button><button type="button" disabled>Support — future</button></div>
+      </section>
+    </section>
+
+    <section class="tab-panel {{#if tabs.skills}}is-active{{/if}}" data-tab="skills">
+      <div class="progression-summary">
+        <article><span>Level</span><strong>{{progression.level}}</strong></article><article><span>HP Max</span><strong>{{progression.hp}}</strong></article><article><span>Skill Points</span><strong>{{progression.skillSpent}} / {{progression.skillPoints}}</strong></article><article><span>Skill Cap</span><strong>{{progression.skillCap}}</strong></article><article><span>Feat Picks</span><strong>{{progression.featSelected}} / {{progression.featSlots}}</strong></article><article><span>Attribute Increases</span><strong>{{progression.attributeSlots}}</strong></article>
       </div>
-      {{#if weapons.length}}
-      <div class="weapon-list item-list">
-        {{#each weapons}}
-        <article class="item-row weapon-row {{#if system.equipped}}is-equipped{{/if}}" data-item-id="{{id}}" draggable="true">
-          <div class="item-main">
-            <strong>{{name}}</strong>
-            <span>T{{system.tier}} · {{system.kind}} · {{system.damage}}</span>
+      <div class="sheet-grid progression-grid">
+        <section class="panel attributes-panel">
+          <div class="section-heading"><div><span class="eyebrow">Operator</span><h2>Attributes</h2></div></div>
+          <div class="score-grid attributes">{{#each attributes}}<label><span>{{label}}</span><input name="system.attributes.{{key}}.value" type="number" min="0" max="4" value="{{value}}"></label>{{/each}}</div>
+          <div class="milestone-list">
+            {{#each attributeMilestones}}
+            <div class="milestone {{#if locked}}is-locked{{/if}}"><span>Level {{level}} increase</span><strong>{{currentLabel}}</strong>{{#if locked}}<em>Locked</em>{{else}}<div class="attribute-buttons">{{#each options}}<button type="button" data-action="setAttributeAdvance" data-level="{{../level}}" data-attribute="{{value}}" {{#if selected}}disabled{{/if}}>{{label}}</button>{{/each}}</div>{{/if}}</div>
+            {{/each}}
           </div>
-          <div class="range-profile">
-            {{#if system.range}}<span>C {{system.range.close.dv}}</span><span>M {{system.range.medium.dv}}</span><span>L {{system.range.long.dv}}</span>{{/if}}
-            {{#if system.modes.auto}}<span class="tag">Auto</span>{{/if}}
+        </section>
+        <section class="panel skills-panel">
+          <div class="section-heading"><div><span class="eyebrow">Training</span><h2>Skills</h2></div><span class="budget">{{progression.skillRemaining}} remaining</span></div>
+          <p class="hint">Ranks 1–3 cost 1 point; ranks 4–6 cost 2. Current Level cap: {{progression.skillCap}}.</p>
+          <div class="score-grid skills">{{#each skills}}<label><span>{{label}}</span><input name="system.skills.{{key}}.value" type="number" min="0" max="{{cap}}" value="{{value}}"></label>{{/each}}</div>
+        </section>
+        <section class="panel background-panel">
+          <div class="section-heading"><div><span class="eyebrow">Character creation</span><h2>Background Grants</h2></div></div>
+          <p class="hint">Assign the three fixed Rank-1 Skills granted by the character's Background. Background packages are not yet catalogued.</p>
+          <div class="form-grid three-column">{{#each backgroundSlots}}<label>Grant {{index}}<select data-background-index="{{index}}">{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/each}}</div>
+        </section>
+      </div>
+    </section>
+
+    <section class="tab-panel feats-tab {{#if tabs.feats}}is-active{{/if}}" data-tab="feats">
+      <header class="feat-header"><div><span class="eyebrow">Placeholder architecture</span><h2>Role Feats</h2><p>Level grants one total pick from either Role at 2 / 4 / 6 / 8 / 10. Feats currently have no mechanical effects.</p></div><div class="feat-counter"><strong>{{progression.featSelected}} / {{progression.featSlots}}</strong><span>selected</span></div></header>
+      <div class="role-selectors">
+        <label>Primary Role<select data-role-slot="primary">{{#each roleSelectors.primary}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label>Secondary Role<select data-role-slot="secondary">{{#each roleSelectors.secondary}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      </div>
+      {{#if progression.selectedFeats.length}}<div class="selected-feat-strip"><span>Selected</span>{{#each progression.selectedFeats}}<button type="button" data-action="toggleFeat" data-feat-id="{{id}}" title="Remove {{name}}"><strong>{{name}}</strong> · {{roleLabel}} · L{{level}} <i class="fa-solid fa-xmark"></i></button>{{/each}}</div>{{/if}}
+      {{#if progression.rolePanels.length}}
+      <div class="role-panels">
+        {{#each progression.rolePanels}}
+        <article class="role-panel">
+          <header><i class="{{icon}}"></i><div><span class="eyebrow">Role</span><h2>{{label}}</h2></div></header>
+          <aside class="role-ability"><span>Level 1 Ability</span><strong>{{ability}}</strong><p>{{abilityText}}</p></aside>
+          <div class="branch-grid">
+            {{#each branches}}
+            <section class="feat-branch">
+              <h3><i class="{{icon}}"></i> {{label}}</h3>
+              {{#each decisions}}
+              <div class="feat-decision {{#if lockedByLevel}}is-locked{{/if}}">
+                <div class="decision-heading"><span>Level {{level}}</span><em>{{concept}}</em></div>
+                <div class="feat-choice-pair">
+                  {{#each options}}<button type="button" data-action="toggleFeat" data-feat-id="{{id}}" class="feat-card {{#if selected}}is-selected{{/if}} {{#if pairedLocked}}is-paired-locked{{/if}}" {{#if disabled}}disabled{{/if}}><strong>{{name}}</strong><span>{{status}}</span></button>{{/each}}
+                </div>
+              </div>
+              {{/each}}
+            </section>
+            {{/each}}
           </div>
-          <div class="row-actions">
-            <button type="button" class="primary attack" data-action="rollWeapon"><i class="fa-solid fa-crosshairs"></i> Attack</button>
-            <button type="button" data-action="toggleEquipment" title="Toggle readied"><i class="fa-solid {{#if system.equipped}}fa-hand{{else}}fa-hand-back-fist{{/if}}"></i></button>
-            <button type="button" data-action="editItem" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button type="button" data-action="deleteItem" title="Delete"><i class="fa-solid fa-trash"></i></button>
-          </div>
+          <footer class="future-gates"><span class="locked-gate"><i class="fa-solid fa-lock"></i> Level 8 — future</span><span class="locked-gate"><i class="fa-solid fa-lock"></i> Level 10 — future</span></footer>
         </article>
         {{/each}}
       </div>
-      {{else}}
-      <div class="empty-state">Drag a weapon here or create one below.</div>
-      {{/if}}
-      <button type="button" class="add-control" data-action="createItem" data-item-type="weapon"><i class="fa-solid fa-plus"></i> Weapon</button>
-      <div class="future-actions">
-        <button type="button" disabled title="Deferred subsystem">Hacking</button>
-        <button type="button" disabled title="Deferred subsystem">Drone</button>
-        <button type="button" disabled title="Deferred subsystem">Support</button>
-      </div>
+      {{else}}<div class="empty-state large">Choose both Roles to display their Feat branches.</div>{{/if}}
     </section>
 
-    <section class="panel protection-panel">
-      <div class="section-heading"><div><span class="eyebrow">Defensive chassis</span><h2>Protection</h2></div></div>
-      <div class="protection-equation">
-        <span><strong>{{profile.shieldCurrent}}</strong> Shield</span><b>+</b><span><strong>{{profile.floor}}</strong> Floor</span><b>=</b><span class="total"><strong>{{profile.rangedSP}}</strong> SP</span>
-      </div>
-      <div class="item-list compact-list">
-        {{#each armours}}
-        <article class="item-row {{#if system.equipped}}is-equipped{{/if}}" data-item-id="{{id}}" draggable="true">
-          <div class="item-main"><strong>{{name}}</strong><span>T{{system.tier}} · AC {{system.meleeAC}} · Shield {{system.shieldMax}} · Capacity {{system.modCapacity}}</span></div>
-          <div class="row-actions">
-            <button type="button" data-action="toggleEquipment" title="Equip"><i class="fa-solid fa-shield-halved"></i></button>
-            <button type="button" data-action="editItem"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button type="button" data-action="deleteItem"><i class="fa-solid fa-trash"></i></button>
-          </div>
-        </article>
-        {{/each}}
-        {{#each armourMods}}
-        <article class="item-row {{#if system.installed}}is-equipped{{/if}}" data-item-id="{{id}}" draggable="true">
-          <div class="item-main"><strong>{{name}}</strong><span>T{{system.tier}} · Floor +{{system.floor}} · Cost {{system.capacityCost}}</span></div>
-          <div class="row-actions">
-            <button type="button" data-action="toggleEquipment" title="Install"><i class="fa-solid fa-screwdriver-wrench"></i></button>
-            <button type="button" data-action="editItem"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button type="button" data-action="deleteItem"><i class="fa-solid fa-trash"></i></button>
-          </div>
-        </article>
-        {{/each}}
-      </div>
-      <div class="capacity-row"><span>Mod capacity</span><strong>{{profile.capacityUsed}} / {{profile.capacity}}</strong></div>
-      <div class="button-row">
-        <button type="button" class="add-control" data-action="createItem" data-item-type="armour">+ Armour</button>
-        <button type="button" class="add-control" data-action="createItem" data-item-type="armourMod">+ Mod</button>
-        <button type="button" class="secondary" data-action="rechargeShield" title="Provisional manual out-of-combat recharge">+1 Shield</button>
-      </div>
+    <section class="tab-panel {{#if tabs.inventory}}is-active{{/if}}" data-tab="inventory">
+      <section class="panel protection-panel">
+        <div class="section-heading"><div><span class="eyebrow">Defensive chassis</span><h2>Protection</h2></div></div>
+        <div class="protection-equation"><span><strong>{{profile.shieldCurrent}}</strong> Shield</span><b>+</b><span><strong>{{profile.floor}}</strong> Floor</span><b>=</b><span class="total"><strong>{{profile.rangedSP}}</strong> SP</span></div>
+        <div class="item-list compact-list">
+          {{#each armours}}<article class="item-row {{#if system.equipped}}is-equipped{{/if}}" data-item-id="{{id}}" draggable="true"><div class="item-main"><strong>{{name}}</strong><span>T{{system.tier}} · AC {{system.meleeAC}} · Shield {{system.shieldMax}} · Capacity {{system.modCapacity}}</span></div><div class="row-actions"><button type="button" data-action="toggleEquipment"><i class="fa-solid fa-shield-halved"></i></button><button type="button" data-action="editItem"><i class="fa-solid fa-pen-to-square"></i></button><button type="button" data-action="deleteItem"><i class="fa-solid fa-trash"></i></button></div></article>{{/each}}
+          {{#each armourMods}}<article class="item-row {{#if system.installed}}is-equipped{{/if}}" data-item-id="{{id}}" draggable="true"><div class="item-main"><strong>{{name}}</strong><span>T{{system.tier}} · Floor +{{system.floor}} · Cost {{system.capacityCost}}</span></div><div class="row-actions"><button type="button" data-action="toggleEquipment"><i class="fa-solid fa-screwdriver-wrench"></i></button><button type="button" data-action="editItem"><i class="fa-solid fa-pen-to-square"></i></button><button type="button" data-action="deleteItem"><i class="fa-solid fa-trash"></i></button></div></article>{{/each}}
+        </div>
+        <div class="capacity-row"><span>Mod capacity</span><strong>{{profile.capacityUsed}} / {{profile.capacity}}</strong></div>
+        <div class="button-row"><button type="button" class="add-control" data-action="createItem" data-item-type="armour">+ Armour</button><button type="button" class="add-control" data-action="createItem" data-item-type="armourMod">+ Mod</button><button type="button" class="secondary" data-action="rechargeShield">+1 Shield</button></div>
+      </section>
     </section>
 
-    <section class="panel attributes-panel">
-      <div class="section-heading"><div><span class="eyebrow">Operator</span><h2>Attributes</h2></div></div>
-      <div class="score-grid attributes">
-        {{#each attributes}}
-        <label><span>{{label}}</span><input name="system.attributes.{{key}}.value" type="number" min="0" max="4" value="{{value}}"></label>
-        {{/each}}
-      </div>
-    </section>
-
-    <section class="panel skills-panel">
-      <div class="section-heading"><div><span class="eyebrow">Training</span><h2>Skills</h2></div></div>
-      <div class="score-grid skills">
-        {{#each skills}}
-        <label><span>{{label}}</span><input name="system.skills.{{key}}.value" type="number" min="0" max="6" value="{{value}}"></label>
-        {{/each}}
-      </div>
-    </section>
-
-    <section class="panel overrides-panel">
-      <div class="section-heading"><div><span class="eyebrow">Playtest tools</span><h2>GM Overrides</h2></div></div>
-      <p class="hint">Use −1 to derive the value from equipped gear.</p>
-      <div class="override-grid">
-        <label>Melee AC <input name="system.combat.meleeACOverride" type="number" min="-1" value="{{system.combat.meleeACOverride}}"></label>
-        <label>Armour Floor <input name="system.combat.armourFloorOverride" type="number" min="-1" value="{{system.combat.armourFloorOverride}}"></label>
-        <label>Shield Max <input name="system.combat.shieldMaxOverride" type="number" min="-1" value="{{system.combat.shieldMaxOverride}}"></label>
-        <label>Crit threshold <input name="system.combat.critThreshold" type="number" min="18" max="20" value="{{system.combat.critThreshold}}"></label>
-      </div>
-    </section>
-
-    <section class="panel notes-panel">
-      <div class="section-heading"><div><span class="eyebrow">Record</span><h2>Notes</h2></div></div>
-      <textarea name="system.notes" rows="6">{{system.notes}}</textarea>
+    <section class="tab-panel {{#if tabs.notes}}is-active{{/if}}" data-tab="notes">
+      <section class="panel overrides-panel"><div class="section-heading"><div><span class="eyebrow">Playtest tools</span><h2>GM Overrides</h2></div></div><p class="hint">Use −1 to derive from equipped gear.</p><div class="override-grid"><label>Melee AC <input name="system.combat.meleeACOverride" type="number" min="-1" value="{{system.combat.meleeACOverride}}"></label><label>Armour Floor <input name="system.combat.armourFloorOverride" type="number" min="-1" value="{{system.combat.armourFloorOverride}}"></label><label>Shield Max <input name="system.combat.shieldMaxOverride" type="number" min="-1" value="{{system.combat.shieldMaxOverride}}"></label><label>Crit threshold <input name="system.combat.critThreshold" type="number" min="18" max="20" value="{{system.combat.critThreshold}}"></label></div></section>
+      <section class="panel notes-panel"><div class="section-heading"><div><span class="eyebrow">Record</span><h2>Notes</h2></div></div><textarea name="system.notes" rows="12">{{system.notes}}</textarea></section>
     </section>
   </main>
 </div>

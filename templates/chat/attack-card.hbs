@@ -7,7 +7,7 @@
 
   <section class="roll-result {{#if hit}}is-hit{{else}}is-miss{{/if}} {{#if critical}}is-critical{{/if}}">
     <strong>{{#if critical}}Critical Hit{{else}}{{#if hit}}Hit{{else}}Miss{{/if}}{{/if}}</strong>
-    <span>Natural {{natural}} · Total {{attackTotal}} vs {{targetLabel}} {{targetNumber}}</span>
+    <span>Natural {{natural}} · Total {{attackTotal}}{{#unless isMultiTarget}} vs {{targetLabel}} {{targetNumber}}{{/unless}}</span>
   </section>
 
   <details open>
@@ -23,9 +23,26 @@
       <dt>{{targetLabel}}</dt><dd>{{targetNumber}}</dd>
       <dt>Crit threshold</dt><dd>{{critThreshold}}–20</dd>
     </dl>
-    <p class="card-note">{{fireMode}}{{#if isRanged}} · {{band}}{{#if distance}} · {{distance}}m{{/if}}{{/if}}</p>
+    <p class="card-note">{{technology}} · {{fireMode}}{{#if isRanged}} · {{band}}{{#if distance}} · {{distance}}m{{/if}}{{/if}} · Ammo {{ammoCost}} ({{ammoRemaining}}/{{magazineMax}} remains)</p>
   </details>
 
+  {{#if isMultiTarget}}
+  <details open>
+    <summary>Shared-roll targets</summary>
+    <div class="multi-target-results">
+      {{#each targetResults}}
+      <article class="target-result {{#if hit}}is-hit{{else}}is-miss{{/if}}">
+        <header><strong>{{targetName}}</strong><span>{{#if critical}}Critical · {{/if}}{{#if hit}}Hit{{else}}Miss{{/if}} vs {{targetLabel}} {{targetNumber}} · {{distance}}m</span></header>
+        {{#if protection}}<p>Damage {{../damage}} · HP {{protection.hp}} → {{protection.nextHP}} · Shield {{protection.shield}} → {{protection.nextShield}}</p>{{/if}}
+        {{#if traumaPending}}<p class="trauma-note">Trauma triggered; effect unresolved.</p>{{/if}}
+        {{#if hasApplication}}<button type="button" class="apply-result" data-action="apply-novum-result" data-result-index="{{resultIndex}}"><i class="fa-solid fa-check"></i> Apply to {{targetName}}</button>{{/if}}
+      </article>
+      {{/each}}
+    </div>
+  </details>
+  {{/if}}
+
+  {{#unless isMultiTarget}}
   {{#if hit}}
   <details open>
     <summary>Damage and protection</summary>
@@ -56,9 +73,9 @@
   {{/if}}
 
   {{#if hasApplication}}
-  <button type="button" class="apply-result" data-action="apply-novum-result">
+  <button type="button" class="apply-result" data-action="apply-novum-result" data-result-index="0">
     <i class="fa-solid fa-check"></i> Apply Result
   </button>
   {{/if}}
+  {{/unless}}
 </article>
-

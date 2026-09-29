@@ -8,9 +8,10 @@ import { importPlaytestContent, promptForPlaytestContent } from "./module/conten
 import { installChatCardHooks } from "./module/chat.mjs";
 import { registerRangeOverlay, toggleRangeOverlay } from "./module/range-overlay.mjs";
 import * as combatEngine from "./module/combat-engine.mjs";
+import { hpForLevel, progressionState } from "./module/progression.mjs";
 
 Hooks.once("init", () => {
-  console.info("Novum | Initialising v0.1.2 for Foundry VTT v14.368");
+  console.info("Novum | Initialising v0.2.0 for Foundry VTT v14.368");
   CONFIG.NOVUM = NOVUM;
   registerDocumentClasses();
   registerTrackableAttributes();
@@ -63,6 +64,28 @@ for (const hook of ["createItem", "updateItem", "deleteItem"]) {
 }
 
 Hooks.on("updateActor", async (actor, changes) => {
-  if (!foundry.utils.hasProperty(changes, "system.combat.shieldMaxOverride")) return;
-  await actor.syncProtectionResources();
+  if (foundry.utils.hasProperty(changes, "system.combat.shieldMaxOverride")) await actor.syncProtectionResources();
+});
+
+Hooks.on("preUpdateActor", (actor, changes) => {
+  if (foundry.utils.hasProperty(changes, "system.level")) {
+    const previousMax = hpForLevel(actor.system.level);
+    const nextMax = hpForLevel(foundry.utils.getProperty(changes, "system.level"));
+    const current = Number(actor.system.resources.health.value);
+    foundry.utils.setProperty(changes, "system.resources.health.max", nextMax);
+    foundry.utils.setProperty(changes, "system.resources.health.value", Math.min(nextMax, Math.max(0, current + (nextMax - previousMax))));
+  }
+  if (!foundry.utils.hasProperty(changes, "system.skills") || foundry.utils.hasProperty(changes, "system.level")) return true;
+  const system = foundry.utils.deepClone(actor.system.toObject ? actor.system.toObject() : actor.system);
+  foundry.utils.mergeObject(system, changes.system ?? {}, { inplace: true });
+  const state = progressionState(system);
+  if (state.skillRemaining < 0) {
+    ui.notifications.warn(`That change exceeds the Level ${state.level} Skill budget by ${Math.abs(state.skillRemaining)} point(s).`);
+    return false;
+  }
+  if (Object.values(system.skills ?? {}).some(skill => Number(skill.value) > state.skillCap)) {
+    ui.notifications.warn(`Skill Rank cannot exceed ${state.skillCap} at Level ${state.level}.`);
+    return false;
+  }
+  return true;
 });

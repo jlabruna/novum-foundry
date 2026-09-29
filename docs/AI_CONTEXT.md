@@ -150,7 +150,7 @@ Planning and implementation should remain separated according to the Chat / Work
 - Former working title: **Afterlight**, now superseded. Use it only when a
   historical note requires provenance.
 - Standalone Foundry game-system ID: `novum`.
-- Current playtest build: **Novum Foundry v0.1.2**.
+- Current playtest build: **Novum Foundry v0.2.0**.
 - Current Foundry target: **v14.368**; do not silently target v15.
 - Preferred public repository: `jlabruna/novum-foundry`.
 - Distribution uses a browser-based GitHub workflow. Do not direct the user to
@@ -162,13 +162,19 @@ Planning and implementation should remain separated according to the Chat / Work
 Current implemented playtest calibration:
 
 - Shield centreline by tier: **7 / 8 / 9 / 10**.
-- HP centreline by tier: **14 / 16 / 18 / 20**.
+- Seeded HP by tier-level snapshot: **14 / 16 / 19 / 20** at Levels
+  **1 / 5 / 9 / 10**; full progression is
+  **14/14/15/16/16/17/18/18/19/20**.
 - Standard Fire Ablation: **1**, confirmed.
-- Auto: provisional **−3 attack / Ablation 3 / normal ranged damage**.
+- Auto: provisional **−3 attack / d6→d4 / Ablation 3**, with flat damage
+  modifiers preserved and mode-specific ammunition expenditure.
 - Melee bypasses Shield SP, subtracts Armour Floor once, and uses a separate
   lower provisional damage scale validated against the new HP/Shield values.
-- v0.1.2 preserves that combat calibration while correcting pregen token art,
-  ranged-weapon identities, Scene-unit conversion, and range-overlay UX.
+- v0.2.0 adds persistent two-Role progression, placeholder selectable Feat
+  trees, Skill/Attribute milestones, Kinetic/Shard/Laser behavior,
+  ammunition/reloads, and the Close-only shared-roll Shotgun Cone.
+- Placeholder Feats and Role abilities have no automated effects. Suppressive
+  Fire is visible as future data but unavailable.
 - Seeded Actors use separate full portraits and circular alpha-transparent
   prototype tokens. The twelve archetype families are visually distinct.
 - Attack resolution and overlay radii share one metre-normalised Scene-distance

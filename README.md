@@ -1,7 +1,7 @@
 # Novum for Foundry VTT
 
-Novum v0.1.2 is a self-contained Foundry VTT game system for structured
-combat playtests of **Novum Combat Maths Baseline v1.0**.
+Novum v0.2.0 is a self-contained Foundry VTT game system for structured
+character-progression and combat playtests of **Novum Combat Maths Baseline v1.0**.
 
 It is not an SWNR/CWN extension and has no system or module dependencies.
 
@@ -10,7 +10,7 @@ It is not an SWNR/CWN extension and has no system or module dependencies.
 - Target: Foundry Virtual Tabletop v14
 - Verified manifest build: **14.368 (Stable 10)**
 - System ID: `novum`
-- System version: `0.1.2`
+- System version: `0.2.0`
 
 The repository is intentionally dependency-free at runtime. Node is needed only
 to regenerate seeded content or run the automated validation suite.
@@ -44,7 +44,9 @@ pregens matters.
 1. Drag premade Actors into a Scene.
 2. Set the Scene grid to 2 metres per square if it was created with different
    settings. New Novum Scenes default to 2 m.
-3. Select the acting token and target exactly one enemy token.
+3. Select the acting token and target one enemy token. For a Shotgun Cone,
+   place/use a 4-square 1/2/3/4 template and target every affected token,
+   including allies.
 4. Open the Actor sheet and click **Attack** beside an equipped weapon.
 5. Confirm automatic range, mode, precision penalty, situational modifier, and
    damage expression.
@@ -68,13 +70,53 @@ Melee attacks compare against Melee AC, ignore Shield SP, and subtract Armour
 Floor once. Because bypass is already powerful, v0.1.1 introduced a
 separate lower damage scale. The chat card labels Shield as ignored.
 
-### Auto
+### Fire modes and weapon technologies
 
-Weapons flagged for Auto expose the provisional v0.1 test mode:
+Kinetic weapons use their listed d6 damage, normal accuracy, and Ablation 1.
+Weapons flagged for Auto expose the current playtest mode:
 
 - −3 attack;
+- convert d6 weapon dice to d4 while retaining flat modifiers;
 - Ablation 3;
-- normal weapon damage.
+- consume the weapon's listed Auto ammunition.
+
+Shard weapons convert d6 weapon dice to d4, retain flat modifiers and normal
+accuracy, use Ablation 2, and cannot use Auto. Their Hardness interaction is
+not automated. Laser weapons convert d6 weapon dice to d8, retain flat
+modifiers, and use Ablation 0; Laser-versus-Hardness remains unresolved.
+
+The Breach Shotgun is Close-only and Cone-only. It rolls once against all
+manually targeted tokens in its full four-square Cone, rolls damage once for
+all hits, applies full damage and Ablation 1, and permits friendly fire. This
+manual-target workflow deliberately leaves diagonal/template validation to the
+table for this build. The Shotgun can fire while adjacent to a hostile; other
+two-handed ranged weapons cannot.
+
+The LMG exposes Auto only. Suppressive Fire and its 20-round cost are visible
+as future test data but cannot be selected because its resolution remains
+unsettled.
+
+### Ammunition and reloads
+
+Successful and missed attacks both consume the selected mode's ammunition.
+The sheet blocks a mode when insufficient ammunition remains. **Reload** fills
+the magazine/charge pool and posts a chat reminder that it consumes a Main
+Action; the build does not otherwise police per-turn action expenditure.
+
+### Character progression
+
+The Character sheet now separates Combat, Progression, Feats, Equipment, and
+Notes. The Progression view displays the Level 1–10 HP sequence, current Skill
+point budget and cap, three Background Rank-1 grants, and the distinct Level 5
+and Level 9 Attribute increases. Feat slots are granted at Levels 2/4/6/8/10.
+
+The Feats view stores two Roles, displays each Role's level-1 ability, and
+presents two side-by-side placeholder branches. Level 2/4/6 A/B choices are
+selectable and mutually exclusive across one shared pick budget. Level 8/10
+remain visibly locked future content. Placeholder Feats have no mechanical
+effects. Lowering Level or changing Role does not silently delete existing
+selections; invalid legacy selections remain visible with warnings and can be
+removed from the selected strip.
 
 ### Manual overrides
 
@@ -109,18 +151,21 @@ registration tests.
 
 ## Provisional or deferred
 
-The following v0.1 content is explicitly provisional: HP/Shield calibration, item profiles,
-melee damage, Auto, magazines, mobility values, Shield capacitor behaviour, and
-all named gear examples.
+The following v0.2 content is explicitly provisional: HP/Shield calibration,
+item profiles, melee damage, Auto, magazines and ammunition costs, mobility
+values, Shield capacitor behaviour, placeholder Role/Feat trees, Background
+grant assignment, and all named gear examples.
 
 Penetration is stored and displayed but not automated. Trauma is flagged only;
-no effect is invented. Cover, concealment, suppression, final aimed-shot
-effects, engagement, ammunition/reload procedures, battery economy, Roles,
-Feats, advancement, hacking, drones, drugs/bio, and boss actions are deferred.
+no effect is invented. Cover, concealment, Suppressive Fire, final aimed-shot
+effects, full engagement/retreat handling, Hardness interactions, batteries,
+hacking, drone actions, drugs/bio, Role-ability automation, Feat effects, and
+boss actions remain deferred.
 
 See [docs/PLAYTEST.md](docs/PLAYTEST.md) for a focused test checklist and
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for implementation boundaries.
 The numerical rationale is recorded in
 [docs/RECALIBRATION.md](docs/RECALIBRATION.md).
-The v0.1.2 weapon table and range rationale are recorded in
+The earlier v0.1.2 weapon table and range rationale remain recorded as a
+historical snapshot in
 [docs/RANGE_AUDIT.md](docs/RANGE_AUDIT.md).

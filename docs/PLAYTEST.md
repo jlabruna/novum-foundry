@@ -18,6 +18,9 @@ Recommended initial scenarios:
 - one shield-heavy focus-fire target;
 - a melee specialist beginning adjacent, one Move away, and two Moves away;
 - standard fire versus Auto on the same target;
+- Kinetic, Shard, and Laser attacks using the same base damage expression;
+- a four-square Shotgun Cone catching enemies only, then allies and enemies;
+- an Auto weapon running dry and spending a Main Action to reload;
 - lower-tier specialist weapon versus a generic higher-tier chassis.
 
 ## Per attack
@@ -31,6 +34,7 @@ Record or inspect:
 - target Shield, Floor, and combined Ranged SP before the hit;
 - HP damage;
 - ablation and resulting Shield;
+- ammunition cost and remaining magazine/charge pool;
 - critical and unresolved Trauma flag.
 
 The complete record is already retained in the chat card and its message flags.
@@ -53,8 +57,30 @@ The complete record is already retained in the chat card and its message flags.
   weapon readied, weapon changes, and gridless Scenes.
 - Range overlay with a metric 2 m grid and a Scene configured in feet.
 - Optional Extreme enabled and disabled, plus customised colours and opacity.
+- Shotgun Cone with one, two, and four manually targeted tokens; include a
+  friendly target and verify each result applies independently.
+- Shotgun firing adjacent to a hostile, and another two-handed ranged weapon
+  being blocked in the same state.
+- Shard Auto unavailable, Laser Ablation 0, and LMG Standard/Suppressive Fire
+  unavailable.
 - Foundry dark and light themes for sheets, dialogs, cards, values, buttons,
   disabled controls, and Apply Result.
+
+## Character progression checks
+
+1. Create a Level 1 Character, choose two different Roles, and confirm both
+   level-1 abilities appear but no Feat can be selected.
+2. Raise Level through 2/4/6/8/10 and confirm total Feat capacity becomes
+   1/2/3/4/5. Select from either Role and from either branch.
+3. Select one side of an A/B pair and confirm the other side locks. Reopen the
+   sheet and confirm the choice persists.
+4. Lower Level below a selected Feat. Confirm the choice is retained, warned,
+   and removable from the selected strip.
+5. Check HP at every Level against 14/14/15/16/16/17/18/18/19/20.
+6. Assign three different Background Skills. Spend Skill points, checking the
+   1/1/1/2/2/2 rank costs and caps 3/4/5/6 at the documented level bands.
+7. At Levels 5 and 9, assign different Attribute increases and confirm the cap
+   of 4 is enforced.
 
 ## Resetting
 

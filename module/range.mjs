@@ -76,6 +76,30 @@ export function measureAttackRange(actor, weapon) {
   };
 }
 
+export function measureAttackTargets(actor, weapon) {
+  const { source, targets } = getAttackTokens(actor);
+  if (!source || !canvas?.grid) return { source, targets: [], error: "Select the acting token and target every token affected by the Cone." };
+  const measured = targets.map(target => {
+    const distance = measurePathMetres(canvas.grid, canvas.scene, [source.center, target.center]);
+    return { target, ...(Number.isFinite(distance) ? determineRangeBand(weapon.system.range, distance) : { distance: null, band: null, dv: null, beyond: false }) };
+  });
+  return { source, targets: measured };
+}
+
+export function hasAdjacentHostile(actor) {
+  const { source } = getAttackTokens(actor);
+  if (!source || !canvas?.grid) return false;
+  const disposition = Number(source.document?.disposition ?? source.disposition ?? 0);
+  const adjacency = sceneUnitsToMetres(canvas.scene?.grid?.distance, canvas.scene?.grid?.units) ?? 2;
+  return Array.from(canvas.tokens?.placeables ?? []).some(target => {
+    if (target === source || !target.actor) return false;
+    const targetDisposition = Number(target.document?.disposition ?? target.disposition ?? 0);
+    if (!disposition || !targetDisposition || Math.sign(disposition) === Math.sign(targetDisposition)) return false;
+    const distance = measurePathMetres(canvas.grid, canvas.scene, [source.center, target.center]);
+    return Number.isFinite(distance) && distance <= adjacency;
+  });
+}
+
 export function titleCaseBand(band) {
   if (!band) return "Manual";
   return `${band.charAt(0).toUpperCase()}${band.slice(1)}`;

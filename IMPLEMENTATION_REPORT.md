@@ -1,61 +1,51 @@
-# Novum Foundry v0.1.2 implementation report
-
-## Outcome
-
-A complete local Git-ready Foundry game-system repository has been implemented
-for the Combat Maths Baseline v1.0. The runtime package is self-contained and
-uses system ID `novum`.
+# Novum Foundry v0.2.0 implementation report
 
 ## Implemented
 
-- v14 manifest and TypeDataModels.
-- Character and compact NPC ApplicationV2 sheets.
-- Weapon, Armour, and Armour Mod embedded Items and Item sheet.
-- Six Attributes and the locked sixteen Skills.
-- Levels 1–10 and T1–T4.
-- Gear-derived Melee AC, Shield Max, Armour Floor, and current Ranged SP.
-- Same-tier and mod-capacity validation.
-- Token target measurement normalised from the current Scene units to metres.
-- Audited weapon-specific Close/Medium/Long/optional Extreme distances and DVs.
-- Standard, provisional Auto, precision penalties, and situational modifiers.
-- Natural 1 miss, configurable 20/19–20/18–20 crit threshold, no margin crit.
-- Combined ranged soak, Shield ablation, melee Shield bypass, and Floor soak.
-- Full maths chat cards and guarded Apply Result flow.
-- Manual out-of-combat Shield recharge and complete resource reset.
-- ActiveEffect display/toggle/delete surface.
-- 80 world-importable gear Items and 48 premade Actors.
-- Separate full portraits and circular alpha-transparent ringed tokens assigned
-  to every pregen, with a materially diversified twelve-archetype cast.
-- Configurable keybinding, Toggle/Hold, token-control, sheet-button, band-colour,
-  and opacity support for the annular range overlay.
-- Explicit Novum semantic colour tokens for theme-independent readability.
-- Recalibrated Shield 7/8/9/10 and HP 14/16/18/20 centreline.
-- Separate melee damage progression validated against all armour profiles.
-- Automated combat, content, syntax, and package tests.
+- Persistent two-Role selection on Character Actors.
+- Dedicated tabbed Character UX with side-by-side Role/Feat panels.
+- All seven Role ability summaries and all fourteen placeholder branches.
+- Level 2/4/6 selectable A/B Feat pairs with level gates, paired exclusion, and
+  one total cross-Role pick at Levels 2/4/6/8/10.
+- Non-destructive warnings when a saved Feat or Attribute milestone is invalid
+  after lowering Level or changing Role.
+- HP 14/14/15/16/16/17/18/18/19/20, Skill budgets/caps/costing, three
+  provisional Background skill grants, and Level 5/9 Attribute controls.
+- Kinetic, Shard, and Laser damage/Ablation behavior plus Kinetic-only Auto.
+- Mode-specific magazines/charge pools, ammunition consumption on every
+  attack, insufficient-ammunition blocking, and Main Action reloads.
+- Close-only, Cone-only Shotgun using a shared attack/damage roll against all
+  manually targeted affected tokens, including allies.
+- Two-handed ranged adjacency blocking with the intentional Shotgun exception.
+- Auto-only LMG data with Suppressive Fire visibly unavailable.
+- Updated deterministic T1–T4 catalogue and pregens without changing the
+  catalogue count of 80 Items and 48 Actors.
 
-## Validation performed
+## Rules interpreted for implementation
 
-- JavaScript syntax checks across every `.mjs` file.
-- Manifest, required asset, and seed-count validation.
-- Hit, miss, natural 1, expanded crit, ranged soak, ablation, Shield 0,
-  no-armour, melee bypass, and range-band unit tests.
-- Four-tier Actor and gear coverage, 6/16 Attribute/Skill shape, embedded gear,
-  same-tier mod, and capacity tests.
-- Same-tier and cross-tier ranged/Auto/melee simulations.
-- Shared Scene-unit conversion, Toggle/Hold behaviour, settings registration,
-  packaged portrait/token alpha paths, and dark/light contrast checks.
+- Background packages do not yet exist, so the sheet records the three fixed
+  Rank-1 grants directly rather than inventing named Backgrounds.
+- A selected Feat consumes one of the cumulative even-level slots and may come
+  from either Role. An unchosen lower-level decision remains available later.
+- Shotgun damage is rolled once and shared across successful targets, matching
+  its one shared attack-roll workflow and keeping chat application auditable.
+- Cone geometry uses a physical/native table template plus manual token
+  targeting. This enforces range and multi-target resolution without inventing
+  unresolved diagonal-template rules.
+- Reload posts a Main Action declaration but does not implement a new action
+  economy tracker.
 
-## Runtime limitation
+## Intentionally nonfunctional
 
-This workspace does not include a licensed Foundry v14 executable or test
-server. v0.1.1 was launched successfully enough for the reported live visual
-inspection, but the completed v0.1.2 package could not be launched in this
-workspace. Final token, overlay, Hold-mode, refresh, and Forge-update acceptance
-is explicitly pending.
+Placeholder Feats and Role abilities have no effects. Suppressive Fire is not
+selectable. Hardness interaction, smart guidance, Expression Vectors, hacking,
+drones, neural vehicle integration, social encounters, Trauma, Penetration,
+and final cover/concealment mechanics remain future work.
 
-## Intentionally deferred
+## Verification
 
-Guided creation, Backgrounds, Roles, Feats, advancement, final HP, Trauma,
-precision effects, cover, suppression, engagement, penetration automation,
-full ammunition/reload, battery economy, hacking, drones, drugs/bio, support,
-economy, maintenance, bosses, and Exotic rules.
+`npm run validate` regenerates content, validates the package, syntax-checks
+all JavaScript modules, and runs 34 tests. Release staging additionally checks
+that `novum.zip` contains exactly one root-level `system.json`. A licensed Foundry
+v14.368 runtime is not available in this workspace, so visual and interaction
+acceptance remains a manual smoke test.

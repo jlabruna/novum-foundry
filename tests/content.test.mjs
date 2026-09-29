@@ -24,8 +24,8 @@ test("every premade has six Attributes, sixteen Skills, and embedded combat gear
   }
 });
 
-test("v0.1.2 pregens preserve the recalibrated HP/Shield bands", () => {
-  const hp = { 1: 14, 2: 16, 3: 18, 4: 20 };
+test("v0.2.0 pregens use the current level HP progression and Shield bands", () => {
+  const hp = { 1: 14, 2: 16, 3: 19, 4: 20 };
   const shield = { 1: 7, 2: 8, 3: 9, 4: 10 };
   for (const source of payload.actors) {
     assert.equal(source.document.system.resources.health.max, hp[source.tier]);
@@ -54,6 +54,11 @@ test("all ranged weapons have increasing, class-specific range profiles", () => 
   for (const source of ranged) {
     const range = source.document.system.range;
     assert.ok(range.close.max > 0);
+    if (source.document.system.modes.cone) {
+      assert.equal(range.medium.max, 0);
+      assert.equal(range.long.max, 0);
+      continue;
+    }
     assert.ok(range.close.max < range.medium.max);
     assert.ok(range.medium.max < range.long.max);
     if (range.extreme.enabled) assert.ok(range.extreme.max > range.long.max);
@@ -63,11 +68,26 @@ test("all ranged weapons have increasing, class-specific range profiles", () => 
   assert.deepEqual(tierOne["weapon-t1-compact-smg"], {
     close: { dv: 13, max: 12 }, medium: { dv: 15, max: 30 }, long: { dv: 19, max: 55 }, extreme: { enabled: false, dv: 21, max: 55 }
   });
-  assert.equal(tierOne["weapon-t1-breach-shotgun"].long.max, 35);
+  assert.equal(tierOne["weapon-t1-breach-shotgun"].long.max, 0);
   assert.equal(tierOne["weapon-t1-precision-rifle"].long.dv, 13);
   assert.equal(tierOne["weapon-t1-precision-rifle"].extreme.enabled, true);
   assert.equal(tierOne["weapon-t1-support-rifle"].close.dv, 17);
   assert.notDeepEqual(tierOne["weapon-t1-compact-smg"], tierOne["weapon-t1-assault-rifle"]);
+});
+
+test("seeded fire modes, technologies, magazines, and ammunition costs match the playtest package", () => {
+  const tierOne = Object.fromEntries(payload.items.filter(source => source.tier === 1 && source.document.type === "weapon").map(source => [source.seedId, source.document.system]));
+  assert.equal(tierOne["weapon-t1-service-pistol"].magazine.max, 12);
+  assert.equal(tierOne["weapon-t1-service-pistol"].ammo.standard, 2);
+  assert.equal(tierOne["weapon-t1-compact-smg"].ammo.auto, 12);
+  assert.equal(tierOne["weapon-t1-assault-rifle"].modes.auto, true);
+  assert.equal(tierOne["weapon-t1-breach-shotgun"].modes.standard, false);
+  assert.equal(tierOne["weapon-t1-breach-shotgun"].modes.cone, true);
+  assert.equal(tierOne["weapon-t1-breach-shotgun"].magazine.max, 6);
+  assert.equal(tierOne["weapon-t1-military-revolver"].technology, "shard");
+  assert.equal(tierOne["weapon-t1-precision-rifle"].technology, "laser");
+  assert.equal(tierOne["weapon-t1-auto-support"].modes.standard, false);
+  assert.equal(tierOne["weapon-t1-auto-support"].ammo.suppressive, 20);
 });
 
 test("world gear catalogue covers requested categories at every tier", () => {

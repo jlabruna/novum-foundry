@@ -38,6 +38,17 @@ export const NOVUM = Object.freeze({
   auto: Object.freeze({ attackPenalty: -3, ablation: 3 })
 });
 
+export const weaponTechnologies = Object.freeze({
+  kinetic: "Kinetic",
+  shard: "Shard",
+  laser: "Laser"
+});
+
+export const weaponHandling = Object.freeze({
+  oneHanded: "One-handed",
+  twoHanded: "Two-handed"
+});
+
 export const itemTypeLabels = Object.freeze({
   weapon: "Weapon",
   armour: "Armour",

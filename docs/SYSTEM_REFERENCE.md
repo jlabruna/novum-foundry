@@ -1,12 +1,17 @@
 # System Reference — Novum
 
-Last updated: 28 September 2026 (Australia/Sydney)
+Last updated: 29 September 2026 (Australia/Sydney)
 
 Status: **NOVUM COMBAT MATHS BASELINE v1.0 established.** Stable design baseline for combat content and subsystem development; subject to deliberate revision through playtesting or demonstrated subsystem requirements, but no longer considered exploratory.
 
 ## Purpose
 
 Living reference for the new science-fiction / cyberpunk tabletop roleplaying game system. Game design, mechanics, terminology, and setting material are recorded here. AI/project workflow instructions are maintained separately in `AI_CONTEXT.md`.
+
+Novum is a **TTRPG-rules-first project**. The primary goal is a tabletop game
+that works physically at the table and digitally with play aids. Digital
+implementation is incidental to the current rules-design stage and does not
+define the tabletop rules.
 
 ## Confirmed scope
 
@@ -47,7 +52,7 @@ with practical safe fallbacks when fonts are not bundled.
 
 **FOUNDATIONAL COMBAT MATHS — BASELINE v1.0 ESTABLISHED**
 
-The current attack, protection, melee/ranged and four-tier equipment structures are stable enough for substantive subsystem and content development. Weapons, armour, mods, hacking, drones, drugs, bio/mutagens, Roles, Feats, support systems and encounter design should use this baseline by default.
+The current attack, protection, melee/ranged and four-tier equipment structures are stable enough for substantive subsystem and content development. Weapons, armour, mods, hacking, drones, drugs, biotech/Expression Vectors, Roles, Feats, support systems and encounter design should use this baseline by default.
 
 The milestone does not make the rules permanently immutable. Future systems may justify revision. A baseline rule should be reopened only when:
 
@@ -58,7 +63,7 @@ The milestone does not make the rules permanently immutable. Future systems may 
 
 Do not reopen foundational combat maths merely because another theoretical alternative exists.
 
-Formal review found no remaining mathematical evidence that the d20 engine, weapon-specific Range DVs, progression to approximately +10, the combined Shield SP/Armour Floor model, the Melee AC/shield-bypass model, four fuzzy gear tiers or completed-package balancing must be redesigned before content development. Readiness is not required for ordinary ranged defence. There is sufficient headroom for meaningful modifiers and future non-attack Main Actions if weapon strengths remain budgeted separately.
+Formal review found no remaining mathematical evidence that the d20 engine, weapon-specific DVs within universal physical range bands, progression to approximately +10, the combined Shield SP/Armour Floor model, the Melee AC/shield-bypass model, four fuzzy gear tiers or completed-package balancing must be redesigned before content development. Readiness is not required for ordinary ranged defence. There is sufficient headroom for meaningful modifiers and future non-attack Main Actions if weapon strengths remain budgeted separately.
 
 ## CORE DESIGN PHILOSOPHY — CONFIRMED
 
@@ -85,7 +90,7 @@ Complexity should come primarily from:
 - manufacturer/brand
 - hardpoints
 - installed modifications
-- ammunition / energy type
+- weapon technology
 - special ammunition
 - fire modes
 - armour
@@ -111,7 +116,18 @@ Important balance axes include:
 - resource consumption
 - equipment opportunity cost
 
-Equipment choices also include weapon firing technologies, special ammunition, and equipment preparation. Unnecessary action types and subsystems are to be avoided.
+Equipment choices also include distinct weapon technologies, special ammunition,
+and equipment preparation. Kinetic, Shard and Laser are weapon families rather
+than interchangeable ammunition for one common gun. Unnecessary action types
+and subsystems are to be avoided.
+
+At low tiers, basic competence and raw hit probability matter substantially. As
+tier increases and baseline accuracy becomes increasingly reliable, combat
+emphasis should shift toward battlefield state, positioning, debuffs,
+protection interaction, status effects, counters, equipment capabilities and
+tactical decision-making. High-tier tactical effects should generally remain
+meaningful even when attack bonuses become high. Do not solve every high-tier
+tactical effect through a fixed attack penalty.
 
 ## CORE COMBAT EXPERIENCE — LOCKED DESIGN PILLARS
 
@@ -127,7 +143,8 @@ The following experience goals take priority over preserving any existing implem
 
 ### Situational weapon identity
 
-- Weapon-specific Close / Medium / Long range profiles are a primary combat pillar.
+- Universal Close / Medium / Long / Extreme distances combined with
+  weapon-specific DVs and accessible bands are a primary combat pillar.
 - No single weapon class should dominate every range and combat situation.
 - Small Arms, Long Arms and Heavy Weapons specialisation should each remain viable.
 - Weapon identity may use range profile, accuracy, damage, ablation, penetration, fire modes, capacity, reload, concealability, suppression, aimed-shot access, handling and other bounded behaviours rather than damage alone.
@@ -177,8 +194,9 @@ The foundational chassis is no longer broadly sacrificial. The following details
 - final modifier stacking rules
 - exact Melee AC, Armour Floor and Shield SP values
 - nonstandard ablation amounts, final penetration procedure and recharge economics
-- exact movement, engagement and retreat rules
-- cover, concealment, suppression, aimed-shot effects and Trauma
+- engagement and retreat rules beyond the confirmed movement baseline
+- the exact numerical effect of cover; concealment, suppression, aimed-shot
+  effects and Trauma
 - boss action economy and future subsystem mechanics
 
 The previous “beat the DV by 10 = critical” mechanic has been dropped from the current direction. Do not preserve superseded mechanics merely because prior implementation or analysis used them.
@@ -255,6 +273,13 @@ The current five core damage types are:
 
 Electric is within Energy; toxic and corrosive are within Chemical. Heat is not a separate core type. These examples classify sources only. **Damage-type traits, condition packages, resistances, weaknesses, and subtype effects are unresolved and are not established by this list.** Do not add more core types or formalise those interactions until the baseline maths supports them.
 
+Kinetic, Shard and Laser additionally function as **weapon / attack technology
+tags**. They describe a weapon's mechanism and its interaction with damage
+dice, Shield Ablation, Hardness, range and fire modes; they do not create a
+baseline Kinetic/Shard/Laser resistance matrix. A Kinetic weapon, Shard weapon
+and Laser weapon of the same form are distinct weapons, not one weapon loaded
+with interchangeable technology ammunition.
+
 ## DAMAGE SYSTEM — BASELINE STRUCTURE; EXACT VALUES PROVISIONAL
 
 Ranged weapons:
@@ -310,25 +335,28 @@ Battle-map scale:
 Standard movement:
 - 5 squares = 10 metres per Move Action
 
-Standard ranged weapon bands:
+Close, Medium, Long and Extreme are universal physical distance terms. Weapons
+do not redefine their physical size.
 
-Close:
-- 0–5 squares
-- 0–10 metres
-
-Medium:
-- 6–15 squares
-- 12–30 metres
-
-Long:
-- 16–30 squares
-- 32–60 metres
+| Band | Metres | Squares at 2 m per square |
+| --- | --- | --- |
+| Close | 0–10 m | 0–5 squares |
+| Medium | over 10–30 m | 6–15 squares |
+| Long | over 30–60 m | 16–30 squares |
+| Extreme | over 60 m | 31+ squares |
 
 The bands are deliberately compressed for tactical battle-map use rather than trying to reproduce real-world maximum firearm ranges.
 
 Close range intentionally corresponds approximately to the distance a normal character can cover with one Move Action.
 
-Different weapon classes have different DVs at each range band, inspired by Cyberpunk RED.
+Weapon identity comes from:
+
+- DV by band;
+- which bands the weapon can access;
+- traits;
+- damage;
+- capacity; and
+- firing modes.
 
 Examples of intended identities:
 - Pistols: strong at Close
@@ -336,45 +364,32 @@ Examples of intended identities:
 - Assault/combat rifles: strong general-purpose range profile
 - Long rifles/snipers: strongest at Long
 
-Weapon-specific range DVs are part of Combat Maths Baseline v1.0. The shared provisional DV vocabulary is approximately **13 / 15 / 17 / 19 / 21**. Exact Close / Medium / Long profiles remain weapon content values rather than one universal table. Do not add universal target Readiness or level-derived defence to ordinary firearm attacks.
+Weapon-specific range DVs are part of Combat Maths Baseline v1.0. The shared
+provisional DV vocabulary is approximately **13 / 15 / 17 / 19 / 21**. Exact
+DVs and accessible bands remain weapon content values rather than one universal
+DV table. Do not add universal target Readiness or level-derived defence to
+ordinary firearm attacks.
 
-### Current Foundry v0.1.2 seeded range profiles — PROVISIONAL CONTENT
+### Current Foundry v0.2.0 implementation difference
 
-| Weapon | Close | Medium | Long | Extreme |
-|---|---:|---:|---:|---:|
-| Service Pistol | 10 m / DV 13 | 25 m / DV 17 | 50 m / DV 21 | — |
-| Military Revolver | 12 m / DV 13 | 30 m / DV 15 | 60 m / DV 19 | — |
-| Compact SMG | 12 m / DV 13 | 30 m / DV 15 | 55 m / DV 19 | — |
-| Heavy Assault Rifle | 12 m / DV 15 | 40 m / DV 13 | 90 m / DV 15 | — |
-| Breach Shotgun | 8 m / DV 13 | 18 m / DV 17 | 35 m / DV 21 | — |
-| Precision Sniper Rifle | 10 m / DV 19 | 50 m / DV 15 | 120 m / DV 13 | 240 m / DV 15 |
-| Heavy Support Rifle | 10 m / DV 17 | 45 m / DV 15 | 100 m / DV 15 | 180 m / DV 17 |
-| Auto Support Gun | 10 m / DV 17 | 40 m / DV 15 | 90 m / DV 17 | 160 m / DV 19 |
+The current v0.2.0 Foundry data still predates this universal-distance decision and
+still stores weapon-specific physical maxima for Close, Medium, Long and
+optional Extreme. `RANGE_AUDIT.md` remains an accurate implementation snapshot,
+not the current canonical range rule. A later implementation pass must migrate
+weapon data and overlays without changing the weapon-specific DVs or intended
+range identities unintentionally.
 
-These replace the oversized first-build playtest envelopes. They keep distance
-and DV separate: a weapon may physically reach a band while remaining awkward
-there. Only the precision rifle and selected heavy-support weapons currently
-enable Extreme. The table is canonical for the v0.1.2 playtest package but does
-not lock the final equipment catalogue.
+## EXTREME RANGE — CONFIRMED
 
-## EXTREME RANGE — CONFIRMED CONCEPT
+Extreme is the universal physical term for distances beyond 60 metres / 30
+squares. A weapon can attack at Extreme only when its profile grants access to
+that band.
 
-Extreme Range is NOT a universal fourth range band.
-
-Certain weapons may instead have an Extreme Range trait.
-
-Suggested wording:
-
-Extreme Range:
-This weapon may attack targets beyond 30 squares / 60 metres. Extreme-range attacks use the weapon’s Long-range DV unless that weapon specifically states otherwise.
-
-This allows weapons such as:
+Weapons likely to access Extreme include:
 - sniper rifles
 - selected long rifles
 - some LMGs
 - appropriate laser/energy weapons
-
-to operate beyond normal battle-map distances without requiring every weapon to have an Extreme DV.
 
 Exact list of Extreme-capable weapons remains unresolved.
 
@@ -384,7 +399,7 @@ The system currently has these core ranged fire modes:
 
 - Standard Fire
 - Auto Fire
-- Suppressing Fire
+- Suppressive Fire
 - Cone Fire
 
 Not every weapon supports every mode.
@@ -399,68 +414,174 @@ Uses the weapon’s standard damage profile.
 
 Only available on compatible automatic weapons.
 
-**PROVISIONAL NUMBERS UNDER BASELINE v1.0:** Auto Fire's confirmed intended role is **shield stripping**, not a universal raw-damage increase. It supersedes the earlier provisional +1 weapon-die model.
+**CURRENT PLAYTEST RULE UNDER BASELINE v1.0:** Auto Fire is a Shield-stripping
+mode rather than a general damage upgrade:
 
-Candidate resolution:
-- Roll normal weapon damage; do **not** add an Auto damage die.
-- Retain an accuracy penalty and substantial ammunition expenditure. Their final values are unresolved.
-- On a successful Auto Fire hit, after resolving damage, ablate **up to 3 Shield SP** rather than the normal 1. Combined Ranged SP stops at its Armour Floor. A hit remains one attack/damage roll and one protection subtraction; ammunition spent does not set the amount ablated.
+- apply **−3** to the attack;
+- step every d6 in the weapon's damage expression down to d4;
+- preserve flat damage modifiers;
+- on a successful hit, resolve one damage roll and then ablate up to **3 Shield
+  SP** instead of the weapon's ordinary Ablation 1; and
+- treat the attack as one attack resolution regardless of represented rounds
+  or ammunition spent.
 
-Illustrative benchmark only: at 60% Standard hit chance, normal one-point ablation averages **0.60 Shield SP per action**. At 45% Auto hit chance (the current useful −3/Ablation 3 playtest benchmark), three-point ablation averages **1.35 Shield SP per action**, or 2.25 times as much while sufficient Shield SP remains. This does not confirm the penalty, three-point ablation or ammunition cost as final values. Five rounds spent on an Auto attack would not imply five SP ablated.
+Examples: 2d6 becomes 2d4; 2d6+2 becomes 2d4+2; 3d6 becomes 3d4; and
+3d6+2 becomes 3d4+2.
 
-Intended tradeoff: Standard Fire is more accurate and ammunition-efficient, especially once shields are depleted; Auto Fire spends ammunition to strip shields for the team. Higher-tier Auto may improve its penalty, ablation or support axes, but should not automatically improve all of them or also receive premium damage and penetration.
+Ordinary personal Shield Ablation does not become structural Hardness loss.
+Auto uses the weapon's ordinary Hardness interaction once: if its raw damage
+penetrates current Hardness, apply penetrating damage and the normal one-point
+Hardness reduction after damage. It does not reduce Hardness for each
+represented projectile or convert Ablation 3 into three points of Hardness
+loss.
 
-### Suppressing Fire
+At 60% Standard hit chance, ordinary one-point ablation averages 0.60 Shield SP
+per action. At 45% Auto hit chance, three-point ablation averages 1.35 Shield SP
+per action while sufficient Shield remains. The latest mathematical pass found
+Auto the fastest dedicated Shield stripper at T2–T4 and approximately tied with
+Shard at T1. Repeated Auto is generally not the fastest solo method of defeating
+a target.
+
+Exact ammunition expenditure, magazine interaction and any future improvements
+remain unresolved. Do not change the −3/d4/Ablation 3 package before live
+playtesting. Status: **READY TO PLAYTEST**.
+
+### Suppressive Fire
 
 Only available on weapons that support it.
 
-Suppressing Fire is intended primarily as:
+Suppressive Fire is intended primarily as:
 - area denial
 - battlefield control
 - forcing enemies to remain behind cover or suffer consequences
 
 It should NOT simply be another higher-damage attack mode.
 
-Exact Suppressing Fire mechanics remain unresolved.
+**PROVISIONAL / PLACEHOLDER CONCEPT — NOT FINAL CANON:** LMG Suppressive Fire
+may use a large Cone reaching Medium or Long range and affect every exposed
+character in it, including allies. Affected characters would make an
+appropriate resistance/check; failure would force them toward cover or away
+from exposure. A character with no cover available would continue trying to
+break exposure rather than simply ignoring the effect. This concept has no
+direct damage component because Auto already supplies the LMG's damaging
+high-volume mode.
+
+Repeated suppression may overly lock melee characters out of engagement.
+Ammunition expenditure is the preferred first limiter to test before inventing
+additional counters. Envoy Combat Influence may later provide human/morale
+counterplay. Exact geometry, reach, resistance, movement and timing remain
+unresolved.
+
+### Ammunition and attack abstraction — PROVISIONAL TEST DIRECTION
+
+**All values in this subsection are PLACEHOLDERS FOR FUTURE SIMULATION / REVIEW,
+not final canon.**
+
+A mechanical attack need not represent one physical projectile. Standard Fire
+may fictionally be a controlled burst or several rounds resolved as one attack.
+The current endurance target is that conservative use of a fresh magazine
+usually lasts approximately one normal encounter. This is an upper-bound
+budget: characters will also move, use Role abilities, hack, heal, deploy
+equipment, pursue objectives, throw grenades and switch weapons.
+
+- Standard Fire should usually last about one encounter on a fresh magazine.
+- Auto should burn ammunition quickly and create reload pressure when repeated.
+- Suppressive Fire should be still more expensive, paying for control partly
+  through ammunition use.
+- Heavy Weapons should sustain expensive modes longer without firing forever.
+
+| Weapon/technology | Placeholder capacity | Placeholder expenditure | Approximate attacks |
+| --- | ---: | --- | ---: |
+| Pistol | 12 rounds | Standard 2 | 6 |
+| SMG | 24 rounds | Standard 4; Auto 12 | 6 Standard or 2 Auto |
+| Rifle | 30 rounds | Standard 5; Auto 15 | 6 Standard or 2 Auto |
+| Shotgun | 6 shells | Cone 1 | 6 |
+| Sniper | 5 rounds | attack 1 | 5 |
+| LMG | 60 rounds | Auto 15; Suppressive 20 | 4 Auto or 3 Suppressive |
+| Shard | about 6 attack-equivalent volleys | cassette/cell units TBD | about 6 |
+| Laser | about 6 normal discharges | battery discharge TBD | about 6 |
+
+Laser Sniper may use fewer discharges. Heavy Continuous Laser should likely
+track beam-turns instead of shots. Shard need not track literal microprojectile
+counts; volleys, cassettes or cells may be the meaningful unit. Exact capacities,
+expenditure and reload interactions require dedicated review and simulation.
 
 ### Cone Fire
 
-Used by weapons such as:
-- shotguns firing appropriate shot/pellet ammunition
-- flamethrowers
-- similar energy weapons modelled as area/cone weapons
+Cone is a reusable area-attack framework rather than a mechanic owned only by
+Shotguns. A Cone weapon defines a fixed template and its own payload or effect.
+The attacker chooses the orientation, makes one shared attack roll and compares
+that result against every character in the template. Friendly fire applies;
+allies in the template are affected normally.
 
-Cone attacks affect an area rather than behaving as ordinary single-target fire.
+Future Flamethrowers, arc projectors, chemical sprayers and other Heavy or
+specialised area weapons may reuse the same or related geometry with different
+payloads. Reusing a small set of familiar physical templates is preferable to
+requiring players to learn many unrelated area patterns.
 
-Important:
-Not every shotgun attack must be a cone.
-Shotgun slugs may use ordinary Standard Fire.
+#### Shotgun Cone — READY FOR LIVE PLAYTEST
 
-Exact cone geometry and attack-resolution mechanics remain unresolved.
+The current Shotgun baseline is a **4-square-deep Cone** with rows of **1 / 2 /
+3 / 4 squares**, affecting **10 squares** in total. It always extends to its
+full length; the attacker cannot voluntarily shorten it.
+
+Resolution:
+
+- choose the Cone orientation;
+- make one shared attack roll;
+- compare that roll against every affected character;
+- each successfully hit target takes full normal weapon damage and suffers
+  normal Shield Ablation 1; and
+- friendly fire applies normally.
+
+Shotgun is Cone-only. It has no default slug or direct-fire mode, no Standard
+Fire, no Auto Fire and no attack at Medium, Long or Extreme range.
+
+Geometry review found the 3-square Cone (1 / 2 / 3, 6 squares) viable but too
+restrictive for the default, especially at T1 and in small encounters. The
+4-square Cone provides strong positional payoff, usually catches roughly two to
+three enemies on a good attack and can reach four or more without making that
+automatic. The 5-square Cone (1 / 2 / 3 / 4 / 5, 15 squares) was rejected as the
+standard because ordinary movement too reliably finds large safe catches. Keep
+3-square templates as future design space for compact or specialised short-range
+weapons, and larger templates for future specialised or Heavy weapons.
+
+Do not pre-nerf this package from theoretical multi-target ceilings alone. Live
+testing should watch T4 clustered enemies, unshielded groups, fights near party
+size +2 or more, hordes, terrain that constrains repositioning, T1 shared-roll
+swinginess and diagonal-template readability.
 
 ## FIRE MODE ACCESS BY WEAPON CLASS — CONFIRMED CURRENT DESIGN
 
+Weapon form establishes the broad handling role, but technology can further
+restrict fire-mode access. The lists below describe the current broad Kinetic
+direction unless a weapon says otherwise. Shard cannot use Auto, and no Laser
+Auto rule currently exists. Not every technology must support every form or
+mode.
+
 Pistols:
-- Standard Fire only
+- typically Standard Fire only
 
 SMGs:
 - Standard Fire
 - Auto Fire
-- No Suppressing Fire
+- No Suppressive Fire
 
 Combat / Assault Rifles:
 - Standard Fire
-- Auto Fire
-- Suppressing Fire
+- Auto Fire where technology permits
+- No baseline Suppressive Fire
 
 LMGs:
 - Auto Fire
-- Suppressing Fire
-- No Standard Fire
+- Suppressive Fire
+- Current strong direction: no Standard Fire
 
 Shotguns:
-- Standard Fire where appropriate
-- Cone Fire where appropriate, depending on ammunition
+- Cone Fire only
+- No Standard Fire
+- No Auto Fire
+- Close only
 
 Flamethrowers / similar area energy weapons:
 - Cone Fire
@@ -468,6 +589,203 @@ Flamethrowers / similar area energy weapons:
 If machine-pistol-type weapons exist later, they should not undermine the clean pistol role; they may instead be treated as an SMG subtype or another special weapon category.
 
 Long Rifles / Sniper Rifles: fire-mode access was not specified in this handover and remains unresolved.
+
+## DEMO, GRENADES AND CHARGES — CURRENT RULES
+
+### Demo Attribute pairings — CONFIRMED
+
+- A hand-thrown grenade uses **STR + Demo**.
+- A grenade launcher uses **DEX + Demo**.
+- Inspecting, identifying or disarming explosives uses **INT + Demo**.
+
+Placing a charge correctly does not itself require a roll.
+
+### Hand-thrown grenade placement — CONFIRMED
+
+A throw targets one nominated point or square.
+
+| Range | Placement roll |
+| --- | --- |
+| Close | `d20 + STR + Demo + modifiers` vs DV 13 |
+| Medium | the same roll with −4 |
+| Long | unavailable by hand |
+| Extreme | unavailable by hand |
+
+On success, the grenade lands exactly at the nominated point. On failure, roll
+1d8 for direction and scatter it exactly 3 squares. Do not calculate scatter
+from margin of failure.
+
+### Standard grenade blast — CONFIRMED
+
+A standard grenade has a circular 2-square radius: 4 metres from its centre and
+8 metres across at the normal map scale. Do not automatically treat every
+square in a 5×5 box as affected. Friendly fire applies. Once the explosive has
+landed, affected targets do not receive a secondary Evasion or defence roll.
+
+### Grenade handling — CONFIRMED
+
+- A grenade already in hand requires a Main Action to throw.
+- Drawing a grenade from an accessible belt, vest pouch, bandolier, external
+  rig or similar location requires a Move Action; throwing it then requires a
+  Main Action.
+- Retrieving a buried or stowed grenade requires a Main Action; throwing it
+  requires a later Main Action.
+
+This is broad handling guidance, not detailed inventory-location simulation.
+
+### Grenade launcher — CURRENT BASELINE
+
+A grenade launcher uses **DEX + Demo** and the following profile:
+
+| Band | DV |
+| --- | ---: |
+| Close | 13 |
+| Medium | 15 |
+| Long | 17 |
+| Extreme | unavailable |
+
+A failed placement roll uses the same 1d8 direction and 3-square scatter as a
+hand-thrown grenade. The launcher delivers the normal payload: it does not
+increase damage, radius or status severity. Its advantages are improved Medium
+placement, Long access, firing from a readied weapon and action efficiency.
+
+Starting capacity is **2**. Reloading costs a Main Action. Future Feats or
+equipment may explicitly reduce that cost, but none is established yet.
+
+### Current Demo family
+
+The current family consists of:
+
+- Frag Grenade;
+- Smoke Grenade;
+- Flash Grenade;
+- Cryo Grenade;
+- Fragmentation Charge;
+- Breaching Charge; and
+- Flechette Charge.
+
+**Charge** is the general placed-device family. Mine is not a separate current
+equipment category. A proximity-triggered device may function like a mine in
+the fiction, but remains a Charge using an appropriate trigger modification.
+
+### Frag Grenade — PLAYTEST VALUE
+
+| Tier | Damage |
+| --- | --- |
+| T1 | 2d6 |
+| T2 | 2d6+2 |
+| T3 | 3d6 |
+| T4 | 3d6+1 |
+
+Frag is an area-damage payload intended to be poor against one target,
+competitive around two clustered targets and strong against three or more. It
+uses normal personal protection and neither bypasses nor degrades Armour Floor.
+The damage progression remains a playtest value rather than permanently locked
+balance.
+
+## BLINDED, FLASH, SMOKE AND SLOWED — CURRENT RULES
+
+### Blinded — PLAYTEST BASELINE
+
+When a Blinded character attacks, make the normal attack roll and a separate
+d20 visibility check; the dice may be rolled simultaneously. If the attack
+would otherwise hit, a visibility result of 1–6 causes it to miss. A natural
+critical attack still hits. Blinded does not stack.
+
+This is an independent 30% miss chance. It is not a fixed attack modifier,
+disadvantage or a check of natural faces 1–6 on the attack die. The independent
+check deliberately remains meaningful as attack bonuses rise. Future statuses
+that specifically require tier-independent relevance may use similar
+mechanisms, but this is not an automatic template for every condition.
+
+### Flash Grenade — PLAYTEST BASELINE
+
+- standard 2-square blast;
+- friendly fire applies;
+- affected targets become Blinded until the end of each affected target's next
+  turn;
+- movement does not remove Flash-induced Blinded;
+- no additional attack penalty or action denial.
+
+Higher-tier scaling is unresolved. The preferred direction is greater severity
+rather than a longer duration.
+
+### Smoke Grenade — PLAYTEST BASELINE
+
+Smoke creates a radius-2 area lasting 3 rounds. Remove it at the end of the
+thrower's third turn after deployment. Smoke is an area effect, not a lingering
+Actor condition.
+
+An attack is Blinded if the attacker's space, the target's space or the straight
+line between attacker and target intersects Smoke. Apply Blinded only once,
+regardless of how many Smoke areas or exposure conditions apply. Firing from,
+into or through Smoke is therefore Blinded; both attacker and target being
+inside Smoke is still only one application. Leaving the relevant exposure
+removes the effect.
+
+Higher-tier scaling is unresolved. The preferred direction is increased radius
+rather than duration.
+
+### Slowed — CONFIRMED DEFINITION
+
+Slowed halves normal movement. It does not penalise attacks or defence, reduce
+actions or stack levels. Rounding unusual movement values remains unresolved.
+
+### Cryo Grenade — PLAYTEST BASELINE
+
+A Cryo Grenade has a standard 2-square blast, deals no damage and Slows affected
+targets until the end of each affected target's next turn. It creates no
+persistent difficult terrain. A future Cryo Device may create a persistent
+Slowed area, but that Device is not yet designed.
+
+## CHARGE PAYLOADS AND TRIGGERS — CURRENT DIRECTION
+
+Payload or Charge type is separate from trigger method. Potential future
+trigger modifications include Remote Trigger, Proximity Trigger, Timer and
+Tripwire. Mod slots, prices, trigger ranges, IFF, detection, disarm and
+installation procedures remain unresolved.
+
+### Fragmentation Charge — PLAYTEST BASELINE
+
+The Fragmentation Charge is a pre-positioned anti-personnel/area explosive,
+essentially a stronger and larger prepared Frag payload for ambushes and area
+damage.
+
+| Tier | Damage |
+| --- | --- |
+| T1 | 2d6+2 |
+| T2 | 3d6 |
+| T3 | 3d6+1 |
+| T4 | 3d6+2 |
+
+It currently has a 3-square radius and requires a Main Action to place. A ready
+remote trigger is its default trigger method and uses the Free Action rule
+below. Fragmentation Charge does not automatically receive Breaching 3; any
+Breaching interaction remains provisional for later equipment design.
+
+### Breaching Charge — PLAYTEST DIRECTION
+
+A Breaching Charge is dedicated structural demolition. It must be placed
+directly against one specific Hardness-bearing object or structural section.
+Its blast is directed inward rather than being an ordinary radial
+anti-personnel explosion. It is intended to destroy doors, walls, cover, hull
+sections, vehicles, machinery and similar hard targets.
+
+The current playtest direction is **Breaching 3**. Outward splash damage is not
+yet defined and must not be invented. This directional separation allows the
+charge to be extremely effective structurally without also becoming the best
+anti-personnel explosive.
+
+### Remote Trigger — CONFIRMED BASELINE
+
+Detonating a prepared Charge through a ready remote trigger is a Free Action.
+One activation may detonate one linked Charge or one deliberately linked Charge
+group. Separate unlinked activations require separate trigger activations. The
+meaningful action costs lie in carrying, placing, configuring and positioning
+the Charge, not pressing a ready control.
+
+Flechette Charge trigger/mod handling and the detailed modular Charge system
+remain unresolved.
 
 ## CORE RANGED WEAPON CLASSES — CONFIRMED LIST
 
@@ -480,14 +798,44 @@ CONFIRMED CURRENT LIST:
 - Shotgun
 - LMG
 
+Current broad family identities are design direction rather than final stat
+cards:
+
+- **Pistol:** Small Arms; one-handed; Close-focused; strongest backup and
+  flexible-hand role; usable adjacent to hostiles; may exist as Kinetic, Shard
+  or Laser; normally direct Standard fire unless specified otherwise.
+- **SMG:** Small Arms; primarily Kinetic; compact automatic weapon with Standard
+  and Auto Fire; better range than a Pistol, focused on Close/Medium and weaker
+  than a Rifle at longer battlefield ranges.
+- **Combat / Assault Rifle:** Long Arms; two-handed general-purpose weapon;
+  direct-fire platform with a stronger Medium/Long role than the SMG; Standard
+  Fire, Auto where technology permits, broader battlefield utility and
+  plausible heavier optics/modification space.
+- **Shotgun:** Long Arms; two-handed; Close-only area weapon using its fixed
+  4-square Cone. It has no default slug/direct-fire mode and no Auto.
+- **Long Rifle / Sniper Rifle:** Long Arms; two-handed; strongest Long/Extreme
+  identity; weaker Close handling, lower capacity and likely Precision support;
+  final detailed rules remain unresolved.
+- **LMG / Support Gun:** Heavy Weapons using STR + Heavy Weapons; Kinetic
+  baseline; large capacity; Auto and Suppressive Fire role; current strong direction
+  is no Standard Fire. It is sustained automatic pressure and battlefield
+  control, not merely a Rifle with larger damage dice.
+
 Important update:
 Do NOT divide pistols into separate universal categories such as light pistol / heavy pistol / very heavy pistol.
+
+Do not preserve Pistol relevance at higher tiers merely by inflating its raw
+damage to match rifles. Its value comes from one-handed use, adjacency access,
+Close-range handling, quick backup access, technology variants, Role/Feat
+interactions and the ability to keep another one-handed object or weapon in the
+other hand. A Pistol does not need rifle-equivalent stand-up DPR to remain
+useful.
 
 Use one Pistol class and differentiate individual pistol models through:
 - damage
 - magazine capacity
 - reload behaviour
-- ammunition compatibility
+- compatible special ammunition or power system
 - hardpoints
 - range profile
 - traits
@@ -534,7 +882,7 @@ Other balancing axes include:
 - sustained fire
 - hardpoints
 - manufacturer
-- ammunition / energy technology
+- weapon technology and compatible payloads
 
 Important:
 LMGs should not simply be “assault rifles with higher damage.”
@@ -543,13 +891,19 @@ Their role should come mainly from:
 - sustained fire
 - large ammunition capacity
 - Auto Fire
-- Suppressing Fire
+- Suppressive Fire
 
 SMGs should also have a real role beyond being weaker rifles:
 - Close-range performance
 - handling
 - concealability
 - Auto Fire access
+
+The shared Small Arms skill intentionally makes Pistol flexibility and SMG
+automatic fire a meaningful package for one specialist. Rifle should likewise
+be distinguished from SMG through range profile, battlefield role, platform
+capability, fire-mode and technology access, and modification capacity—not
+merely by dealing more damage.
 
 ## RATE OF FIRE / WEAPON DIFFERENTIATION
 
@@ -671,72 +1025,216 @@ These are design examples, not yet named or finalised brands.
 
 Manufacturer differences should create tradeoffs, not straight upgrades.
 
-## WEAPON TECHNOLOGY LAYERS — CONFIRMED DIRECTION
+## WEAPON FORMS AND TECHNOLOGIES — CURRENT RULES
 
-Weapon chassis and attack technology should remain separate concepts.
+Weapon form and weapon technology are separate design layers:
 
-A weapon chassis could be:
-- pistol
-- SMG
-- rifle
-- shotgun
-- etc.
+> Weapon form determines the weapon's physical role and range envelope.
+> Weapon technology determines how it interacts with damage, Shields,
+> Hardness and other battlefield systems within that envelope.
 
-The firing technology may then be:
-- slug / ballistic
-- flechette
-- laser / energy
+Forms include Pistol, SMG, Combat / Assault Rifle, Shotgun, Sniper / Long
+Rifle, LMG / Support Gun and later specialised forms. Technologies currently
+include **Kinetic**, **Shard** and **Laser**. A Kinetic Pistol, Shard Pistol and
+Laser Pistol are distinct weapons with different internal mechanisms. They do
+not chamber interchangeable Kinetic, Shard or Laser ammunition, and Laser is
+not a Kinetic firing mode. Technology/form availability is intentionally
+asymmetric: do not create combinations merely to complete a matrix. A form
+should exist only when it has a distinct mechanical purpose.
 
-Special payloads may additionally modify the attack.
+Special ammunition or payloads may still modify an otherwise compatible
+weapon, but that is separate from these technology families.
 
-### Slug / Ballistic
+### Kinetic — READY TO LOCK
 
-General-purpose kinetic weapons.
+Kinetic is the conventional general-purpose projectile technology:
 
-Intended strengths:
-- stopping power
-- cover penetration
-- structural penetration
+- use the weapon form's normal d6-based damage profile;
+- ordinary Shield Ablation 1;
+- use the form's normal accuracy and range profile;
+- Auto may be available when the specific weapon supports it; and
+- interact with Hardness normally.
 
-Important setting drawback:
-Overpenetration can be hazardous on:
-- spacecraft
-- orbital habitats
-- stations
-- enclosed pressurised environments
+Against Hardness, resolve damage against current Hardness, apply positive
+penetrating damage, and then reduce Hardness by 1 only if the attack penetrated.
+Kinetic remains the flexible generalist and receives no additional strength or
+weakness at this stage. Conventional overpenetration can be hazardous aboard
+spacecraft, stations, aircraft, pressurised habitats and other fragile
+environments.
 
-### Flechette
+### Shard — READY TO PLAYTEST
 
-Primary niche:
-Personnel weapon with reduced structural penetration.
+Shard is a distinct microprojectile weapon technology. A Shard weapon launches
+a tightly grouped cluster of very small, low-penetration projectiles. **Shard
+is not Flechette ammunition**, and a Shard attack is not a shotgun cone unless
+a specific weapon independently says so. The separately named Flechette Charge
+is an explosive Charge payload from the Demo family, not a Shard firearm or a
+synonym for Shard technology.
 
-Particularly useful where the shooter does not want to punch through:
-- walls
-- equipment
-- pressure barriers
-- hull structures
+Current rule:
 
-Likely tradeoffs:
-- weaker against hard armour
-- weaker structural penetration
-- possibly poorer Long-range performance
+- use the appropriate weapon-form profile;
+- step every d6 damage die down to d4;
+- preserve flat damage modifiers;
+- use normal accuracy;
+- Shield Ablation 2;
+- cannot use Auto; and
+- cannot penetrate, damage or ablate Hardness.
 
-Exact rules unresolved.
+Examples: Kinetic 2d6 becomes Shard 2d4; 2d6+2 becomes 2d4+2; 3d6 becomes
+3d4; and 3d6+2 becomes 3d4+2.
 
-### Laser / Energy
+Shard is attractive where structural penetration is undesirable, including
+spacecraft, orbital or pressurised stations, aircraft and fragile industrial
+environments. Mathematical review found that faster Shield ablation keeps its
+complete-fight performance close to Kinetic while its lower raw damage makes it
+significantly worse once Shields are gone. Auto still strips Shields faster at
+T2–T4. The no-Hardness rule is already a major limitation.
 
-Part of the setting.
+Do not give Shard a general cleave or adjacent-target effect. A light cleave was
+discussed only as a future contingency if live playtesting finds Shard too weak.
 
-Potential balancing axes include:
-- power cells
-- heat
-- range
-- accuracy
-- shield interaction
-- armour interaction
-- structural effects
+Current form direction is **Shard Pistol** and **Shard Rifle**. Do not assume a
+Shard SMG, Shotgun or LMG. Shard SMG is specifically disfavoured because Shard
+cannot use Auto and would be too mechanically similar to the Pistol or Rifle.
 
-Exact mechanics unresolved.
+Shard Rifle remains plausible, but its identity relative to a Kinetic Rifle is
+still being refined. Smart/guided microprojectile technology is a strong future
+direction: target marking, tracking, homing, target reacquisition and attacks
+that can curve around conventional cover are possible design areas, not current
+rules. Advanced guidance may primarily sit in the Engineer Feat pool, allowing
+specialists to exploit Shard technology more deeply while baseline Shard users
+retain the rules above. Track, cover-bending and specific smart-weapon Feats are
+unresolved; do not grant those functions to every Shard user by default.
+
+### Laser — READY TO PLAYTEST
+
+Laser weapons are distinct directed-energy weapons.
+
+Current damage rule:
+
+- step every d6 damage die up to d8;
+- preserve flat damage modifiers; and
+- Shield Ablation 0: successful ordinary Laser hits never reduce Shield.
+
+Examples: Kinetic 2d6 becomes Laser 2d8; 2d6+2 becomes 2d8+2; 3d6 becomes
+3d8; and 3d6+2 becomes 3d8+2.
+
+Laser trades higher immediate raw damage for no cumulative Shield degradation.
+Mathematical review found the all-d8 conversion the healthiest tested
+compensation: +1 flat, +2 flat and stepping only one die were too weak, while
+adding 1d6 was too aggressive at lower tiers. Laser remains viable against
+fresh Shields, becomes clearly attractive once Shields are gone, and can be
+outperformed by cumulative Kinetic ablation across a fresh T4 fight.
+
+Laser should gain **range consistency, not universal range superiority**. The
+current broad Laser Rifle test profile is:
+
+| Band | DV |
+| --- | ---: |
+| Close | 15 |
+| Medium | 15 |
+| Long | 15 |
+| Extreme | 17 |
+
+This is a playtest profile, not a mandatory stat line for every Laser weapon.
+Do not make DV 13 universal to Laser weapons.
+
+Laser Pistols exist as a distinct Small Arms form. Their current test envelope
+is Close DV 15 and Medium DV 15, with Long and Extreme unavailable. Pistol-form
+emitter size, optics and cooling still limit the physical envelope; Laser
+technology does not allow Small Arms to erase Long Arms.
+
+Current intended or strongly supported Laser forms are **Laser Pistol, Laser
+Rifle and Laser Sniper**. Do not assume a Laser SMG or Laser Shotgun. Laser SMG
+lacks a distinct current purpose, while the Kinetic Shotgun already owns the
+deliberate Close-only Cone identity.
+
+Laser Sniper is a strongly desired future form. Its current range direction is
+no Close attack, Medium available but not ideal, and excellent Long/Extreme
+performance; exact DVs remain unresolved. In fiction it uses a **long-focus
+emitter** whose beam requires a minimum propagation distance to achieve the
+coherent focal geometry needed for a precision strike. Describe this through
+focal convergence and beam geometry, not as the laser simply becoming stronger
+the farther it travels. This is specific to the Laser Sniper platform: Laser
+Pistol is a short-emitter Close/Medium platform, Laser Rifle is a stable
+general-purpose beam, and Laser Sniper is a long-focus precision platform.
+
+Laser interaction with Hardness is unresolved. Do not copy the ordinary
+Kinetic Hardness rule by default: the larger d8 pools would make high-tier
+Lasers disproportionately effective against hard structures. Possible future
+heating, cutting and specialised structural rules remain unapproved.
+
+**Future only:** Laser Overload may eventually expend the entire remaining
+battery to heat or cut structures and potentially gain Breaching. Its intended
+role is structural utility, not a giant anti-personnel alpha strike. Smoke or
+other obscurants may eventually interfere with Laser fire more than Kinetic
+fire, but no such numerical rule exists and current Laser balance does not rely
+on it. Final Laser batteries and capacity are also unresolved.
+
+### Technology sequencing and team tactics
+
+Auto followed by a Main Action weapon switch into Laser is intentionally
+permitted. Current maths found it about 3% better than the best pure strategy at
+T1, slightly worse than pure Laser at T2, about 11% better at T3 and about 20%
+better at T4. This is currently treated as a reward for loadout choice, landing
+Auto hits, recognising Shield state and paying the switch cost—not as an
+exploit. Do not nerf Auto, Laser or switching solely to remove it; revisit only
+if live playtesting makes the sequence mandatory.
+
+Mixed teams such as Auto + Laser or Shard + Laser may likewise outperform
+homogeneous teams in some tiers. This intended interaction rewards equipment
+planning, protection-state awareness, sequencing and coordination without
+creating mandatory MMO-style roles.
+
+### Concise personal-combat summary
+
+- **Kinetic:** normal d6 damage, Ablation 1, normal Hardness interaction, Auto
+  on compatible weapons.
+- **Auto:** −3 attack, all d6 become d4, flat modifiers preserved, Ablation 3.
+- **Shard:** all d6 become d4, flat modifiers preserved, Ablation 2, no Auto,
+  cannot damage or ablate Hardness.
+- **Laser:** all d6 become d8, flat modifiers preserved, Ablation 0, flatter
+  range behaviour, Hardness interaction unresolved.
+
+Do not add baseline Kinetic, Shard or Laser resistance statistics.
+
+### Heavy Continuous Laser — FUTURE DESIGN DIRECTION
+
+The Heavy Continuous Laser is a distinct Heavy Weapons family, not a “Laser
+LMG.” It uses **STR + Heavy Weapons** and maintains a continuous beam against a
+single target. Its opening damage should be lower than an equivalent LMG, then
+ramp while the beam remains continuously engaged on that target until it
+eventually exceeds LMG damage.
+
+The provisional relative shape is approximately one die below LMG on turn 1,
+equivalent on turn 2, one die above on turn 3 and two dice above on turn 4 and
+later. This is conceptual only, not a locked damage pool; Laser's d8 conversion
+requires later mathematical analysis.
+
+Continuity should reset when the target changes, line of sight breaks, the
+shooter cannot fire for a turn, the beam is voluntarily ended or another
+interruption prevents continuous engagement. Exact reset wording and range
+profile remain unresolved. Breaking the beam is intended counterplay; a major
+enemy that stays exposed for four uninterrupted rounds may appropriately face
+catastrophic damage.
+
+### Current Foundry v0.2.0 implementation status
+
+The current Foundry build implements the Kinetic, Shard and Laser weapon-family
+field; Kinetic Auto at −3 attack, d6-to-d4 and Ablation 3; Shard d6-to-d4,
+Ablation 2 and no Auto; Laser d6-to-d8 and Ablation 0; per-mode ammunition;
+Main Action reload declarations; and the adjacent-hostile restriction for
+two-handed ranged weapons. It does not automate Quickdraw or any technology-
+specific Hardness interaction. Weapon range data still uses the earlier
+weapon-specific physical maxima noted in the range section above.
+
+The seeded Breach Shotgun is now Close-only and Cone-only, with the four-square
+1/2/3/4 pattern, a shared attack and damage roll, normal full damage, Ablation
+1, multi-target chat application, friendly-fire eligibility and the Shotgun
+adjacency exception. Players must place/agree the template and target every
+affected token manually; diagonal geometry and automatic token discovery are
+not implemented. `RANGE_AUDIT.md` remains a historical v0.1.2 snapshot.
 
 ## SPECIAL AMMUNITION / DAMAGE EFFECTS — CONFIRMED DIRECTION
 
@@ -832,11 +1330,31 @@ This makes it viable for:
 
 This interaction is central to the current combat design.
 
-## Ranged Weapon Handling in Melee — CONFIRMED DESIGN DIRECTION
+## Ranged Weapon Handling while Adjacent — CONFIRMED
 
-Two-handed ranged weapons cannot normally be fired while engaged in melee. One-handed ranged weapons, especially pistols, can be used while engaged. This gives sidearms a tactical purpose and makes closing on a rifle user matter without adding a penalty table; it also supports the Soldier's Quickdraw concept.
+A character cannot make a ranged attack with a **two-handed ranged weapon**
+while adjacent to a hostile enemy. This is a handling restriction, not an
+attack penalty: the weapon cannot be fired in that state unless a specific
+ability overrides the rule.
 
-Likely handling categories: pistols and other one-handed firearms can fire in melee; rifles, two-handed shotguns, LMGs and sniper rifles normally cannot. An SMG depends on whether its particular model is one- or two-handed. Final handling tags, exceptions and the definition of **engaged in melee** remain unresolved.
+Pistol-type weapons are explicitly exempt and may be fired while adjacent to a
+hostile enemy. Do not remove that exemption because a particular Pistol uses
+Shard, Laser or another unusual technology. Other one-handed ranged weapons are
+not prohibited by this two-handed restriction unless their own rules say
+otherwise. An SMG's handling depends on whether that model is one- or
+two-handed.
+
+**Shotgun exception:** a Shotgun may make its Cone attack while adjacent to a
+hostile enemy. Without this exception an adjacent enemy would disable the
+weapon at the exact range where it is intended to function. The exception does
+not replace Pistol's Close-quarters flexibility: Pistols retain one-handed use,
+exact target selection, no mandatory area or friendly-fire geometry,
+compatibility with another held item or weapon, backup use and Soldier
+Quickdraw interaction.
+
+This makes closing on a Rifle, LMG or Sniper user tactically meaningful while
+preserving Shotgun as the Close-quarters area weapon and Pistol as the
+Close-quarters flexible weapon.
 
 ## PERSONAL ENERGY SHIELDS — CONFIRMED CORE CONCEPT
 
@@ -855,7 +1373,9 @@ Current shield behaviour:
 - with shield alone, incoming ranged damage is compared against its current value
 - under the confirmed Armour Floor structure below, incoming ranged damage is compared against the **single combined Ranged SP value**
 - if damage exceeds the applicable one protection value, excess damage gets through to HP
-- every successful Standard Fire hit ablates the shield by 1, even if the attack fails to exceed the shield threshold; the provisional Auto Fire mode above may ablate more
+- a successful hit applies the attack's Shield Ablation even if its damage does
+  not exceed the protection threshold: standard Kinetic is Ablation 1, Shard is
+  Ablation 2, Laser is Ablation 0, and the current Auto mode is Ablation 3
 
 Shield-only Standard Fire example (Armour Floor 0): Shield 8
 
@@ -938,9 +1458,14 @@ Melee and ranged therefore reach the **same HP pool by different routes**. There
 
 The structural model is locked under Combat Maths Baseline v1.0 and is ready for content/subsystem design. No exact Melee AC, Armour Floor, Shield SP, damage or item progression value is made into a mandatory item statistic by that decision.
 
-Standard ranged-hit ablation is **1** unless a weapon, mode or effect explicitly changes it. Final Auto numbers, penetration procedure, recharge economics, movement/engagement/retreat, Trauma, cover, concealment, suppression and mixed-party encounter tuning remain provisional or TBD.
+Standard ranged-hit ablation is **1** unless a weapon, mode or effect explicitly
+changes it. Auto's current −3 attack / d6-to-d4 / Ablation 3 package is ready to
+playtest; ammunition expenditure and final post-playtest values remain
+provisional. Penetration procedure, recharge economics,
+movement/engagement/retreat, Trauma, cover, concealment, suppression and
+mixed-party encounter tuning remain provisional or TBD.
 
-### Current Foundry v0.1.2 playtest calibration — PROVISIONAL
+### Current Foundry v0.2.0 playtest calibration — PROVISIONAL
 
 The current implemented calibration deliberately moves survivability from HP
 into degrading protection:
@@ -949,13 +1474,13 @@ into degrading protection:
 | --- | ---: | ---: | ---: | --- |
 | T1 | 7 | 14 | 1 | 2d6 |
 | T2 | 8 | 16 | 2 | 2d6+1 |
-| T3 | 9 | 18 | 3 | 2d6+2 |
+| T3 | 9 | 19 | 3 | 2d6+2 |
 | T4 | 10 | 20 | 4 | 3d6 |
 
 These replace the earlier Foundry test values of Shield 4/5/6/7 and HP
 18/22/26/30. They are **playtest calibration**, not locked character-building
-formulas or mandatory item statlines. Standard Fire remains Ablation 1. Auto
-remains provisionally −3 attack and Ablation 3.
+formulas or mandatory item statlines. Standard Kinetic Fire remains Ablation 1. Auto
+uses the current ready-to-playtest −3 attack / d6-to-d4 / Ablation 3 package.
 
 Melee impact was explicitly reviewed across balanced, shield-heavy,
 high-Floor/high-AC and agile armour at all tiers plus cross-tier matchups.
@@ -965,6 +1490,119 @@ scale; no universal Melee AC or Armour Floor increase was required. Melee
 remains deliberately strongest into shield-heavy equipment, while heavy armour
 can approach ranged durability against melee. Live tests should include melee
 starting adjacent, one Move away and two Moves away.
+
+## HARDNESS AND INTEGRITY — CURRENT STRUCTURAL RULES
+
+Hardness represents structural resistance for hard, non-personal targets. It is
+separate from personal Shield SP, Armour Floor and Melee AC. Breaching interacts
+with Hardness only and does not degrade personal Armour Floor.
+
+Base resolution is:
+
+`raw damage − current Hardness = penetrating damage`
+
+Apply positive penetrating damage as appropriate. If the result is zero or
+negative, no penetrating damage occurs.
+
+### Ordinary attacks against Hardness — CONFIRMED
+
+After resolving damage, if an ordinary attack's raw damage exceeded the
+target's current Hardness:
+
+1. apply the penetrating damage; then
+2. reduce current Hardness by 1.
+
+If the attack did not penetrate, it deals no penetrating damage and does not
+reduce Hardness. Hardness reduction occurs after damage and cannot reduce
+Hardness below 0.
+
+### Breaching X — PLAYTEST RULE
+
+After resolving damage normally against current Hardness, a successful
+**Breaching X** attack reduces current Hardness by X whether or not its damage
+penetrated. Breaching reduction occurs after damage and replaces the ordinary
+−1 Hardness loss; the two do not stack.
+
+Example: resolve a Breaching 2 attack against H6 using H6, then reduce H6 to H4.
+Do not reduce the Hardness before calculating that attack's damage.
+
+Current character-scale ratings are:
+
+- **Breaching 1:** guaranteed structural progress or specialised
+  anti-structure capability;
+- **Breaching 2:** serious heavy or anti-vehicle breaching;
+- **Breaching 3:** dedicated demolition.
+
+Ordinary character-scale equipment currently caps at Breaching 3. Do not add
+Breaching 4+ without a later design need. Possible assignments such as an
+anti-materiel rifle, specialised ammunition, powered cutter, anti-vehicle
+cannon or shaped warhead remain equipment-design questions unless separately
+confirmed. Breaching Charge currently tests Breaching 3.
+
+### Structural target patterns
+
+Active or functional hard targets—such as drones, vehicles, mechs and
+machinery whose progressive damage matters—use **Hardness + Integrity**.
+Integrity is their HP-equivalent. Their final destruction and disable rules
+remain to be defined.
+
+Passive structures—such as cover, walls, doors, bulkheads, hull sections and
+structural scenery—may use **Hardness only**. For these objects, Hardness is
+both resistance and the structural destruction track; a separate Integrity
+pool is not required by default.
+
+At H0:
+
+- a Hardness + Integrity target remains functional while Integrity is above 0,
+  but has no remaining structural soak;
+- a Hardness-only object or affected section is destroyed, breached, opened or
+  otherwise structurally defeated.
+
+For large structures, H0 applies to the affected section rather than
+automatically destroying an entire building, vehicle or spacecraft.
+
+### Current Hardness baselines — PLAYTEST VALUES
+
+| Target | Hardness |
+| --- | ---: |
+| Fragile interior wall | 1 |
+| Light cover | 2 |
+| Ordinary door | 3 |
+| Heavy cover | 5 |
+| Reinforced door | 6 |
+| Civilian spacecraft hull | 5 |
+| Reinforced spacecraft hull | 8 |
+| Military/armoured spacecraft hull | 12 |
+| Light drone | 2 |
+| Heavy drone | 4 |
+| Civilian vehicle | 3 |
+| Armoured vehicle | 6 |
+
+Individual examples may vary. Military hulls intentionally extend beyond the
+old H8–10 concept so ordinary firearms usually struggle while heavy and
+Breaching weapons can still contribute.
+
+### Criticals and Auto against Hardness
+
+Critical hits do not automatically reduce additional Hardness or increase a
+Breaching rating. Apply normal critical rules otherwise.
+
+Personal Shield Ablation and structural Hardness degradation are separate.
+Auto Fire is one attack resolution for Hardness: it does not reduce Hardness per
+represented bullet or convert Shield Ablation 3 into Hardness loss. A normal
+Auto hit reduces Hardness by 1 only if it penetrates. If the weapon separately
+has Breaching X, apply Breaching X once.
+
+### Fix and structural repair — PLAYTEST DIRECTION
+
+Hard targets track maximum and current Hardness, such as `Hardness 2/4`. Fix can
+restore lost current Hardness up to its maximum but cannot increase maximum
+Hardness. On a Hardness-only object, restoring Hardness repairs the structure.
+On a Hardness + Integrity target, Hardness and Integrity are separate repair
+concerns.
+
+Repair time, parts, cost, combat repair and detailed Fix procedures remain
+unresolved.
 
 ## Four-Tier Gear Framework — CONFIRMED STRUCTURE; NUMBERS PROVISIONAL
 
@@ -1051,27 +1689,32 @@ Do not routinely apply penetration to total current Ranged SP. Preferred future 
 
 ### Numerical status
 
-The four-tier structure, fuzzy access, same-tier mods, completed-package balance assumption, expected Floor-mod investment, moderate power-step philosophy, calibration targets and outside-the-ladder Exotic category are part of Combat Maths Baseline v1.0. Exact tier names, level windows, item statistics, mod capacity, Auto values, penetration procedure and economic values remain provisional content guidance.
+The four-tier structure, fuzzy access, same-tier mods, completed-package balance assumption, expected Floor-mod investment, moderate power-step philosophy, calibration targets and outside-the-ladder Exotic category are part of Combat Maths Baseline v1.0. Exact tier names, level windows, item statistics, mod capacity, Auto ammunition use and final post-playtest values, penetration procedure and economic values remain provisional content guidance.
 
 ## ACTION ECONOMY — CONFIRMED
 
-The system uses only two core action types:
+Each turn provides:
 
-- Main Action
-- Move Action
+- 1 Main Action; and
+- 1 Move Action.
 
-Do not add Minor Actions, Bonus Actions, Swift Actions, Reactions, etc. unless a genuine special case later requires them.
+A Main Action may be spent as an additional Move Action. A Move Action cannot be
+converted into a Main Action. Anything normally costing a Move Action may
+instead be paid for with the Main Action.
 
-The design goal is to keep the action economy extremely readable.
+The baseline is one attack per Main Action unless a specific later rule or Feat
+changes it. Do not add Minor, Bonus or Swift Actions. Reactions and tightly
+bounded Free Actions are defined below rather than becoming general extra-turn
+currencies.
 
 ### Main Action
 
 Typical Main Actions include:
 - Standard Fire
 - Auto Fire
-- Suppressing Fire
+- Suppressive Fire
 - melee attack
-- Overwatch
+- Prepare
 - reload
 - draw or stow significant equipment
 - use equipment
@@ -1083,6 +1726,10 @@ Typical Main Actions include:
 
 Exact interaction list may expand later, but meaningful actions should normally consume the Main Action rather than becoming free/minor actions.
 
+Reloading a weapon universally costs a Main Action unless a future Feat,
+equipment property or other explicit exception changes that cost. No such
+exception is established yet.
+
 ### Action-value baseline
 
 A standard attack is the opportunity-cost benchmark for future hacking, drone control, combat drugs, Medtech intervention, social support, engineering and battlefield-control actions. A non-attack Main Action should create roughly one attack's worth of immediate encounter impact or a setup/team/multi-round payoff capable of exceeding one personal attack. Exact subsystem values remain TBD.
@@ -1093,7 +1740,15 @@ A normal Move Action allows:
 - 5 squares
 - 10 metres
 
-Standing from prone consumes the Move Action.
+Move Actions also cover meaningful quick handling or manipulation, including:
+
+- drawing an accessible grenade or item;
+- opening an unlocked ordinary door;
+- standing from prone; and
+- similar quick handling.
+
+Locked, jammed, powered, barricaded, heavy or otherwise difficult doors may
+require different actions or checks. Their detailed procedures are unresolved.
 
 ### Split Movement
 
@@ -1106,13 +1761,79 @@ Example:
 
 No special action is required to split movement.
 
-### Free Activities
+### Prone and climbing
 
-Avoid creating a broad free-action economy.
+Dropping prone is a Free Action. Standing from prone costs a Move Action.
 
-Short speech / brief communication is explicitly free.
+Climbing uses normal movement at half speed and requires free hands. A
+character cannot climb while carrying items in their hands unless a specific
+ability or equipment rule says otherwise.
 
-Other free actions should only exist where they are genuinely trivial or as clearly bounded exceptions such as the proposed once-per-combat Level 1 Role Abilities below. A triggered ability does not automatically add a general Reaction action type.
+### Free Actions
+
+A Free Action is something that takes roughly one second or less and does not
+meaningfully compete with movement or a Main Action. This is a GM-facing
+heuristic, not rigid real-time simulation.
+
+Typical Free Actions include:
+
+- short speech or a tactical callout;
+- dropping an item;
+- dropping prone;
+- releasing a grip or letting go of an object;
+- pressing a button or activating a simple ready control already under the
+  character's hand or thumb;
+- a quick gesture or point;
+- a simple comms command; and
+- remote-triggering one prepared linked Charge or linked Charge group.
+
+The following are generally not Free Actions:
+
+- drawing or stowing an item;
+- opening an ordinary unlocked door;
+- reloading;
+- retrieving something from storage;
+- picking up or meaningfully manipulating equipment;
+- operating a complex control panel; and
+- anything requiring aiming, placement or setup.
+
+## REACTIONS — CONFIRMED UNIVERSAL RESOURCE
+
+Each character has one Reaction available per round, refreshed at the start of
+their turn. A Reaction can be used only when a rule, Role feature, Feat, item or
+Prepared Action supplies a valid trigger. Having several possible Reaction
+options does not grant several Reactions.
+
+Generic progression does not currently grant additional Reactions.
+
+## PREPARE — CONFIRMED UNIVERSAL RULE
+
+Overwatch is one common use of Prepare, not a separate action engine.
+
+To Prepare:
+
+1. spend the Main Action;
+2. commit the character's Reaction;
+3. choose one specific action that normally costs a Main Action; and
+4. define one clear, observable trigger.
+
+The Move Action may be used normally before or around preparing. Prepare stores
+only the chosen Main Action: it does not bank movement, a Move Action or a full
+turn.
+
+If the trigger occurs before the start of the character's next turn, resolve
+the committed Reaction and perform only the prepared Main Action. It resolves
+before the triggering action completes. No movement occurs during the
+triggered action unless that specific Main Action explicitly includes movement.
+
+If the trigger never occurs, Prepare expires at the start of the character's
+next turn. If the committed Reaction is spent on something else, the Prepared
+Action is lost. All normal requirements for the chosen action must still be
+satisfied when the trigger occurs.
+
+Examples include preparing an attack when an enemy enters a doorway, activating
+machinery when an observable event occurs, or performing a medical Main Action
+when its target is already in valid range.
 
 ## COMBAT ROUND / TURN TIME — CONFIRMED
 
@@ -1128,6 +1849,7 @@ The short duration is intended to make combat feel fast and violent.
 It also fits:
 - one meaningful Main Action
 - one Move Action
+- at most one ordinary Reaction
 - short bursts of movement
 - brief speech being free
 - reloads and equipment interactions taking meaningful combat time
@@ -1143,20 +1865,35 @@ or
 
 Do not use multiple cover levels unless later testing demonstrates a strong need.
 
+Simply moving into or out of an appropriate position determines cover. There is
+no generic enter-cover, lean or peek action.
+
 Exact numerical effect of being In Cover is not yet defined.
 
-## OVERWATCH — CONFIRMED CURRENT DESIGN
+## OVERWATCH / PREPARED ATTACK — CONFIRMED
 
-Overwatch:
-- costs the Main Action
-- allows the character to prepare to attack based on a trigger / target / area condition
-- while using Overwatch, the character counts as Exposed / Out of Cover
+Overwatch is a Prepared attack. It requires a Main Action to Prepare, commits
+the character's Reaction, names a clear observable trigger and requires a valid
+weapon and line of fire when triggered. The attack resolves before the
+triggering action completes and can therefore prevent completion if its effects
+make that action impossible.
 
-This is intentional.
+Overwatch uses normal attack rules and grants no bonus accuracy, damage,
+movement or additional attacks.
 
-The purpose is to prevent characters from safely remaining behind cover while also controlling a firing lane with Overwatch.
+A character preparing an attack from behind cover must expose themselves enough
+to make that attack. Preparing an attack that requires exposure makes the
+character **Out of Cover** while waiting, until the attack resolves or Prepare
+expires. Preparing a non-attack action does not automatically remove cover;
+determine cover according to whether that action actually requires exposure.
+A remote Charge trigger generally does not expose the character.
 
-Exact trigger wording and timing remain unresolved.
+## DUAL WIELDING — UNRESOLVED
+
+The baseline remains one attack per Main Action. Do not grant universal free
+two-weapon attacks. A future dual-wield Feat may use two penalised attacks, one
+combined attack resolution or another controlled mechanic, but no exact rule or
+penalty is established.
 
 ## CURRENT HIGH-LEVEL COMBAT IDENTITY
 
@@ -1181,7 +1918,7 @@ Where possible:
 - use range profiles
 - use manufacturer differences
 - use hardpoint choices
-- use ammunition/energy choices
+- use distinct weapon technologies and compatible payload choices
 
 ## Design Philosophy / Balance Requirements
 
@@ -1226,15 +1963,34 @@ The setting includes a planet and extensive orbital habitation:
 This is why:
 - overpenetration matters
 - hull/wall damage matters
-- flechette ammunition has an important setting-specific niche
+- Shard weapons have an important setting-specific niche
 - different weapon technologies should create meaningful mission-equipment choices
 
 ## Open specification details
 
-- Detailed Trauma / Critical Injury effects, numerical range DVs, final weapon damage, Auto Fire penalty/ammunition/ablation value, suppression resolution, cone geometry/resolution, and final Extreme Range weapon eligibility remain unresolved.
-- Extreme Range's use of Long-range DV is suggested wording within the confirmed trait concept.
+- Detailed Trauma / Critical Injury effects, final weapon-specific numerical
+  DVs and band access beyond the current Laser tests, final weapon damage,
+  Auto ammunition expenditure and magazine interaction, suppression resolution,
+  diagonal Cone-template presentation, and final Extreme-capable weapon
+  eligibility remain unresolved.
+- Higher-tier Flash, Smoke and Cryo scaling; odd-number movement rounding while
+  Slowed; Charge modifications; proximity triggers; Flechette Charge handling;
+  any limit on several separate unlinked Free Action trigger activations;
+  wider weapon Breaching assignments; final drone/vehicle Integrity; structural
+  section sizing; area effects across several wall/hull sections; damage to
+  occupants or equipment behind penetrated structures; detailed repairs;
+  dual-wielding; future reload exceptions; and multiple-attack/action-
+  compression options remain unresolved.
+- Final Laser-vs-Hardness interaction, Smoke-vs-Laser interaction, Overload,
+  Laser battery capacities, individual weapon cards, any future Shotgun
+  technology beyond the Kinetic baseline, Sniper Precision rules, technology
+  pricing, and any universal Shard cleave or additional generic Laser weakness
+  remain unresolved.
+- Shard Track and guided-cover mechanics, exact Engineer smart-weapon Feats,
+  final Rifle-versus-SMG DVs, Rifle modification budgets, LMG damage/capacity,
+  Suppressive Fire, the Heavy Continuous Laser's exact ramp/range profile and
+  final Laser Sniper DVs remain unresolved.
 - The supplied timing is approximately 3 seconds per turn. How that relates to a full round containing multiple characters' turns has not been specified.
-- Distances are recorded as supplied in whole squares. Off-grid distances between the listed metre intervals have not been specified.
 - Cone Fire's action cost was not explicitly included in the supplied Main Action examples and has not been added by inference.
 
 
@@ -1324,7 +2080,12 @@ Current direction:
 - boosts are assigned deliberately
 - starting attribute cap should exist
 
-**PROVISIONAL / CURRENT TEST BASELINE:** STR, DEX, CON, INT, WILL and PRE all start at 0. Allocate eight one-point boosts at level 1, with a starting cap of 3. An example array is **3 / 2 / 1 / 1 / 1 / 0**. At Level 5, raise **two different Attributes** by 1. At Level 9, again raise **two different Attributes** by 1. Attribute cap: 4. These values are the current progression assumptions for testing; they are not locked final mathematics. Do not assume both milestones are invested into the same attack Attribute.
+**PROVISIONAL / CURRENT TEST BASELINE:** STR, DEX, CON, INT, WILL and PRE all
+start at 0. Allocate eight one-point boosts at level 1, with a starting cap of
+3. An example array is **3 / 2 / 1 / 1 / 1 / 0**. Gain **one Attribute increase
+at Level 5** and **one at Level 9**. The two increases must currently go to
+different Attributes. Attribute cap: 4. These assumptions support the next
+progression test; they are not locked final mathematics.
 
 Background should NOT necessarily also grant attribute boosts because Background is currently intended to handle starting skills.
 
@@ -1418,7 +2179,8 @@ The core skill list is **exactly**:
 - **Small Arms:** pistols and SMGs.
 - **Long Arms:** combat/assault rifles, long rifles/sniper rifles and shotguns.
 - **Heavy Weapons:** LMGs, launchers and other oversized heavy weapons.
-- **Demo:** grenades, explosives, mines, demolition and breaching charges.
+- **Demo:** grenades, explosives, demolition and Charges, including devices
+  configured with future trigger modifications such as proximity triggers.
 - **Melee Weapons:** knives, swords, machetes, axes where appropriate, clubs, hammers, maces, sledgehammers and powered melee weapons. Exact weapon-family classifications remain open.
 - **Unarmed:** punches, grappling and martial arts. “Physical” is not a skill name.
 
@@ -1499,13 +2261,15 @@ Every Role must have:
 
 Each Role grants:
 - a unique Role Ability
-- a Role-specific Feat list
-- a Level 1 Feat associated with that Role
+- access to a Role-specific Feat pool for later Feat choices
 
 Characters choose 2 Roles and therefore:
 - gain both Role Abilities
-- gain the Level 1 Feat from each Role
 - gain access only to the Feat lists of those two Roles
+
+Choosing a Role does **not** automatically grant a Level 1 Feat. At any future
+Feat-granting level, the character receives **one Feat pick total** and may
+choose it from either of their two Role pools—not one pick from each pool.
 
 A Soldier / Medtech can take:
 - Soldier Feats
@@ -1570,11 +2334,250 @@ Envoy:
 
 Medtech:
 - medicine, trauma care, stabilisation, healing and condition treatment
-- temporary mutagenic and biological modifications
+- temporary engineered biological modifications
 - stimulants, physical/movement/resilience enhancements and other temporary biological buffs
 - bodily/biological manipulation rather than technological hacking or social/morale effects
 
 Support and utility Roles must keep distinct combat identities: **Hacker** controls or disrupts technology, **Medtech** manipulates biology and treats injuries, and **Envoy** influences morale and coordination. Do not collapse them into interchangeable buff/debuff packages. Exact effects and numbers remain unresolved.
+
+## ROLE FEAT-POOL DIRECTIONS — CURRENT DESIGN
+
+These are thematic clusters inside each Role's Feat pool, not hard subclasses.
+Players may freely mix between them.
+
+- **Soldier — Ranged combat / Melee combat:** gunfighting, weapon handling,
+  reactions, tactical shooting, firing modes and ranged positioning on one
+  side; close combat, melee mastery, engagement, aggressive movement and melee
+  counterplay on the other. Armour handling, tactical movement, weapon
+  switching, Reaction manipulation and general discipline may bridge both.
+- **Medtech — Party support and medicine / Adaptive Genomics and biological
+  enhancement:** healing, stabilisation, emergency treatment and keeping allies
+  operational; or temporary biological modification, combat enhancement,
+  unusual physical capabilities and preparation-based buffs. Expression Vectors need a
+  distinctive identity rather than merely granting personal stat bonuses.
+- **Engineer — Devices and deployables / Smart weapons and Shard technology:**
+  traps, sensors, support hardware, repair and technical manipulation; or
+  marking, tracking, guidance, homing, cover-bending attacks, target
+  reacquisition and advanced smart-weapon functions. Shard specialisation is an
+  optional branch; Engineer remains fundamentally a technology/device
+  specialist.
+- **Hacker — Nodes and networks / Cyberware and combat hacking:**
+  infrastructure, access systems, security nodes, cameras, doors and remote
+  systems; or hostile cyberware, battlefield electronics, active systems and
+  direct combat intrusion. Node-focused design must retain value when an
+  encounter lacks obvious infrastructure.
+- **Pilot — Drones / Vehicles and neural vehicle integration:** drone control,
+  coordination, positioning and combat/support; or manoeuvres, chases, vehicle
+  combat, passenger protection, mounted systems and rapid
+  boarding/extraction. The situational vehicle branch may balance lower
+  frequency with high payoff.
+- **Envoy — Combat influence / Social influence:** buffs, debuffs, Rally,
+  morale, coordination, positioning and tempo support; or persuasion,
+  manipulation, charisma, leverage, negotiation, social pressure and social
+  encounter control. Envoy is not merely the Role that rolls Talk better.
+- **Operative — Stealth and infiltration / Precision and critical damage:**
+  concealment, hidden movement, repositioning, surveillance avoidance and
+  environmental exploitation; or expanded critical ranges, precision damage,
+  exploiting openings and improved critical/Trauma interaction. Operative
+  should create openings and exploit them harder than anyone else, not merely
+  gain damage while Hidden.
+
+Pilot neural integration may eventually support direct sensory connection,
+faster control transitions, control without conventional input, remote vehicle
+operation, rapid system switching, emergency manoeuvres and deeper vehicle
+embodiment. Exact mechanics remain future work. Preserve the distinction:
+Hacker compromises systems, Engineer builds/modifies/deploys systems, and Pilot
+operates or integrates with machines in motion.
+
+Envoy's future social system should model goals, leverage, resistance,
+disposition, rapport, pressure, trust, fear, concessions, consequences and an
+evolving encounter state without replacing roleplay with an abstract minigame:
+roleplay determines which approaches are plausible; mechanics determine how
+leverage, resistance and consequences change. Exact rules remain unresolved.
+
+## ROLE-BUILD DIVERSITY — CORE PROGRESSION GOAL
+
+> Role selection establishes access and identity. Feat selection determines
+> specialisation.
+
+Two characters with the same Role pair should still support substantially
+different builds. Role pools should generally contain at least two strong
+thematic directions and meaningful choices. Avoid rigid hidden subclasses,
+mandatory long chains, filler +1 bonuses and obvious best-path progression.
+Prefer Feats that change capabilities, timing, tactical options, system
+interactions, equipment use and battlefield behaviour.
+
+For example, two Soldier + Engineer characters might become a ranged Soldier
+with smart-weapon expertise, a melee Soldier with deployables, an
+Engineer-heavy device specialist with combat support, or a Soldier-heavy combat
+specialist with one smart-weapon trick.
+
+## PROVISIONAL PLACEHOLDER FEAT ARCHITECTURE — NOT FINAL CANON
+
+Everything in this section exists to support future progression and
+character-building playtests. Branch names, feat names, level gates and
+mechanical concepts remain **PROVISIONAL / PLACEHOLDER / FOR REVIEW**.
+
+Current test structure:
+
+- each Role has two organisational/thematic branches;
+- each feat decision presents two mutually exclusive expressions of one
+  advancement concept;
+- choosing one option permanently excludes the other option in that decision;
+- there are no feat chains or sequential branch requirements;
+- character level is the only current gate;
+- a higher-level character may select an unchosen lower-level decision later;
+- players may freely mix both branches and both of their Role pools; and
+- branches should include some cross-discipline functionality rather than
+  becoming isolated subclasses.
+
+> Each feat slot is one advancement concept expressed as a mutually exclusive
+> A/B choice.
+
+Prefer Feats that make a player imagine a scene their character could not
+previously perform. Avoid spending scarce decisions on routine maintenance,
+minor efficiencies, passive +1 bonuses, long prerequisite ladders or obvious
+best paths unless a modest benefit accompanies a genuinely new capability.
+
+### Soldier placeholder tree
+
+Soldier is a general weapon-combat specialist. Firearms and Combat Mastery must
+not become “guns only” and “melee only” silos; pistol/melee transitions,
+sidearm-and-blade styles and cross-discipline weapon handling are desirable.
+
+| Branch | Gate | Mutually exclusive placeholder choice | Advancement concept |
+| --- | ---: | --- | --- |
+| Firearms | 2 | Controlled Fire / Full Send | conservative efficient fire / aggressive Auto use |
+| Firearms | 4 | Rapid Reload / Combat Transition | sustain one weapon / switch weapons fluidly |
+| Firearms | 6 | Intercept / Counterfire | punish movement / punish failed ranged attacks |
+| Combat Mastery | 2 | Gunfighter / Paired Weapons | pistol-melee interplay / paired one-handed fighting |
+| Combat Mastery | 4 | Pursuit / Hold the Line | stay on disengaging enemies / resist close pressure |
+| Combat Mastery | 6 | Drive Back / Riposte | reposition through melee pressure / reactive retaliation |
+
+Free extra attacks, Cleave, reaction attacks and action compression require
+particular caution because excess additional damage can make them mandatory.
+
+### Medtech placeholder tree
+
+| Branch | Gate | Mutually exclusive placeholder choice | Advancement concept |
+| --- | ---: | --- | --- |
+| Field Medicine | 2 | Triage / Adrenal Support | immediate treatment / temporarily keep an injured ally functioning |
+| Field Medicine | 4 | Rapid Dose / Sustained Dose | deliver drugs efficiently / extend their useful duration or effect |
+| Field Medicine | 6 | Trauma Care / Push Through | serious injury treatment / temporarily suppress battlefield consequences |
+| Adaptive Genomics | 2 | Overexpression / Stabilisation | stronger Expression Vector benefit / reduced drawback |
+| Adaptive Genomics | 4 | Amplified Phenotype / Controlled Expression | push transformation further / control its negative effect |
+| Adaptive Genomics | 6 | Hyperadaptation / Homeostasis | extreme biological capability / substantially contain its penalty |
+
+**Adaptive Genomics** is the preferred provisional branch name. Expression
+Vectors must be useful at baseline: mitigation Feats must not be mandatory just
+to make an item usable. Amplification and mitigation should be two attractive
+specialisations, not “good version” and “unusable version.”
+
+### Engineer placeholder tree
+
+| Branch | Gate | Mutually exclusive placeholder choice | Advancement concept |
+| --- | ---: | --- | --- |
+| Deployables | 2 | Rapid Deployment / Reinforced Device | easier placement / harder to neutralise |
+| Deployables | 4 | Expanded Payload / Efficient Systems | broader device function / better duration or resource use |
+| Deployables | 6 | Linked Network / Autonomous Routine | interacting devices / limited preset behaviour |
+| Smart Weapons | 2 | Target Lock / Assisted Aim | stronger tracking / guided-shot reliability |
+| Smart Weapons | 4 | Guided Trajectory / Persistent Track | plausible cover-bending route / retain track through brief LOS loss |
+| Smart Weapons | 6 | Reacquisition / Multi-Lock | regain lost target / track multiple targets |
+
+Smart Weapons is strongly associated with Shard technology and should primarily
+unlock marking, tracking, guidance, plausible open-space trajectories,
+reacquisition, multiple locks and sensor integration rather than flat accuracy.
+It remains one optional Engineer branch; Engineer does not own all interesting
+technology.
+
+### Hacker placeholder tree
+
+| Branch | Gate | Mutually exclusive placeholder choice | Advancement concept |
+| --- | ---: | --- | --- |
+| Network Intrusion | 2 | Signal Boost / Clean Link | increase wireless range / reduce wireless penalty |
+| Network Intrusion | 4 | Extended Envelope / Hardline Expert | push wireless reach / strengthen direct access |
+| Network Intrusion | 6 | Mesh Access / Ghost Signal | relay through compromised devices / resist tracing |
+| Combat Hacking | 2 | Fast Breach / Deep Breach | compromise quickly/easily / produce a stronger effect |
+| Combat Hacking | 4 | System Lock / System Hijack | deny owner control / take limited control |
+| Combat Hacking | 6 | Chain Intrusion / Persistent Access | jump between devices / maintain access |
+
+Network Intrusion must remain useful in ordinary scenes through doors, cameras,
+alarms, lighting, turrets, communications, vehicles, sensors, industrial
+equipment and security systems—not only bespoke “hacking dungeon” encounters.
+
+### Pilot placeholder tree
+
+| Branch | Gate | Mutually exclusive placeholder choice | Advancement concept |
+| --- | ---: | --- | --- |
+| Drones | 2 | Coordinated Control / Specialist Drone | operator-drone coordination / push one specialised drone |
+| Drones | 4 | Swarm Logic / Tactical Relay | multi-drone coordination / sensor-comms extension |
+| Drones | 6 | Autonomous Routine / Direct Override | limited preset autonomy / exceed normal control limits |
+| Vehicles / Neural Integration | 2 | Neural Link / Combat Driver | direct machine integration / aggressive handling |
+| Vehicles / Neural Integration | 4 | Remote Possession / Reflex Interface | remote operation / exceptional neural reaction |
+| Vehicles / Neural Integration | 6 | Machine Embodiment / Redline | vehicle as bodily extension / exceed safe performance |
+
+Routine repair efficiency belongs primarily in skills, gear, downtime or
+incidental benefits. Pilot Feats should buy compelling capabilities rather than
+maintenance chores.
+
+### Envoy placeholder tree
+
+| Branch | Gate | Mutually exclusive placeholder choice | Advancement concept |
+| --- | ---: | --- | --- |
+| Combat Influence | 2 | Steady Nerves / Break Their Nerve | resist pressure/suppression / increase enemy susceptibility |
+| Combat Influence | 4 | Rally Through / Dig In | push through control / hold position under pressure |
+| Combat Influence | 6 | Countermand / Seize the Moment | blunt hostile control / create coordinated opportunity |
+| Social Influence | 2 | Charm / Pressure | cooperation through rapport / movement through intimidation or leverage |
+| Social Influence | 4 | Read the Room / Control the Frame | identify motives/leverage / shape encounter direction |
+| Social Influence | 6 | Build Rapport / Apply Leverage | deepen cooperation / convert needs, fears or obligations into concessions |
+
+Combat Influence should create human/morale counterplay to battlefield control,
+including Suppressive Fire, without collapsing into generic flat buffs. Social
+Influence depends on the future social subsystem and is especially provisional.
+
+### Operative placeholder tree
+
+| Branch | Gate | Mutually exclusive placeholder choice | Advancement concept |
+| --- | ---: | --- | --- |
+| Infiltration | 2 | Ghost Step / Silent Entry | cross exposed space / bypass entry without evidence |
+| Infiltration | 4 | Fade / Disappear in the Noise | exploit distraction / create Smoke, Flash or chaos and reposition |
+| Infiltration | 6 | Shadow Route / Perfect Cover | traverse gaps / exploit marginal concealment |
+| Precision | 2 | Deadeye / Opportunist | create a precision opening / exploit compromised targets |
+| Precision | 4 | Critical Focus / Surgical Strike | expand natural crit range / impose a chosen disabling effect |
+| Precision | 6 | Kill Window / Exploit Weakness | high-value attack in a brief opening / target identified vulnerability |
+
+Disappear in the Noise is cinematic but not magical invisibility: it requires
+plausible disruption or concealment, somewhere to move and an effect such as
+Smoke, Flash or environmental chaos. Operative remains the intended owner of
+expanded critical ranges, but Precision must not reduce to permanent additional
+crits and damage. Compromised states may later include suppressed, hacked,
+blinded, prone, distracted, engaged, marked or otherwise exposed targets.
+Possible Surgical Strike targets include limbs, a weapon arm, optics, sensors,
+cyberware, carried equipment and exposed mechanical components. Cross-Role
+setups are desirable: Hacker may identify a weak actuator, Soldier may suppress
+a target, or Engineer may expose/mark a system for the Operative to exploit.
+
+### Hacking Programs — PROVISIONAL SYSTEM DIRECTION
+
+Novum may borrow the broad spirit of *Cities Without Number* hacking without
+copying its full Verb + Subject system. Most electronic devices should
+potentially be hackable. Wireless intrusion should be possible inside a defined
+envelope with a penalty; direct/hardline access should be stronger or easier.
+Exact range and penalty remain unresolved.
+
+Programs are broad **verbs**. The target device determines how a Program can
+reasonably manifest; there is no planned separate Subject layer.
+
+Exploratory Program names include **Open, Hijack, Disable, Trace, Spoof, Lock,
+Scan, Overload, Scrub** and **Relay**. For example, Open might unlock a door or
+bypass terminal authentication; Hijack might interfere with a drone or smart
+weapon; Disable might shut down a camera; and Spoof might feed false sensor
+data. These names and effects are not final.
+
+Programs may be purchased software/equipment, creating a Hacker gear economy
+with possible rarity, versions, loadout limits, software slots and specialist
+Programs. Avoid recreating Subjects indirectly through excessively granular
+Program lists.
 
 ## LEVEL 1 ROLE ABILITIES — CONFIRMED CONCEPTS; DETAILS UNDER TEST
 
@@ -1582,17 +2585,37 @@ Each Role has one simple, memorable ability that matters in combat from level 1,
 
 ### Soldier — Quickdraw
 
-**Once per combat scene**, when an enemy closes into melee with the Soldier, the Soldier may immediately release, drop or sling a two-handed ranged weapon, draw a one-handed firearm, and fire **one Standard shot** at that enemy. The shot uses normal weapon rules: no Auto Fire or inherent accuracy bonus. This gives a carried sidearm a purpose under the two-handed-weapon handling direction above. The exact trigger and meaning of “engaged in melee” remain unresolved.
+**Once per combat scene**, when an enemy closes into melee with the Soldier and
+the Soldier's Reaction is available, the Soldier may spend that Reaction to
+draw and fire a **Pistol-type weapon** as part of the Reaction. After the
+attack, the Soldier may either keep the pistol in hand or immediately holster
+it. The shot uses normal weapon rules: no Auto Fire or inherent accuracy bonus.
+
+This ability does not require the Soldier to have been holding a two-handed
+weapon. A Soldier may holster the pistol and resume a prior two-handed grip,
+keep it alongside a one-handed melee weapon, or keep it readied in a free hand.
+These are consequences of the concise rule, not separate triggers. Quickdraw is
+a Soldier-only action-compression exception; it is not a universal Pistol rule.
 
 ### Medtech — Combat Dose
 
-**At the start of combat, once per combat scene**, the Medtech may inject themselves or an adjacent willing ally with **one prepared Medtech compound** as a free activity. The compound list, preparation, potency, duration, strain/toxicity and resource use remain unresolved. Stronger mutagens and biotech actions may still cost a Main Action; this ability does not make all injections free.
+**At the start of combat, once per combat scene**, the Medtech may inject themselves or an adjacent willing ally with **one prepared Medtech compound** as a free activity. The compound list, preparation, potency, duration, strain/toxicity and resource use remain unresolved. Stronger Expression Vectors and biotech actions may still cost a Main Action; this ability does not make all injections free.
 
 ### Envoy — Rally
 
 At the start of combat, the Envoy may deliver a brief command, speech, performance or similar rally as a free activity, granting a **short group buff** to allies who can hear them. The effect and duration are unresolved; do not assume a permanent or whole-combat +1 attack bonus for the party without mathematical validation. The expression can fit a commander, diplomat, performer, politician, fixer, preacher or celebrity.
 
 **Later Feat idea, not part of base Rally:** allow a choice between buffing allies **or** applying a group debuff to enemies, not both at once by default. Its exact effect is unresolved.
+
+Rally remains the preferred core Envoy Role Ability. Do not replace it with
+action donation: the core ability should not primarily reward the Envoy for
+playing less so another character can play more.
+
+**Future Feat concept, not part of Rally:** the Envoy spends both their Main
+Action and Reaction to let one chosen ally immediately take one additional Main
+Action. This is intended as a late tactical tempo pivot after the Envoy has had
+room to influence the encounter normally. Frequency, restrictions, exact
+timing and duplicated high-impact-action safeguards remain unresolved.
 
 ### Operative — Vanish
 
@@ -1612,13 +2635,13 @@ Later Hacker Feats might reveal precise implants, vulnerabilities, security rati
 
 ### Engineer — Deployable
 
-At the start of combat, the Engineer may place **one prepared Device** as a free activity. **Deployable** names the Role Ability/category; a **Device** is the actual placed object. Possible future Devices include a Gun Turret, Jammer, Shield Projector, Sensor Node, Mine or Breach Charge. Exact stats, preparation/inventory limits, duration, autonomy and attack rules are unresolved.
+At the start of combat, the Engineer may place **one prepared Device** as a free activity. **Deployable** names the Role Ability/category; a **Device** is the actual placed object. Possible future Devices include a Gun Turret, Jammer, Shield Projector, Sensor Node, proximity-triggered Charge or Breaching Charge. Exact stats, preparation/inventory limits, duration, autonomy and attack rules are unresolved.
 
 A Device is a temporary, set-and-forget battlefield object/effect performing a predefined function until it expires, runs out or is destroyed. A drone is a persistent controlled unit with its own token, statistics and movement and normally uses the Pilot's actions. A Device does **not** require continuous operator action transfer each round. This distinction does not itself grant autonomous attacks or extra Main Actions.
 
 **Distinct combat identities:** Soldier handles direct gunfighting; Medtech biology and temporary enhancement; Envoy morale and group coordination; Operative stealth/opening position; Pilot mobile machines and movement efficiency; Hacker information and cyber exploitation; Engineer temporary battlefield hardware. These Role concepts should not collapse into the same support effect.
 
-## MEDTECH / BIOTECH / MUTAGENS
+## MEDTECH / BIOTECH / EXPRESSION VECTORS
 
 CONFIRMED DESIGN DIRECTION:
 
@@ -1629,22 +2652,32 @@ Medtech includes:
 - trauma care
 - biotechnology
 - genetics
-- temporary biological modification / mutagen effects
+- temporary engineered biological adaptation
 - healing, stabilisation and condition treatment
 - stimulants and temporary movement, physical and resilience boosts
 
-Temporary bio-effects may include concepts such as:
-- acid spit
-- growing claws
-- increased size
-- increased strength
-- hardened skin
-- enhanced senses
-- regeneration
-- reflex enhancement
+**PROVISIONAL / FUTURE ITEM CLASS — NOT FINAL CANON:** injectable biotech items
+are currently called **Expression Vectors**. They temporarily trigger the
+expression of an engineered phenotype. Preferred language includes gene
+expression, phenotype, vector and temporary engineered biological adaptation;
+avoid using *mutagen*, *serum* or *stim* as the item-class name.
+
+| Future concept | Possible expression | Possible drawback direction |
+| --- | --- | --- |
+| Titan Vector | greater size, strength or combat power | reduced DEX, mobility or fine manipulation |
+| Alar Vector | temporary wings or flight | TBD |
+| Corrosive Vector | acid-spit or biological corrosive attack | TBD |
+| Dermal Vector | biological armour or dermal plating | reduced flexibility or movement |
+| Predator Vector | claws, enhanced senses and aggressive adaptations | TBD |
+| Regenerative Vector | temporary enhanced healing or regeneration | TBD |
+
+These are illustrative future concepts only. They do not establish mechanics,
+damage, duration or final drawbacks.
 
 Current preferred activation mechanic:
-- injecting a mutagen normally costs a Main Action; the Level 1 Combat Dose concept above is a specific start-of-combat exception for one prepared compound
+- injecting an Expression Vector normally costs a Main Action; the Level 1
+  Combat Dose concept above is a specific start-of-combat exception for one
+  prepared compound
 - effect begins immediately
 - effect is temporary
 
@@ -1656,7 +2689,7 @@ Potential balancing levers:
 - limited number of simultaneous mutations
 - drawbacks after the effect
 
-Exact mutagen mechanics unresolved.
+Exact Expression Vector mechanics remain unresolved.
 
 Biotech should remain thematically and mechanically distinct from cyberware.
 
@@ -1676,11 +2709,15 @@ Feats should provide:
 - controlled action-economy bending
 - weapon specialisation
 - drone improvements
-- mutagen improvements
+- Expression Vector improvements
 - hacking improvements
 - etc.
 
 Feats should not simply be endless +1 bonuses.
+
+The cadence, prerequisites and final Role Feat lists are unresolved. Design
+enough meaningful Feats first, then choose the cadence based on pool size,
+individual impact, desired build diversity and progression density.
 
 ## LEVELS / PROGRESSION
 
@@ -1690,16 +2727,16 @@ The system uses:
 
 10 levels
 
-Current Feat progression:
+Current Role/Feat progression structure:
 
 Level 1:
 - choose 2 Roles
 - gain both Role Abilities
-- gain each Role’s Level 1 Feat
+- gain no automatic Feat merely for choosing those Roles
 
-Levels 2–10:
-- gain 1 Feat per level
-- choose the Feat from either of the character’s two Role lists
+At each later Feat-granting level:
+- gain 1 Feat pick total
+- choose that Feat from either of the character’s two Role lists
 
 Therefore:
 - the two Roles remain the character’s core identity
@@ -1710,7 +2747,41 @@ Soldier / Medtech could eventually heavily favour Soldier Feats or Medtech Feats
 
 Do not require alternating between Roles.
 
-Exact Feat prerequisites / tiers remain unresolved.
+Feat frequency is not locked. The current **PROVISIONAL / PLACEHOLDER TEST
+CADENCE** is one selection at Levels **2 / 4 / 6 / 8 / 10**, for five selections
+across the full game. Only the Level 2/4/6 placeholder decisions have been
+outlined; Levels 8/10 are intentionally undesigned. This cadence and every
+current gate remain subject to review.
+
+### Provisional Level 1–10 progression table
+
+**PLACEHOLDER FOR THE NEXT PROGRESSION / CHARACTER-BUILDING PLAYTEST. NOT FINAL
+CANON.** HP values preserve the representative envelope used in recent combat
+simulations rather than reopening lethality through large HP growth.
+
+| Level | HP baseline | Skill cap | Progression event |
+| ---: | ---: | ---: | --- |
+| 1 | 14 | 3 | starting skills/Attributes; choose 2 Roles; gain both Role Abilities; no Feat |
+| 2 | 14 | 3 | +2 skill points; Feat selection |
+| 3 | 15 | 4 | +2 skill points |
+| 4 | 16 | 4 | +2 skill points; Feat selection |
+| 5 | 16 | 4 | +2 skill points; +1 Attribute |
+| 6 | 17 | 4 | +2 skill points; Feat selection |
+| 7 | 18 | 5 | +2 skill points |
+| 8 | 18 | 5 | +2 skill points; Feat selection |
+| 9 | 19 | 5 | +2 skill points; +1 Attribute |
+| 10 | 20 | 6 | +2 skill points; Feat selection |
+
+The provisional HP sequence is **14 / 14 / 15 / 16 / 16 / 17 / 18 / 18 / 19 /
+20**, a total increase of 6. Plateaus are intentional. Higher-level durability
+should come substantially from equipment, protection, tactics and capability
+rather than conventional large HP inflation.
+
+Do not currently add a large CON-derived bonus to this sequence. CON may later
+affect physical resistance, Trauma, toxins, Expression Vector side effects,
+recovery, incapacitation/death or possibly a small HP component. For the next
+test, keep the 14–20 baseline independent of CON unless later review explicitly
+changes it.
 
 ## CHARACTER CREATION
 
@@ -1733,7 +2804,6 @@ Background:
 Roles:
 - choose 2
 - grant Role Abilities
-- grant their Level 1 Feats
 - determine available Feat lists
 
 Attributes:
@@ -1771,18 +2841,26 @@ These numbers support the current level-1–10 design and builder tests; they ar
 
 A local Pathbuilder-style Novum character-builder prototype and a standalone
 Foundry v14 Novum game system now exist. The current Foundry playtest build is
-**Novum v0.1.2**, system ID `novum`, targeted at Foundry **v14.368**. It contains
+**Novum v0.2.0**, system ID `novum`, targeted at Foundry **v14.368**. It contains
 the combat engine, Character/NPC/Item sheets, 80 seeded gear Items, 48 pregens,
-separate full portraits and circular alpha-transparent prototype tokens,
-auditable attack cards, guarded Apply Result, and a coloured readied-weapon
-range overlay with Toggle/Hold controls. Attack measurement and overlay radii
-share one Scene-unit-aware metric conversion. Live v0.1.2 acceptance remains
-pending; implemented content values remain provisional unless separately
-confirmed in this reference.
+two-Role progression, selectable nonfunctional placeholder Feat trees, Skill
+and Attribute milestone tooling, Kinetic/Shard/Laser modes, ammunition,
+reloads, the shared-roll Shotgun Cone, separate full portraits and circular
+alpha-transparent prototype tokens, guarded multi-target Apply Result, and a
+coloured readied-weapon range overlay with Toggle/Hold controls. Attack
+measurement and overlay radii share one Scene-unit-aware metric conversion.
+Live v0.2.0 acceptance remains pending; implemented content values remain
+provisional unless separately confirmed in this reference.
 
 Expected prototype fields and views: name, level, six Attributes, Background, two Roles, the locked 16 skills, skill-point spending/validation, derived HP, Initiative, passive Awareness **once its formula exists**, movement, Melee AC, current Ranged SP and Armour Floor, weapons, armour, shields, Role abilities, level-up logic, and attack breakdowns/probabilities where useful. Several derived formulas and equipment statistics are still TBD.
 
 Prototype usability may call for a small number of clearly labelled **PROVISIONAL / TEST DATA** entries: roughly 8–12 evocative Backgrounds, compact starter weapon/armour/shield catalogues, short Role flavour descriptions, and placeholder names for incomplete Feat/content slots where necessary. Such filler is **not canonical**, must not contradict confirmed decisions, and does not become established design without explicit later approval. Final catalogues and Feat trees remain TBD.
+
+For the next progression/character-building playtest, the current Level 2/4/6
+feat boxes are intended to be selectable placeholders only. Their names and
+choice structure may be displayed for comprehension testing, but no mechanical
+effects need to function. Any existing level-up Feat functionality should be
+disabled for that test unless a separate implementation instruction approves it.
 
 # Drones
 
@@ -1862,6 +2940,41 @@ The current plan is to establish, later:
 Important:
 Do not finalise these encounter numbers in this update. The separate baseline mathematical proposal exists, while encounter budgets remain provisional and need validation with the evolving skill, Role and protection rules.
 
+## PROVISIONAL COMBAT-DURATION SIMULATION FINDINGS
+
+These findings preserve current design evidence; they are not final encounter
+budgets or a substitute for live playtesting.
+
+Earlier Standard-Kinetic-only equal-peer simulations produced approximately
+12–14 rounds for 4v4 and 13–16 rounds for 6v6. Those stripped-down tests omitted
+the intended interaction between fire modes and technologies and are not the
+preferred estimate of normal combat duration.
+
+A broader mixed-weapon model used Kinetic Standard, Auto, Shard, Laser, the
+Shotgun Cone, LMG Auto/Suppression, provisional magazines/reloads and an attack
+drone. It produced:
+
+| Equal-peer encounter | Mean rounds | Median rounds | Mean turns per starting player |
+| --- | ---: | ---: | ---: |
+| 4v4 | approximately 6.5–6.9 | 6–7 | approximately 4.7–5.1 |
+| 6v6 | approximately 8.4–8.8 | 8–9 | approximately 5.8–6.2 |
+
+Use this as the cleaner current duration baseline. Auto and Shard chiefly strip
+Shields, Laser supplies strong HP damage as protection weakens, and Shotgun can
+produce high total battlefield damage across multiple targets. The current
+system does not presently show a need for a global lethality increase.
+
+Provisional Role simulations shortened combat slightly further, but those Role
+mechanics were invented only for modelling and must not drive balance or be
+treated as approved rules.
+
+The mixed model represented Shotgun positioning abstractly: 10% one target,
+55% two, 30% three and 5% four, averaging approximately 2.3 potential targets.
+It assumed a safe angle, no friendly-fire error, no terrain obstruction and no
+movement cost to line up the Cone. This may overstate Shotgun effectiveness and
+understate live combat duration. The 4-square Cone remains ready for live
+playtest.
+
 ## CURRENT MATHEMATICAL TARGET DISCUSSION — NOT YET LOCKED
 
 Earlier equal-level hit-rate examples were illustrative only and are superseded where they relied on the discarded +10-margin critical rule. No exact Level 1 statline or universal equal-level hit-rate target is locked.
@@ -1933,3 +3046,13 @@ Their presence does not establish wholesale adoption of their rules or settings.
 
 - 28 September 2026: “WORK HANDOVER — NOVUM FOUNDRY v0.1.1 REBRAND, RECALIBRATION, UX + PLAYTEST PASS”. Confirmed Novum as the current product identity and Afterlight as a superseded working title; implemented the provisional Shield 7/8/9/10 and HP 14/16/18/20 centreline; preserved Standard Ablation 1 and provisional Auto; recorded the explicitly tested lower melee damage scale; and documented the v0.1.1 Foundry system, visual direction, range overlay and pregen token-art pass. The numerical calibration remains subject to live playtesting and does not rewrite Combat Maths Baseline v1.0.
 - 28 September 2026: “WORK HANDOVER — NOVUM FOUNDRY v0.1.2 QUICK-FIX PLAYTEST RELEASE”. Preserved the v0.1.1 combat calibration; split sheet portraits from circular alpha-transparent Scene tokens; materially diversified the twelve archetype families; audited every seeded ranged weapon into distinct class-specific profiles; unified attack/overlay Scene-unit conversion; and added coloured annular range zones with Toggle/Hold, keybinding, colour and opacity controls. The corrected weapon table is canonical only for the current playtest package.
+
+- 29 September 2026: “WORK HANDOVER — NOVUM RULES / SYSTEM REFERENCE UPDATE”. Established universal physical range-band distances; Demo pairings, grenade placement, blast and handling; grenade-launcher and universal reload baselines; Blinded, Flash, Smoke, Slowed and Cryo playtest rules; Hardness, Integrity and Breaching; distinct Fragmentation and Breaching Charges with modular trigger direction; Free Action remote detonation; universal Reactions and Prepare; expanded movement, quick-handling, prone, climbing, cover and Overwatch rules; and retained dual wielding as unresolved. Recorded current Foundry implementation differences without changing code or seeded content.
+
+- 29 September 2026: “WORK HANDOVER — NOVUM RULES DOCUMENTATION UPDATE”. Established Kinetic, Shard and Laser as distinct weapon families; locked the Kinetic baseline; recorded the ready-to-playtest Auto d4, Shard and Laser packages; added Laser Rifle and Pistol range direction; preserved unresolved Laser structural, Smoke, Overload and capacity design; accepted Auto-to-Laser sequencing and mixed-team technology tactics; confirmed the two-handed adjacency restriction and Pistol exemption; and clarified Soldier Quickdraw's Pistol draw/fire/keep-or-holster procedure. Documented current Foundry mismatches without modifying implementation or seeded content.
+
+- 29 September 2026: “WORK HANDOVER — NOVUM RULES / DESIGN REFERENCE UPDATE”. Established the ready-to-playtest Close-only 4-square Shotgun Cone, shared-roll resolution, friendly fire and Shotgun adjacency exception; recorded reusable Cone design and intentional technology/form asymmetry; added Shard smart-guidance, Laser Sniper and Heavy Continuous Laser future directions; separated Pistol, SMG, Rifle and LMG identities; removed baseline Rifle Suppressive Fire; corrected Level 1 Role/Feat progression; and documented Role Feat-pool directions, build diversity, Envoy Rally and future social/action-transfer design. No implementation, seeded content, release or version changes were made.
+
+- 29 September 2026: “WORK HANDOVER — NOVUM PROVISIONAL PROGRESSION / ROLE FEAT / AMMO DESIGN NOTES”. Added explicitly provisional A/B Feat architecture and Level 2/4/6 placeholder trees for all seven Roles; recorded the 2/4/6/8/10 test cadence, Level 1–10 HP/skill/Attribute table, Adaptive Genomics and Expression Vector terminology, broad-verb Hacker Programs, ammunition endurance candidates, non-damaging LMG Suppressive Fire direction and mixed-weapon combat-duration findings. Every new name, number and mechanic remains labelled placeholder material for future playtest/review. No implementation work was performed.
+
+- 29 September 2026: “WORK HANDOVER — NOVUM NEXT PLAYTEST BUILD: CHARACTER PROGRESSION, FEATS UI, WEAPONS & RELOADS”. Implemented the v0.2.0 Foundry playtest build: persistent two-Role progression; dedicated side-by-side placeholder Feat trees; Level 1–10 HP, Skill and Attribute test handling; Kinetic, Shard, Laser and corrected Auto behavior; per-mode ammunition and Main Action reload declarations; and the manual-template, multi-target Shotgun Cone with friendly fire and adjacency exception. Feat/Role effects, Suppressive Fire and other unresolved subsystems remain unavailable.

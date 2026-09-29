@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.2.0 — 2026-09-29
+
+- Added persistent Character progression for Levels 1–10, including the test
+  HP sequence, Skill budgets/caps, three Background grants, and separate Level
+  5/9 Attribute increases.
+- Rebuilt the Character sheet around Combat, Progression, Feats, Equipment,
+  and Notes tabs.
+- Added two persistent Role choices, all seven level-1 Role ability summaries,
+  and fourteen side-by-side placeholder Feat branches.
+- Added one shared Feat pick at Levels 2/4/6/8/10, Level 2/4/6 selectable A/B
+  pairs, mutual exclusion, level gates, and non-destructive invalid-state
+  warnings. Level 8/10 content remains locked and future.
+- Added Kinetic, Shard, and Laser weapon behavior; Auto now converts d6 damage
+  dice to d4 while preserving flat modifiers.
+- Added per-mode ammunition expenditure, insufficient-ammunition blocking, and
+  a Main Action Reload control for Characters and NPCs.
+- Replaced the seeded direct-fire Shotgun with the Close-only, Cone-only,
+  4-square shared-roll version supporting multiple targets and friendly fire.
+- Added the Shotgun adjacency exception and the general adjacent-hostile block
+  for other two-handed ranged attacks.
+- Converted the seeded LMG to Auto-only and exposed Suppressive Fire only as
+  unavailable future data pending final rules.
+- Expanded automated coverage from 26 to 34 tests before release staging.
+
 ## 0.1.2 — 2026-09-28
 
 - Split Actor sheet portraits from prototype-token textures and converted all

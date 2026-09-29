@@ -6,12 +6,13 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const manifest = JSON.parse(await readFile(path.join(root, "system.json"), "utf8"));
 if (manifest.id !== "novum") throw new Error("system.json id must be novum");
-if (manifest.version !== "0.1.2") throw new Error("Unexpected system version");
+if (manifest.version !== "0.2.0") throw new Error("Unexpected system version");
 if (manifest.compatibility.verified !== "14.368") throw new Error("Verified Foundry build must be 14.368");
 
 const required = [
   "novum.mjs",
   "module/range-overlay.mjs",
+  "module/progression.mjs",
   "styles/novum.css",
   "assets/branding/novum-logo-dark.webp",
   "assets/branding/novum-logo-light.webp",

@@ -1,4 +1,4 @@
-const CONTENT_VERSION = "0.1.2";
+const CONTENT_VERSION = "0.2.0";
 
 async function getOrCreateFolder(name, type, parent = null) {
   const existing = game.folders.find(folder => folder.name === name && folder.type === type && (folder.folder?.id ?? null) === (parent?.id ?? null));

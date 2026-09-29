@@ -69,3 +69,27 @@ export function normaliseDamageFormula(formula, fallback = "1d6") {
   return value || fallback;
 }
 
+export function transformWeaponDamage(formula, { technology = "kinetic", fireMode = "standard" } = {}) {
+  const source = normaliseDamageFormula(formula);
+  const faces = fireMode === "auto" || technology === "shard" ? 4 : technology === "laser" ? 8 : 6;
+  return source.replace(/(\d*)d6\b/gi, (_match, count) => `${count || "1"}d${faces}`);
+}
+
+export function weaponAblation(system = {}, fireMode = "standard") {
+  if (fireMode === "auto") return 3;
+  if (system.technology === "shard") return 2;
+  if (system.technology === "laser") return 0;
+  return Math.max(0, Number(system.ablation) || 0);
+}
+
+export function ammunitionCost(system = {}, fireMode = "standard") {
+  return Math.max(0, Number(system.ammo?.[fireMode]) || 0);
+}
+
+export function availableFireModes(system = {}) {
+  const modes = [];
+  if (system.modes?.standard) modes.push("standard");
+  if (system.modes?.auto && (system.technology ?? "kinetic") === "kinetic") modes.push("auto");
+  if (system.modes?.cone) modes.push("cone");
+  return modes;
+}

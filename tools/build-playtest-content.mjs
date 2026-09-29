@@ -13,19 +13,19 @@ const attributeKeys = ["str", "dex", "con", "int", "will", "pre"];
 const tierStats = {
   1: { level: 1, attack: [2, 2], ac: 14, floor: 1, shield: 7, hp: 14, ranged: { standard: "2d6+2", light: "2d6", heavy: "3d6" }, melee: { light: "1d6+1", standard: "1d6+2", heavy: "2d6" } },
   2: { level: 5, attack: [3, 3], ac: 15, floor: 2, shield: 8, hp: 16, ranged: { standard: "3d6", light: "2d6+2", heavy: "3d6+1" }, melee: { light: "1d6+2", standard: "2d6", heavy: "2d6+1" } },
-  3: { level: 9, attack: [4, 4], ac: 16, floor: 3, shield: 9, hp: 18, ranged: { standard: "3d6+1", light: "3d6", heavy: "4d6" }, melee: { light: "2d6", standard: "2d6+1", heavy: "2d6+2" } },
+  3: { level: 9, attack: [4, 4], ac: 16, floor: 3, shield: 9, hp: 19, ranged: { standard: "3d6+1", light: "3d6", heavy: "4d6" }, melee: { light: "2d6", standard: "2d6+1", heavy: "2d6+2" } },
   4: { level: 10, attack: [4, 6], ac: 17, floor: 4, shield: 10, hp: 20, ranged: { standard: "3d6+2", light: "3d6+1", heavy: "4d6" }, melee: { light: "2d6+1", standard: "2d6+2", heavy: "3d6" } }
 };
 
 const weaponBlueprints = [
-  { key: "service-pistol", name: "Service Pistol", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "standard", profile: [[13, 10], [17, 25], [21, 50]], magazine: 12 },
-  { key: "military-revolver", name: "Military Revolver", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "standard", profile: [[13, 12], [15, 30], [19, 60]], magazine: 6 },
-  { key: "compact-smg", name: "Compact SMG", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "light", profile: [[13, 12], [15, 30], [19, 55]], magazine: 30, auto: true },
-  { key: "assault-rifle", name: "Heavy Assault Rifle", category: "longArms", skill: "longArms", attribute: "dex", damage: "standard", profile: [[15, 12], [13, 40], [15, 90]], magazine: 30 },
-  { key: "breach-shotgun", name: "Breach Shotgun", category: "longArms", skill: "longArms", attribute: "dex", damage: "heavy", profile: [[13, 8], [17, 18], [21, 35]], magazine: 8 },
-  { key: "precision-rifle", name: "Precision Sniper Rifle", category: "longArms", skill: "longArms", attribute: "dex", damage: "heavy", profile: [[19, 10], [15, 50], [13, 120]], extreme: [15, 240], magazine: 8 },
-  { key: "support-rifle", name: "Heavy Support Rifle", category: "heavyWeapons", skill: "heavyWeapons", attribute: "str", damage: "heavy", profile: [[17, 10], [15, 45], [15, 100]], extreme: [17, 180], magazine: 20 },
-  { key: "auto-support", name: "Auto Support Gun", category: "heavyWeapons", skill: "heavyWeapons", attribute: "str", damage: "standard", profile: [[17, 10], [15, 40], [17, 90]], extreme: [19, 160], magazine: 60, auto: true },
+  { key: "service-pistol", name: "Service Pistol", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "standard", profile: [[13, 10], [17, 25], [21, 50]], magazine: 12, handling: "oneHanded", ammo: { standard: 2 } },
+  { key: "military-revolver", name: "Shard Pistol", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "standard", profile: [[13, 12], [15, 30], [19, 60]], magazine: 6, handling: "oneHanded", technology: "shard", ammo: { standard: 1 } },
+  { key: "compact-smg", name: "Compact SMG", category: "smallArms", skill: "smallArms", attribute: "dex", damage: "light", profile: [[13, 12], [15, 30], [19, 55]], magazine: 24, auto: true, ammo: { standard: 4, auto: 12 } },
+  { key: "assault-rifle", name: "Assault Rifle", category: "longArms", skill: "longArms", attribute: "dex", damage: "standard", profile: [[15, 12], [13, 40], [15, 90]], magazine: 30, auto: true, ammo: { standard: 5, auto: 15 } },
+  { key: "breach-shotgun", name: "Breach Shotgun", category: "longArms", skill: "longArms", attribute: "dex", damage: "heavy", profile: [[13, 8], [99, 0], [99, 0]], magazine: 6, standard: false, cone: true, ammo: { cone: 1 } },
+  { key: "precision-rifle", name: "Laser Precision Rifle", category: "longArms", skill: "longArms", attribute: "dex", damage: "heavy", profile: [[19, 10], [15, 50], [13, 120]], extreme: [15, 240], magazine: 6, technology: "laser", ammo: { standard: 1 } },
+  { key: "support-rifle", name: "Heavy Support Rifle", category: "heavyWeapons", skill: "heavyWeapons", attribute: "str", damage: "heavy", profile: [[17, 10], [15, 45], [15, 100]], extreme: [17, 180], magazine: 30, ammo: { standard: 5 } },
+  { key: "auto-support", name: "Light Machine Gun", category: "heavyWeapons", skill: "heavyWeapons", attribute: "str", damage: "standard", profile: [[17, 10], [15, 40], [17, 90]], extreme: [19, 160], magazine: 60, standard: false, auto: true, suppressive: true, ammo: { auto: 15, suppressive: 20 } },
   { key: "combat-knife", name: "Combat Knife", category: "meleeWeapons", skill: "meleeWeapons", attribute: "dex", damage: "light", kind: "melee" },
   { key: "shock-baton", name: "Shock Baton", category: "meleeWeapons", skill: "meleeWeapons", attribute: "str", damage: "standard", kind: "melee" },
   { key: "breach-blade", name: "Composite Breach Blade", category: "meleeWeapons", skill: "meleeWeapons", attribute: "str", damage: "heavy", kind: "melee" },
@@ -73,6 +73,8 @@ function weaponDocument(blueprint, tier, equipped = false) {
       traits: blueprint.auto ? "Auto test platform" : "Playtest profile",
       category: blueprint.category,
       kind,
+      technology: blueprint.technology ?? "kinetic",
+      handling: blueprint.handling ?? (kind === "ranged" ? "twoHanded" : "oneHanded"),
       skill: blueprint.skill,
       attribute: blueprint.attribute,
       damage: kind === "ranged" ? stats.ranged[blueprint.damage] : stats.melee[blueprint.damage],
@@ -81,8 +83,9 @@ function weaponDocument(blueprint, tier, equipped = false) {
       critThreshold: 20,
       equipped,
       range: range(blueprint.profile, blueprint.extreme),
-      modes: { standard: true, auto: Boolean(blueprint.auto) },
-      magazine: { current: blueprint.magazine ?? 0, max: blueprint.magazine ?? 0 }
+      modes: { standard: blueprint.standard ?? true, auto: Boolean(blueprint.auto), cone: Boolean(blueprint.cone), suppressive: Boolean(blueprint.suppressive) },
+      magazine: { current: blueprint.magazine ?? 0, max: blueprint.magazine ?? 0 },
+      ammo: { standard: blueprint.ammo?.standard ?? (kind === "ranged" ? 1 : 0), auto: blueprint.ammo?.auto ?? 0, cone: blueprint.ammo?.cone ?? 0, suppressive: blueprint.ammo?.suppressive ?? 0 }
     }
   };
 }
@@ -151,12 +154,12 @@ for (const tier of [1, 2, 3, 4]) {
 }
 
 const characterArchetypes = [
-  { key: "balanced-rifle", name: "Balanced Rifle Operator", weapon: "assault-rifle", armour: "balanced", mod: "floor", attribute: "dex", skill: "longArms" },
-  { key: "agile-skirmisher", name: "Small-Arms Agile Skirmisher", weapon: "compact-smg", armour: "agile", mod: "floor", attribute: "dex", skill: "smallArms", secondary: "stealth" },
-  { key: "melee-specialist", name: "Melee Specialist", weapon: "breach-blade", armour: "heavy", mod: "high-floor", attribute: "str", skill: "meleeWeapons", secondary: "athletics" },
-  { key: "auto-specialist", name: "Heavy Auto Specialist", weapon: "auto-support", armour: "heavy", mod: "floor", attribute: "str", skill: "heavyWeapons" },
-  { key: "precision-specialist", name: "Precision Long-Range Specialist", weapon: "precision-rifle", armour: "agile", mod: "floor", attribute: "dex", skill: "longArms", secondary: "survival" },
-  { key: "support-generalist", name: "Support-Ready Generalist", weapon: "service-pistol", armour: "shield-heavy", mod: "floor", extraMod: "capacitor", attribute: "dex", skill: "smallArms", secondary: "medicine" }
+  { key: "balanced-rifle", name: "Balanced Rifle Operator", weapon: "assault-rifle", armour: "balanced", mod: "floor", attribute: "dex", skill: "longArms", roles: ["soldier", "engineer"] },
+  { key: "agile-skirmisher", name: "Small-Arms Agile Skirmisher", weapon: "compact-smg", armour: "agile", mod: "floor", attribute: "dex", skill: "smallArms", secondary: "stealth", roles: ["operative", "soldier"] },
+  { key: "melee-specialist", name: "Melee Specialist", weapon: "breach-blade", armour: "heavy", mod: "high-floor", attribute: "str", skill: "meleeWeapons", secondary: "athletics", roles: ["soldier", "medtech"] },
+  { key: "auto-specialist", name: "Heavy Auto Specialist", weapon: "auto-support", armour: "heavy", mod: "floor", attribute: "str", skill: "heavyWeapons", roles: ["soldier", "envoy"] },
+  { key: "precision-specialist", name: "Precision Long-Range Specialist", weapon: "precision-rifle", armour: "agile", mod: "floor", attribute: "dex", skill: "longArms", secondary: "survival", roles: ["operative", "engineer"] },
+  { key: "support-generalist", name: "Support-Ready Generalist", weapon: "service-pistol", armour: "shield-heavy", mod: "floor", extraMod: "capacitor", attribute: "dex", skill: "smallArms", secondary: "medicine", roles: ["medtech", "envoy"] }
 ];
 
 const npcArchetypes = [
@@ -236,6 +239,12 @@ function actorDocument(archetype, type, tier) {
       tier,
       attributes,
       skills,
+      progression: {
+        roles: { primary: archetype.roles?.[0] ?? "", secondary: archetype.roles?.[1] ?? "" },
+        feats: [],
+        backgroundSkills: [archetype.skill, archetype.secondary ?? "survival", archetype.skill === "athletics" ? "science" : "athletics"],
+        attributeAdvances: { level5: "", level9: "" }
+      },
       resources: {
         health: { value: stats.hp, max: stats.hp },
         shield: { value: shieldMax, max: shieldMax }
@@ -259,9 +268,9 @@ for (const tier of [1, 2, 3, 4]) {
 }
 
 const payload = {
-  version: "0.1.2",
-  generated: "2026-09-28",
-  note: "Generic provisional playtest content for Novum Combat Maths Baseline v1.0 using the preserved v0.1.1 combat calibration and v0.1.2 token/range audit.",
+  version: "0.2.0",
+  generated: "2026-09-29",
+  note: "Generic provisional playtest content for Novum v0.2.0 progression, weapon-technology, ammunition, reload, and Shotgun Cone testing.",
   items,
   actors
 };

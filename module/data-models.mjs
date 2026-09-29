@@ -1,3 +1,5 @@
+import { hpForLevel } from "./progression.mjs";
+
 const fields = foundry.data.fields;
 
 function intField({ min = 0, max = 999, initial = 0 } = {}) {
@@ -34,6 +36,21 @@ function skillSchema() {
   return new fields.SchemaField(entries);
 }
 
+function progressionSchema() {
+  return new fields.SchemaField({
+    roles: new fields.SchemaField({
+      primary: textField(""),
+      secondary: textField("")
+    }),
+    feats: new fields.ArrayField(textField(""), { required: true, nullable: false, initial: [] }),
+    backgroundSkills: new fields.ArrayField(textField(""), { required: true, nullable: false, initial: [] }),
+    attributeAdvances: new fields.SchemaField({
+      level5: textField(""),
+      level9: textField("")
+    })
+  });
+}
+
 export class NovumActorData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
@@ -42,6 +59,7 @@ export class NovumActorData extends foundry.abstract.TypeDataModel {
       tier: intField({ min: 1, max: 4, initial: 1 }),
       attributes: attributeSchema(),
       skills: skillSchema(),
+      progression: progressionSchema(),
       resources: new fields.SchemaField({
         health: resourceField(14),
         shield: resourceField(0)
@@ -61,6 +79,7 @@ export class NovumActorData extends foundry.abstract.TypeDataModel {
 
   prepareDerivedData() {
     super.prepareDerivedData();
+    this.resources.health.max = hpForLevel(this.level);
     this.resources.health.value = Math.min(this.resources.health.value, this.resources.health.max);
     this.resources.shield.value = Math.min(this.resources.shield.value, this.resources.shield.max);
   }
@@ -93,6 +112,8 @@ export class WeaponData extends NovumItemData {
       ...super.defineSchema(),
       category: textField("smallArms"),
       kind: textField("ranged"),
+      technology: textField("kinetic"),
+      handling: textField("twoHanded"),
       skill: textField("smallArms"),
       attribute: textField("dex"),
       damage: textField("2d6"),
@@ -112,11 +133,19 @@ export class WeaponData extends NovumItemData {
       }),
       modes: new fields.SchemaField({
         standard: new fields.BooleanField({ required: true, nullable: false, initial: true }),
-        auto: new fields.BooleanField({ required: true, nullable: false, initial: false })
+        auto: new fields.BooleanField({ required: true, nullable: false, initial: false }),
+        cone: new fields.BooleanField({ required: true, nullable: false, initial: false }),
+        suppressive: new fields.BooleanField({ required: true, nullable: false, initial: false })
       }),
       magazine: new fields.SchemaField({
         current: intField({ min: 0, max: 999, initial: 0 }),
         max: intField({ min: 0, max: 999, initial: 0 })
+      }),
+      ammo: new fields.SchemaField({
+        standard: intField({ min: 0, max: 999, initial: 1 }),
+        auto: intField({ min: 0, max: 999, initial: 0 }),
+        cone: intField({ min: 0, max: 999, initial: 0 }),
+        suppressive: intField({ min: 0, max: 999, initial: 0 })
       })
     };
   }

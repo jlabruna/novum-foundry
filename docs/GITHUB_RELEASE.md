@@ -1,126 +1,112 @@
-# Novum v0.1.2 browser-only GitHub and Forge release
+# Novum v0.2.0 browser-only GitHub and Forge release
 
-No PowerShell, terminal, Git CLI, or GitHub Desktop is required.
+Repository: <https://github.com/jlabruna/novum-foundry>
 
-## Files supplied
+## 1. Upload source
 
-- `novum-github-upload-v0.1.2.zip`: repository source prepared for browser upload.
-- `novum.zip`: Foundry release asset. Keep this exact filename.
+Use `dist/novum-github-upload-v0.2.0.zip`, or the already extracted
+`dist/browser-upload/novum-foundry` folder.
 
-## Update the existing GitHub repository
+1. Extract the browser-upload ZIP and open its `novum-foundry` folder.
+2. Confirm `system.json`, `README.md`, `module`, `assets`, and `templates` are
+   immediately inside that folder.
+3. Open the repository and choose **Add file → Upload files**.
+4. Drag everything *inside* `novum-foundry` onto the page. Do not drag the
+   outer folder itself.
+5. Confirm `module/progression.mjs` and the updated templates appear, then
+   commit directly to `main`.
 
-1. Extract `novum-github-upload-v0.1.2.zip` on the computer.
-2. Open the extracted `novum-foundry` folder.
-3. Confirm `system.json`, `README.md`, `module`, `assets`, and the other source
-   files are immediately inside that folder.
-4. Open <https://github.com/jlabruna/novum-foundry> in the browser.
-5. Select **Add file** and then **Upload files**.
-6. Drag everything *inside* the extracted `novum-foundry` folder onto the
-   upload page. Do not drag the outer folder itself.
-7. Wait for GitHub to finish listing the files. Confirm `system.json` will be
-   at the repository root and that the new `assets/portraits` files appear.
-8. No obsolete repository paths need manual deletion for v0.1.2. Existing
-   token filenames are deliberately reused and will be replaced by their new
-   circular versions.
-9. Commit directly to `main`.
+Commit title:
 
-Copyable commit title:
+`Release Novum v0.2.0`
 
-`Release Novum v0.1.2`
+Optional description:
 
-Copyable optional description:
+`Add character progression, placeholder Role Feats, weapon technologies, ammunition, reloads, and Shotgun Cone resolution.`
 
-`Update pregen token presentation, ranged-weapon profiles, Scene-unit handling, and range-overlay controls.`
+Open `system.json` on GitHub after the commit and confirm version `0.2.0`.
 
-After the commit, open `system.json` on GitHub and confirm the displayed
-version is `0.1.2`.
+## 2. Confirm workflow
 
-## GitHub Actions
+This repository has no GitHub Actions build/release workflow. There is no
+workflow file to upload separately and no Action that must turn green. The
+validated `dist/novum.zip` is the release asset.
 
-This repository does not currently depend on a GitHub Actions release/build
-workflow. There is no Action that must turn green before release. The supplied
-`novum.zip` is the already validated release asset.
+## 3. Test workflow
 
-## Create the GitHub release
+No remote workflow run is expected. The local release gate is:
 
-1. Open the repository's **Releases** page.
-2. Select **Draft a new release**.
-3. Choose **Create new tag** and enter `v0.1.2`, targeting `main`.
-4. Set the release title to `Novum v0.1.2`.
-5. Paste the release notes below.
-6. Attach the supplied `novum.zip`. Do not attach the browser-source ZIP in its
-   place and do not rely on GitHub's automatic source-code archives.
-7. Leave **Set as a pre-release** disabled.
-8. Publish the release; do not leave it as a draft.
+`npm run validate && npm run stage:release`
+
+The completed build passes 34 tests and package validation. The remaining gate
+is the Foundry v14.368 manual smoke test listed below.
+
+## 4. Create the GitHub release
+
+1. Open the repository's **Releases** page and choose **Draft a new release**.
+2. Create tag `v0.2.0` targeting `main`.
+3. Set the title to `Novum v0.2.0`.
+4. Paste the release notes below.
+5. Attach `dist/novum.zip` with that exact filename. Do not attach the
+   browser-source ZIP in its place.
+6. Leave **Set as a pre-release** disabled and publish the release.
 
 Copyable release notes:
 
 ```text
-Novum v0.1.2 is a focused token and range UX playtest update.
+Novum v0.2.0 adds the next character-building and combat-playtest layer.
 
-- Adds circular, transparent Novum-ring tokens for all seeded pregens.
-- Improves visual diversity across the twelve PC/NPC archetype families.
-- Audits every seeded ranged weapon with distinct pistol, SMG, shotgun, rifle, precision, and heavy-support identities.
-- Unifies attack and overlay distance handling through the active Scene scale and units.
-- Adds distinct coloured range zones, Toggle/Hold activation, configurable keybinding, colours, and opacity.
-- Preserves the v0.1.1 HP, Shield, melee, Standard, and Auto combat calibration.
-- Passes 26 automated validation tests.
-
-Target: Foundry VTT v14.368.
+- Adds persistent two-Role selection and dedicated Combat, Progression, Feats, Equipment, and Notes tabs.
+- Adds all seven Role ability summaries and fourteen side-by-side placeholder Feat branches.
+- Enforces one shared Feat pick at Levels 2/4/6/8/10, Level 2/4/6 gates, and mutual exclusion without deleting choices after a level reduction.
+- Adds the Level 1–10 HP sequence, Skill budgets/caps, Background grants, and Level 5/9 Attribute increases.
+- Implements Kinetic, Shard, Laser, corrected Auto damage, ammunition expenditure, and Main Action reloads.
+- Implements the Close-only four-square Shotgun Cone with a shared roll, multiple target application, friendly fire, and adjacency exception.
+- Keeps Suppressive Fire, placeholder Feat effects, and other unresolved subsystems unavailable.
+- Passes 34 automated tests and targets Foundry VTT v14.368.
 ```
 
-## Verify the public files
-
-Open both links in a private browser window after publication:
+## Update and install links
 
 - Manifest: <https://raw.githubusercontent.com/jlabruna/novum-foundry/main/system.json>
 - Package: <https://github.com/jlabruna/novum-foundry/releases/latest/download/novum.zip>
 
-The manifest must show version `0.1.2`. The package link must download
-`novum.zip` rather than returning a GitHub error page.
+After publishing, open both links in a private window. The manifest must show
+`0.2.0`; the package link must download `novum.zip`.
 
-## Fresh Forge installation
+For a fresh Forge installation, use **Install from Manifest**, choose **Game
+System** when asked, paste the manifest URL, and disable Bazaar lookup if Forge
+offers that option. For an existing installation, stop the world and use
+**Update / Check for Updates**. If Forge does not offer the custom-package
+update, install from the same manifest URL again. Confirm Novum `0.2.0` before
+opening a world.
 
-1. Sign in to The Forge in the browser.
-2. Open the Bazaar/custom package interface and select **Install from Manifest**.
-3. Choose **Game System** if the interface asks for a package type.
-4. Paste:
-   `https://raw.githubusercontent.com/jlabruna/novum-foundry/main/system.json`
-5. If an **Install from the Bazaar** option appears, disable it so Forge uses
-   this custom manifest directly.
-6. Install the package and wait for Forge to finish processing it.
-7. Create a fresh world using the **Novum** system for the cleanest playtest.
+When an existing world opens, the GM is offered a v0.2.0 seeded-content
+refresh. Accepting refreshes flagged playtest gear and rebuilds embedded gear
+on flagged pregens; use a fresh world or copy customised pregens first.
 
-## Update Forge from v0.1.1
+## Manual acceptance tests
 
-1. Stop or return to Setup from any running Novum world.
-2. Open The Forge package/system management interface.
-3. Locate Novum and use its available **Update** or **Check for Updates**
-   control.
-4. If Forge does not offer an update for this custom package, use **Install
-   from Manifest** again with the same manifest URL and keep **Install from the
-   Bazaar** disabled.
-5. If Forge reports that the installed custom copy cannot be replaced, remove
-   only the installed Novum *system package* through Forge's browser interface,
-   then install it again from the manifest. Do not delete the world.
-6. Confirm the package manager reports Novum `0.1.2` before launching a world.
-7. When an existing v0.1.1 playtest world opens, accept the prompt to refresh
-   seeded content. This rebuilds embedded gear on seeded pregens. Use a fresh
-   world instead if old pregens were manually customised.
-
-## Post-update smoke test
-
-1. Novum reports version 0.1.2.
-2. A fresh or existing world opens.
-3. A placed pregen uses a circular token with transparent corners.
-4. Several pregens visibly use different faces and silhouettes.
-5. The Compact SMG ends at 12/30/55 m.
-6. The Heavy Support Rifle ends at 10/45/100/180 m.
-7. The Precision Sniper Rifle uses 10/50/120/240 m and is best at Long.
-8. The range overlay matches the Item's values.
-9. Close, Medium, Long, and optional Extreme zones are visually distinct.
-10. Toggle mode works.
-11. Hold mode disappears on key release.
-12. The keybinding can be changed through Foundry's configuration.
-13. Band colours and opacity respond to client settings.
-14. Standard, Auto, melee, and Apply Result still resolve normally.
+1. Confirm the Setup screen reports Novum `0.2.0` and a world opens in Foundry
+   v14.368.
+2. Open a Character and move between all five tabs without losing edits.
+3. Choose two different Roles and confirm both Role panels and abilities.
+4. At Level 1, confirm no Feat is available. At Levels 2/4/6/8/10, confirm
+   capacity 1/2/3/4/5 and that either Role can spend the next pick.
+5. Select one A/B option, confirm its pair locks, reopen the sheet, then lower
+   Level and confirm the saved choice is warned rather than deleted.
+6. Check HP at Levels 1–10 against 14/14/15/16/16/17/18/18/19/20.
+7. Test three different Background grants, Skill budget/cap blocking, and
+   different Level 5/9 Attribute increases with cap 4.
+8. Fire Standard, Auto, Shard, and Laser attacks. Confirm transformed damage,
+   Ablation, and ammunition are shown in chat.
+9. Empty a magazine, confirm the attack is blocked, then Reload and confirm the
+   Main Action declaration and refilled magazine.
+10. Place a four-square Shotgun Cone, target multiple enemies plus one ally,
+    and confirm one roll creates independent Apply buttons for every hit.
+11. Confirm Shotgun Cone works adjacent to a hostile and another two-handed
+    ranged weapon is blocked.
+12. Confirm the LMG offers Auto but not Standard or Suppressive Fire.
+13. Recheck range overlay Toggle/Hold, armour/mod protection, melee resolution,
+    stale Apply Result protection, token transparency, and dark/light theme
+    readability.

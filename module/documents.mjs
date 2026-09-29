@@ -1,4 +1,5 @@
 import { performWeaponAttack } from "./combat.mjs";
+import { canSelectFeat, ROLE_DEFINITIONS } from "./progression.mjs";
 
 export class NovumItem extends Item {}
 
@@ -117,6 +118,73 @@ export class NovumActor extends Actor {
     const weapon = this.items.get(itemId);
     if (!weapon || weapon.type !== "weapon") return ui.notifications.error("Weapon not found.");
     return performWeaponAttack(this, weapon);
+  }
+
+  async reloadWeapon(itemId) {
+    const weapon = this.items.get(itemId);
+    if (!weapon || weapon.type !== "weapon") return ui.notifications.error("Weapon not found.");
+    const maximum = Number(weapon.system.magazine.max ?? 0);
+    if (maximum <= 0) return ui.notifications.warn("This weapon has no reloadable magazine or charge pool.");
+    if (Number(weapon.system.magazine.current) >= maximum) return ui.notifications.info(`${weapon.name} is already full.`);
+    await weapon.update({ "system.magazine.current": maximum });
+    return ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<article class="novum-chat-card"><header><span class="eyebrow">Main Action</span><h3>Reload</h3><p>${foundry.utils.escapeHTML(this.name)} · ${foundry.utils.escapeHTML(weapon.name)}</p></header><p class="card-note">Magazine restored to ${maximum}. This consumes the character's Main Action.</p></article>`
+    });
+  }
+
+  async setRole(slot, roleId) {
+    if (!["primary", "secondary"].includes(slot)) return;
+    if (roleId && !ROLE_DEFINITIONS[roleId]) return ui.notifications.warn("Unknown Role.");
+    const otherSlot = slot === "primary" ? "secondary" : "primary";
+    if (roleId && this.system.progression.roles[otherSlot] === roleId) return ui.notifications.warn("Choose two different Roles.");
+    await this.update({ [`system.progression.roles.${slot}`]: roleId });
+  }
+
+  async setBackgroundSkill(index, skillId) {
+    const next = Array.from(this.system.progression.backgroundSkills ?? []).slice(0, 3);
+    while (next.length < 3) next.push("");
+    if (skillId && next.some((value, current) => current !== index && value === skillId)) {
+      return ui.notifications.warn("Background skill grants must be different Skills.");
+    }
+    const previous = next[index];
+    next[index] = skillId;
+    const updates = { "system.progression.backgroundSkills": next };
+    if (previous && Number(this.system.skills[previous]?.value) === 1) updates[`system.skills.${previous}.value`] = 0;
+    if (skillId && Number(this.system.skills[skillId]?.value) === 0) updates[`system.skills.${skillId}.value`] = 1;
+    await this.update(updates);
+  }
+
+  async toggleFeat(featId) {
+    const selections = Array.from(this.system.progression.feats ?? []);
+    const currentIndex = selections.indexOf(featId);
+    if (currentIndex >= 0) selections.splice(currentIndex, 1);
+    else {
+      const roles = [this.system.progression.roles.primary, this.system.progression.roles.secondary].filter(Boolean);
+      const check = canSelectFeat({ featId, selections, roles, level: this.system.level });
+      if (!check.allowed) return ui.notifications.warn(check.reason);
+      selections.push(featId);
+    }
+    await this.update({ "system.progression.feats": selections });
+  }
+
+  async setAttributeAdvance(milestone, attributeKey) {
+    if (![5, 9].includes(Number(milestone))) return;
+    if (Number(this.system.level) < Number(milestone)) return ui.notifications.warn(`Requires Level ${milestone}.`);
+    if (!Object.hasOwn(this.system.attributes, attributeKey)) return ui.notifications.warn("Unknown Attribute.");
+    const field = `level${milestone}`;
+    const other = milestone === 5 ? this.system.progression.attributeAdvances.level9 : this.system.progression.attributeAdvances.level5;
+    if (other === attributeKey) return ui.notifications.warn("Level 5 and Level 9 increases must affect different Attributes.");
+    const previous = this.system.progression.attributeAdvances[field];
+    if (previous === attributeKey) return;
+    const updates = { [`system.progression.attributeAdvances.${field}`]: attributeKey };
+    if (previous && Object.hasOwn(this.system.attributes, previous)) {
+      updates[`system.attributes.${previous}.value`] = Math.max(0, Number(this.system.attributes[previous].value) - 1);
+    }
+    const nextValue = Number(this.system.attributes[attributeKey].value) + 1;
+    if (nextValue > 4) return ui.notifications.warn(`${attributeKey.toUpperCase()} is already at the Attribute cap of 4.`);
+    updates[`system.attributes.${attributeKey}.value`] = nextValue;
+    await this.update(updates);
   }
 
   async restoreResources() {

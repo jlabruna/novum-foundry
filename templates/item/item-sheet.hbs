@@ -19,6 +19,8 @@
     <div class="section-heading"><div><span class="eyebrow">Attack profile</span><h2>Weapon</h2></div></div>
     <div class="form-grid three-column">
       <label>Kind <select name="system.kind">{{#each weaponKinds}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>Technology <select name="system.technology">{{#each weaponTechnologies}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>Handling <select name="system.handling">{{#each weaponHandling}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
       <label>Category <input name="system.category" type="text" value="{{system.category}}"></label>
       <label>Damage <input name="system.damage" type="text" value="{{system.damage}}"></label>
       <label>Attribute <select name="system.attribute">{{#each attributes}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
@@ -27,6 +29,12 @@
       <label>Ablation <input name="system.ablation" type="number" min="0" value="{{system.ablation}}"></label>
       <label>Penetration <input name="system.penetration" type="number" min="0" value="{{system.penetration}}"></label>
       <label>Magazine <span class="joined"><input name="system.magazine.current" type="number" min="0" value="{{system.magazine.current}}"><i>/</i><input name="system.magazine.max" type="number" min="0" value="{{system.magazine.max}}"></span></label>
+    </div>
+    <div class="form-grid four-column ammo-editor">
+      <label>Standard cost <input name="system.ammo.standard" type="number" min="0" value="{{system.ammo.standard}}"></label>
+      <label>Auto cost <input name="system.ammo.auto" type="number" min="0" value="{{system.ammo.auto}}"></label>
+      <label>Cone cost <input name="system.ammo.cone" type="number" min="0" value="{{system.ammo.cone}}"></label>
+      <label>Suppress cost <input name="system.ammo.suppressive" type="number" min="0" value="{{system.ammo.suppressive}}"></label>
     </div>
     <div class="range-editor">
       <div><strong>Close</strong><label>DV <input name="system.range.close.dv" type="number" value="{{system.range.close.dv}}"></label><label>Max m <input name="system.range.close.max" type="number" value="{{system.range.close.max}}"></label></div>
@@ -38,6 +46,8 @@
       <label><input name="system.equipped" type="checkbox" {{#if system.equipped}}checked{{/if}}> Readied</label>
       <label><input name="system.modes.standard" type="checkbox" {{#if system.modes.standard}}checked{{/if}}> Standard fire</label>
       <label><input name="system.modes.auto" type="checkbox" {{#if system.modes.auto}}checked{{/if}}> Auto test mode</label>
+      <label><input name="system.modes.cone" type="checkbox" {{#if system.modes.cone}}checked{{/if}}> Cone</label>
+      <label><input name="system.modes.suppressive" type="checkbox" {{#if system.modes.suppressive}}checked{{/if}}> Suppressive (future)</label>
     </div>
     {{/if}}
 

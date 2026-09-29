@@ -1,4 +1,4 @@
-import { NOVUM, weaponKinds } from "../config.mjs";
+import { NOVUM, weaponHandling, weaponKinds, weaponTechnologies } from "../config.mjs";
 
 const { ItemSheetV2 } = foundry.applications.sheets;
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -27,10 +27,11 @@ export class NovumItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       attributes: selected(NOVUM.attributes, item.system.attribute),
       skills: selected(NOVUM.skills, item.system.skill),
       weaponKinds: selected(weaponKinds, item.system.kind),
+      weaponTechnologies: selected(weaponTechnologies, item.system.technology),
+      weaponHandling: selected(weaponHandling, item.system.handling),
       tiers: NOVUM.tiers.map(value => ({ value, selected: Number(item.system.tier) === value })),
       compatibleTiers: NOVUM.tiers.map(value => ({ value, selected: Number(item.system.compatibleTier) === value })),
       editable: this.isEditable
     }, { inplace: false });
   }
 }
-

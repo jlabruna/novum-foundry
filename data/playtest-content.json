@@ -1,7 +1,7 @@
 {
-  "version": "0.1.2",
-  "generated": "2026-09-28",
-  "note": "Generic provisional playtest content for Novum Combat Maths Baseline v1.0 using the preserved v0.1.1 combat calibration and v0.1.2 token/range audit.",
+  "version": "0.2.0",
+  "generated": "2026-09-29",
+  "note": "Generic provisional playtest content for Novum v0.2.0 progression, weapon-technology, ammunition, reload, and Shotgun Cone testing.",
   "items": [
     {
       "seedId": "weapon-t1-service-pistol",
@@ -17,6 +17,8 @@
           "traits": "Playtest profile",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "2d6+2",
@@ -45,11 +47,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 12,
             "max": 12
+          },
+          "ammo": {
+            "standard": 2,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -58,16 +68,18 @@
       "seedId": "weapon-t1-military-revolver",
       "tier": 1,
       "document": {
-        "name": "T1 Military Revolver",
+        "name": "T1 Shard Pistol",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T1 playtest military revolver. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T1 playtest shard pistol. Values are provisional calibration content.</p>",
           "tier": 1,
           "traits": "Playtest profile",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "shard",
+          "handling": "oneHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "2d6+2",
@@ -96,11 +108,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 6,
             "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -119,6 +139,8 @@
           "traits": "Auto test platform",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "2d6",
@@ -147,11 +169,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": true
+            "auto": true,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 30,
-            "max": 30
+            "current": 24,
+            "max": 24
+          },
+          "ammo": {
+            "standard": 4,
+            "auto": 12,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -160,16 +190,18 @@
       "seedId": "weapon-t1-assault-rifle",
       "tier": 1,
       "document": {
-        "name": "T1 Heavy Assault Rifle",
+        "name": "T1 Assault Rifle",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T1 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T1 playtest assault rifle. Values are provisional calibration content.</p>",
           "tier": 1,
-          "traits": "Playtest profile",
+          "traits": "Auto test platform",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "2d6+2",
@@ -198,11 +230,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": true,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 30,
             "max": 30
+          },
+          "ammo": {
+            "standard": 5,
+            "auto": 15,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -221,6 +261,8 @@
           "traits": "Playtest profile",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "3d6",
@@ -234,26 +276,34 @@
               "max": 8
             },
             "medium": {
-              "dv": 17,
-              "max": 18
+              "dv": 99,
+              "max": 0
             },
             "long": {
-              "dv": 21,
-              "max": 35
+              "dv": 99,
+              "max": 0
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 35
+              "max": 0
             }
           },
           "modes": {
-            "standard": true,
-            "auto": false
+            "standard": false,
+            "auto": false,
+            "cone": true,
+            "suppressive": false
           },
           "magazine": {
-            "current": 8,
-            "max": 8
+            "current": 6,
+            "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 1,
+            "suppressive": 0
           }
         }
       }
@@ -262,16 +312,18 @@
       "seedId": "weapon-t1-precision-rifle",
       "tier": 1,
       "document": {
-        "name": "T1 Precision Sniper Rifle",
+        "name": "T1 Laser Precision Rifle",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T1 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T1 playtest laser precision rifle. Values are provisional calibration content.</p>",
           "tier": 1,
           "traits": "Playtest profile",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "laser",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "3d6",
@@ -300,11 +352,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 8,
-            "max": 8
+            "current": 6,
+            "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -323,6 +383,8 @@
           "traits": "Playtest profile",
           "category": "heavyWeapons",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "heavyWeapons",
           "attribute": "str",
           "damage": "3d6",
@@ -351,11 +413,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 20,
-            "max": 20
+            "current": 30,
+            "max": 30
+          },
+          "ammo": {
+            "standard": 5,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -364,16 +434,18 @@
       "seedId": "weapon-t1-auto-support",
       "tier": 1,
       "document": {
-        "name": "T1 Auto Support Gun",
+        "name": "T1 Light Machine Gun",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T1 playtest auto support gun. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T1 playtest light machine gun. Values are provisional calibration content.</p>",
           "tier": 1,
           "traits": "Auto test platform",
           "category": "heavyWeapons",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "heavyWeapons",
           "attribute": "str",
           "damage": "2d6+2",
@@ -401,12 +473,20 @@
             }
           },
           "modes": {
-            "standard": true,
-            "auto": true
+            "standard": false,
+            "auto": true,
+            "cone": false,
+            "suppressive": true
           },
           "magazine": {
             "current": 60,
             "max": 60
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 15,
+            "cone": 0,
+            "suppressive": 20
           }
         }
       }
@@ -425,6 +505,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "dex",
           "damage": "1d6+1",
@@ -453,11 +535,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -476,6 +566,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "str",
           "damage": "1d6+2",
@@ -504,11 +596,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -527,6 +627,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "str",
           "damage": "2d6",
@@ -555,11 +657,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -578,6 +688,8 @@
           "traits": "Playtest profile",
           "category": "unarmed",
           "kind": "unarmed",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "unarmed",
           "attribute": "str",
           "damage": "1d6+1",
@@ -606,11 +718,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -794,6 +914,8 @@
           "traits": "Playtest profile",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "3d6",
@@ -822,11 +944,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 12,
             "max": 12
+          },
+          "ammo": {
+            "standard": 2,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -835,16 +965,18 @@
       "seedId": "weapon-t2-military-revolver",
       "tier": 2,
       "document": {
-        "name": "T2 Military Revolver",
+        "name": "T2 Shard Pistol",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T2 playtest military revolver. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T2 playtest shard pistol. Values are provisional calibration content.</p>",
           "tier": 2,
           "traits": "Playtest profile",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "shard",
+          "handling": "oneHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "3d6",
@@ -873,11 +1005,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 6,
             "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -896,6 +1036,8 @@
           "traits": "Auto test platform",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "2d6+2",
@@ -924,11 +1066,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": true
+            "auto": true,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 30,
-            "max": 30
+            "current": 24,
+            "max": 24
+          },
+          "ammo": {
+            "standard": 4,
+            "auto": 12,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -937,16 +1087,18 @@
       "seedId": "weapon-t2-assault-rifle",
       "tier": 2,
       "document": {
-        "name": "T2 Heavy Assault Rifle",
+        "name": "T2 Assault Rifle",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T2 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T2 playtest assault rifle. Values are provisional calibration content.</p>",
           "tier": 2,
-          "traits": "Playtest profile",
+          "traits": "Auto test platform",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "3d6",
@@ -975,11 +1127,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": true,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 30,
             "max": 30
+          },
+          "ammo": {
+            "standard": 5,
+            "auto": 15,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -998,6 +1158,8 @@
           "traits": "Playtest profile",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "3d6+1",
@@ -1011,26 +1173,34 @@
               "max": 8
             },
             "medium": {
-              "dv": 17,
-              "max": 18
+              "dv": 99,
+              "max": 0
             },
             "long": {
-              "dv": 21,
-              "max": 35
+              "dv": 99,
+              "max": 0
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 35
+              "max": 0
             }
           },
           "modes": {
-            "standard": true,
-            "auto": false
+            "standard": false,
+            "auto": false,
+            "cone": true,
+            "suppressive": false
           },
           "magazine": {
-            "current": 8,
-            "max": 8
+            "current": 6,
+            "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 1,
+            "suppressive": 0
           }
         }
       }
@@ -1039,16 +1209,18 @@
       "seedId": "weapon-t2-precision-rifle",
       "tier": 2,
       "document": {
-        "name": "T2 Precision Sniper Rifle",
+        "name": "T2 Laser Precision Rifle",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T2 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T2 playtest laser precision rifle. Values are provisional calibration content.</p>",
           "tier": 2,
           "traits": "Playtest profile",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "laser",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "3d6+1",
@@ -1077,11 +1249,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 8,
-            "max": 8
+            "current": 6,
+            "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1100,6 +1280,8 @@
           "traits": "Playtest profile",
           "category": "heavyWeapons",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "heavyWeapons",
           "attribute": "str",
           "damage": "3d6+1",
@@ -1128,11 +1310,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 20,
-            "max": 20
+            "current": 30,
+            "max": 30
+          },
+          "ammo": {
+            "standard": 5,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1141,16 +1331,18 @@
       "seedId": "weapon-t2-auto-support",
       "tier": 2,
       "document": {
-        "name": "T2 Auto Support Gun",
+        "name": "T2 Light Machine Gun",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T2 playtest auto support gun. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T2 playtest light machine gun. Values are provisional calibration content.</p>",
           "tier": 2,
           "traits": "Auto test platform",
           "category": "heavyWeapons",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "heavyWeapons",
           "attribute": "str",
           "damage": "3d6",
@@ -1178,12 +1370,20 @@
             }
           },
           "modes": {
-            "standard": true,
-            "auto": true
+            "standard": false,
+            "auto": true,
+            "cone": false,
+            "suppressive": true
           },
           "magazine": {
             "current": 60,
             "max": 60
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 15,
+            "cone": 0,
+            "suppressive": 20
           }
         }
       }
@@ -1202,6 +1402,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "dex",
           "damage": "1d6+2",
@@ -1230,11 +1432,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1253,6 +1463,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "str",
           "damage": "2d6",
@@ -1281,11 +1493,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1304,6 +1524,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "str",
           "damage": "2d6+1",
@@ -1332,11 +1554,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1355,6 +1585,8 @@
           "traits": "Playtest profile",
           "category": "unarmed",
           "kind": "unarmed",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "unarmed",
           "attribute": "str",
           "damage": "1d6+2",
@@ -1383,11 +1615,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1571,6 +1811,8 @@
           "traits": "Playtest profile",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "3d6+1",
@@ -1599,11 +1841,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 12,
             "max": 12
+          },
+          "ammo": {
+            "standard": 2,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1612,16 +1862,18 @@
       "seedId": "weapon-t3-military-revolver",
       "tier": 3,
       "document": {
-        "name": "T3 Military Revolver",
+        "name": "T3 Shard Pistol",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T3 playtest military revolver. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T3 playtest shard pistol. Values are provisional calibration content.</p>",
           "tier": 3,
           "traits": "Playtest profile",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "shard",
+          "handling": "oneHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "3d6+1",
@@ -1650,11 +1902,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 6,
             "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1673,6 +1933,8 @@
           "traits": "Auto test platform",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "3d6",
@@ -1701,11 +1963,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": true
+            "auto": true,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 30,
-            "max": 30
+            "current": 24,
+            "max": 24
+          },
+          "ammo": {
+            "standard": 4,
+            "auto": 12,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1714,16 +1984,18 @@
       "seedId": "weapon-t3-assault-rifle",
       "tier": 3,
       "document": {
-        "name": "T3 Heavy Assault Rifle",
+        "name": "T3 Assault Rifle",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T3 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T3 playtest assault rifle. Values are provisional calibration content.</p>",
           "tier": 3,
-          "traits": "Playtest profile",
+          "traits": "Auto test platform",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "3d6+1",
@@ -1752,11 +2024,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": true,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 30,
             "max": 30
+          },
+          "ammo": {
+            "standard": 5,
+            "auto": 15,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1775,6 +2055,8 @@
           "traits": "Playtest profile",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "4d6",
@@ -1788,26 +2070,34 @@
               "max": 8
             },
             "medium": {
-              "dv": 17,
-              "max": 18
+              "dv": 99,
+              "max": 0
             },
             "long": {
-              "dv": 21,
-              "max": 35
+              "dv": 99,
+              "max": 0
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 35
+              "max": 0
             }
           },
           "modes": {
-            "standard": true,
-            "auto": false
+            "standard": false,
+            "auto": false,
+            "cone": true,
+            "suppressive": false
           },
           "magazine": {
-            "current": 8,
-            "max": 8
+            "current": 6,
+            "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 1,
+            "suppressive": 0
           }
         }
       }
@@ -1816,16 +2106,18 @@
       "seedId": "weapon-t3-precision-rifle",
       "tier": 3,
       "document": {
-        "name": "T3 Precision Sniper Rifle",
+        "name": "T3 Laser Precision Rifle",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T3 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T3 playtest laser precision rifle. Values are provisional calibration content.</p>",
           "tier": 3,
           "traits": "Playtest profile",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "laser",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "4d6",
@@ -1854,11 +2146,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 8,
-            "max": 8
+            "current": 6,
+            "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1877,6 +2177,8 @@
           "traits": "Playtest profile",
           "category": "heavyWeapons",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "heavyWeapons",
           "attribute": "str",
           "damage": "4d6",
@@ -1905,11 +2207,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 20,
-            "max": 20
+            "current": 30,
+            "max": 30
+          },
+          "ammo": {
+            "standard": 5,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -1918,16 +2228,18 @@
       "seedId": "weapon-t3-auto-support",
       "tier": 3,
       "document": {
-        "name": "T3 Auto Support Gun",
+        "name": "T3 Light Machine Gun",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T3 playtest auto support gun. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T3 playtest light machine gun. Values are provisional calibration content.</p>",
           "tier": 3,
           "traits": "Auto test platform",
           "category": "heavyWeapons",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "heavyWeapons",
           "attribute": "str",
           "damage": "3d6+1",
@@ -1955,12 +2267,20 @@
             }
           },
           "modes": {
-            "standard": true,
-            "auto": true
+            "standard": false,
+            "auto": true,
+            "cone": false,
+            "suppressive": true
           },
           "magazine": {
             "current": 60,
             "max": 60
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 15,
+            "cone": 0,
+            "suppressive": 20
           }
         }
       }
@@ -1979,6 +2299,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "dex",
           "damage": "2d6",
@@ -2007,11 +2329,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2030,6 +2360,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "str",
           "damage": "2d6+1",
@@ -2058,11 +2390,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2081,6 +2421,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "str",
           "damage": "2d6+2",
@@ -2109,11 +2451,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2132,6 +2482,8 @@
           "traits": "Playtest profile",
           "category": "unarmed",
           "kind": "unarmed",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "unarmed",
           "attribute": "str",
           "damage": "2d6",
@@ -2160,11 +2512,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2348,6 +2708,8 @@
           "traits": "Playtest profile",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "3d6+2",
@@ -2376,11 +2738,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 12,
             "max": 12
+          },
+          "ammo": {
+            "standard": 2,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2389,16 +2759,18 @@
       "seedId": "weapon-t4-military-revolver",
       "tier": 4,
       "document": {
-        "name": "T4 Military Revolver",
+        "name": "T4 Shard Pistol",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T4 playtest military revolver. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T4 playtest shard pistol. Values are provisional calibration content.</p>",
           "tier": 4,
           "traits": "Playtest profile",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "shard",
+          "handling": "oneHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "3d6+2",
@@ -2427,11 +2799,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 6,
             "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2450,6 +2830,8 @@
           "traits": "Auto test platform",
           "category": "smallArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "smallArms",
           "attribute": "dex",
           "damage": "3d6+1",
@@ -2478,11 +2860,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": true
+            "auto": true,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 30,
-            "max": 30
+            "current": 24,
+            "max": 24
+          },
+          "ammo": {
+            "standard": 4,
+            "auto": 12,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2491,16 +2881,18 @@
       "seedId": "weapon-t4-assault-rifle",
       "tier": 4,
       "document": {
-        "name": "T4 Heavy Assault Rifle",
+        "name": "T4 Assault Rifle",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T4 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T4 playtest assault rifle. Values are provisional calibration content.</p>",
           "tier": 4,
-          "traits": "Playtest profile",
+          "traits": "Auto test platform",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "3d6+2",
@@ -2529,11 +2921,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": true,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 30,
             "max": 30
+          },
+          "ammo": {
+            "standard": 5,
+            "auto": 15,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2552,6 +2952,8 @@
           "traits": "Playtest profile",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "4d6",
@@ -2565,26 +2967,34 @@
               "max": 8
             },
             "medium": {
-              "dv": 17,
-              "max": 18
+              "dv": 99,
+              "max": 0
             },
             "long": {
-              "dv": 21,
-              "max": 35
+              "dv": 99,
+              "max": 0
             },
             "extreme": {
               "enabled": false,
               "dv": 21,
-              "max": 35
+              "max": 0
             }
           },
           "modes": {
-            "standard": true,
-            "auto": false
+            "standard": false,
+            "auto": false,
+            "cone": true,
+            "suppressive": false
           },
           "magazine": {
-            "current": 8,
-            "max": 8
+            "current": 6,
+            "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 1,
+            "suppressive": 0
           }
         }
       }
@@ -2593,16 +3003,18 @@
       "seedId": "weapon-t4-precision-rifle",
       "tier": 4,
       "document": {
-        "name": "T4 Precision Sniper Rifle",
+        "name": "T4 Laser Precision Rifle",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T4 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T4 playtest laser precision rifle. Values are provisional calibration content.</p>",
           "tier": 4,
           "traits": "Playtest profile",
           "category": "longArms",
           "kind": "ranged",
+          "technology": "laser",
+          "handling": "twoHanded",
           "skill": "longArms",
           "attribute": "dex",
           "damage": "4d6",
@@ -2631,11 +3043,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 8,
-            "max": 8
+            "current": 6,
+            "max": 6
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2654,6 +3074,8 @@
           "traits": "Playtest profile",
           "category": "heavyWeapons",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "heavyWeapons",
           "attribute": "str",
           "damage": "4d6",
@@ -2682,11 +3104,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
-            "current": 20,
-            "max": 20
+            "current": 30,
+            "max": 30
+          },
+          "ammo": {
+            "standard": 5,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2695,16 +3125,18 @@
       "seedId": "weapon-t4-auto-support",
       "tier": 4,
       "document": {
-        "name": "T4 Auto Support Gun",
+        "name": "T4 Light Machine Gun",
         "type": "weapon",
         "img": "icons/svg/pistol.svg",
         "system": {
           "schemaVersion": 1,
-          "description": "<p>Generic T4 playtest auto support gun. Values are provisional calibration content.</p>",
+          "description": "<p>Generic T4 playtest light machine gun. Values are provisional calibration content.</p>",
           "tier": 4,
           "traits": "Auto test platform",
           "category": "heavyWeapons",
           "kind": "ranged",
+          "technology": "kinetic",
+          "handling": "twoHanded",
           "skill": "heavyWeapons",
           "attribute": "str",
           "damage": "3d6+2",
@@ -2732,12 +3164,20 @@
             }
           },
           "modes": {
-            "standard": true,
-            "auto": true
+            "standard": false,
+            "auto": true,
+            "cone": false,
+            "suppressive": true
           },
           "magazine": {
             "current": 60,
             "max": 60
+          },
+          "ammo": {
+            "standard": 1,
+            "auto": 15,
+            "cone": 0,
+            "suppressive": 20
           }
         }
       }
@@ -2756,6 +3196,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "dex",
           "damage": "2d6+1",
@@ -2784,11 +3226,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2807,6 +3257,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "str",
           "damage": "2d6+2",
@@ -2835,11 +3287,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2858,6 +3318,8 @@
           "traits": "Playtest profile",
           "category": "meleeWeapons",
           "kind": "melee",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "meleeWeapons",
           "attribute": "str",
           "damage": "3d6",
@@ -2886,11 +3348,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -2909,6 +3379,8 @@
           "traits": "Playtest profile",
           "category": "unarmed",
           "kind": "unarmed",
+          "technology": "kinetic",
+          "handling": "oneHanded",
           "skill": "unarmed",
           "attribute": "str",
           "damage": "2d6+1",
@@ -2937,11 +3409,19 @@
           },
           "modes": {
             "standard": true,
-            "auto": false
+            "auto": false,
+            "cone": false,
+            "suppressive": false
           },
           "magazine": {
             "current": 0,
             "max": 0
+          },
+          "ammo": {
+            "standard": 0,
+            "auto": 0,
+            "cone": 0,
+            "suppressive": 0
           }
         }
       }
@@ -3209,6 +3689,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "engineer"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -3232,16 +3728,18 @@
         },
         "items": [
           {
-            "name": "T1 Heavy Assault Rifle",
+            "name": "T1 Assault Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T1 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T1 playtest assault rifle. Values are provisional calibration content.</p>",
               "tier": 1,
-              "traits": "Playtest profile",
+              "traits": "Auto test platform",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "2d6+2",
@@ -3270,11 +3768,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 30,
                 "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -3410,6 +3916,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "operative",
+              "secondary": "soldier"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "stealth",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -3443,6 +3965,8 @@
               "traits": "Auto test platform",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "2d6",
@@ -3471,11 +3995,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": true
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 30,
-                "max": 30
+                "current": 24,
+                "max": 24
+              },
+              "ammo": {
+                "standard": 4,
+                "auto": 12,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -3611,6 +4143,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "medtech"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "meleeWeapons",
+              "athletics",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -3644,6 +4192,8 @@
               "traits": "Playtest profile",
               "category": "meleeWeapons",
               "kind": "melee",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "meleeWeapons",
               "attribute": "str",
               "damage": "2d6",
@@ -3672,11 +4222,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 0,
                 "max": 0
+              },
+              "ammo": {
+                "standard": 0,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -3812,6 +4370,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "envoy"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -3835,16 +4409,18 @@
         },
         "items": [
           {
-            "name": "T1 Auto Support Gun",
+            "name": "T1 Light Machine Gun",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T1 playtest auto support gun. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T1 playtest light machine gun. Values are provisional calibration content.</p>",
               "tier": 1,
               "traits": "Auto test platform",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "2d6+2",
@@ -3872,12 +4448,20 @@
                 }
               },
               "modes": {
-                "standard": true,
-                "auto": true
+                "standard": false,
+                "auto": true,
+                "cone": false,
+                "suppressive": true
               },
               "magazine": {
                 "current": 60,
                 "max": 60
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 20
               }
             }
           },
@@ -4013,6 +4597,22 @@
               "value": 1
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "operative",
+              "secondary": "engineer"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -4036,16 +4636,18 @@
         },
         "items": [
           {
-            "name": "T1 Precision Sniper Rifle",
+            "name": "T1 Laser Precision Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T1 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T1 playtest laser precision rifle. Values are provisional calibration content.</p>",
               "tier": 1,
               "traits": "Playtest profile",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "laser",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "3d6",
@@ -4074,11 +4676,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 8,
-                "max": 8
+                "current": 6,
+                "max": 6
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -4214,6 +4824,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "medtech",
+              "secondary": "envoy"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "medicine",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -4247,6 +4873,8 @@
               "traits": "Playtest profile",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "2d6+2",
@@ -4275,11 +4903,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 12,
                 "max": 12
+              },
+              "ammo": {
+                "standard": 2,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -4431,6 +5067,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -4464,6 +5116,8 @@
               "traits": "Playtest profile",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "2d6+2",
@@ -4492,11 +5146,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 12,
                 "max": 12
+              },
+              "ammo": {
+                "standard": 2,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -4632,6 +5294,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -4665,6 +5343,8 @@
               "traits": "Playtest profile",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "3d6",
@@ -4693,11 +5373,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 20,
-                "max": 20
+                "current": 30,
+                "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -4849,6 +5537,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "meleeWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -4882,6 +5586,8 @@
               "traits": "Playtest profile",
               "category": "meleeWeapons",
               "kind": "melee",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "meleeWeapons",
               "attribute": "str",
               "damage": "2d6",
@@ -4910,11 +5616,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 0,
                 "max": 0
+              },
+              "ammo": {
+                "standard": 0,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -5050,6 +5764,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -5073,16 +5803,18 @@
         },
         "items": [
           {
-            "name": "T1 Auto Support Gun",
+            "name": "T1 Light Machine Gun",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T1 playtest auto support gun. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T1 playtest light machine gun. Values are provisional calibration content.</p>",
               "tier": 1,
               "traits": "Auto test platform",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "2d6+2",
@@ -5110,12 +5842,20 @@
                 }
               },
               "modes": {
-                "standard": true,
-                "auto": true
+                "standard": false,
+                "auto": true,
+                "cone": false,
+                "suppressive": true
               },
               "magazine": {
                 "current": 60,
                 "max": 60
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 20
               }
             }
           },
@@ -5251,6 +5991,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -5274,16 +6030,18 @@
         },
         "items": [
           {
-            "name": "T1 Precision Sniper Rifle",
+            "name": "T1 Laser Precision Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T1 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T1 playtest laser precision rifle. Values are provisional calibration content.</p>",
               "tier": 1,
               "traits": "Playtest profile",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "laser",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "3d6",
@@ -5312,11 +6070,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 8,
-                "max": 8
+                "current": 6,
+                "max": 6
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -5452,6 +6218,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "program",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 14,
@@ -5475,16 +6257,18 @@
         },
         "items": [
           {
-            "name": "T1 Heavy Assault Rifle",
+            "name": "T1 Assault Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T1 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T1 playtest assault rifle. Values are provisional calibration content.</p>",
               "tier": 1,
-              "traits": "Playtest profile",
+              "traits": "Auto test platform",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "2d6+2",
@@ -5513,11 +6297,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 30,
                 "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -5653,6 +6445,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "engineer"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -5676,16 +6484,18 @@
         },
         "items": [
           {
-            "name": "T2 Heavy Assault Rifle",
+            "name": "T2 Assault Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T2 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T2 playtest assault rifle. Values are provisional calibration content.</p>",
               "tier": 2,
-              "traits": "Playtest profile",
+              "traits": "Auto test platform",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "3d6",
@@ -5714,11 +6524,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 30,
                 "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -5854,6 +6672,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "operative",
+              "secondary": "soldier"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "stealth",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -5887,6 +6721,8 @@
               "traits": "Auto test platform",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "2d6+2",
@@ -5915,11 +6751,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": true
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 30,
-                "max": 30
+                "current": 24,
+                "max": 24
+              },
+              "ammo": {
+                "standard": 4,
+                "auto": 12,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -6055,6 +6899,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "medtech"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "meleeWeapons",
+              "athletics",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -6088,6 +6948,8 @@
               "traits": "Playtest profile",
               "category": "meleeWeapons",
               "kind": "melee",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "meleeWeapons",
               "attribute": "str",
               "damage": "2d6+1",
@@ -6116,11 +6978,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 0,
                 "max": 0
+              },
+              "ammo": {
+                "standard": 0,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -6256,6 +7126,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "envoy"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -6279,16 +7165,18 @@
         },
         "items": [
           {
-            "name": "T2 Auto Support Gun",
+            "name": "T2 Light Machine Gun",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T2 playtest auto support gun. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T2 playtest light machine gun. Values are provisional calibration content.</p>",
               "tier": 2,
               "traits": "Auto test platform",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "3d6",
@@ -6316,12 +7204,20 @@
                 }
               },
               "modes": {
-                "standard": true,
-                "auto": true
+                "standard": false,
+                "auto": true,
+                "cone": false,
+                "suppressive": true
               },
               "magazine": {
                 "current": 60,
                 "max": 60
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 20
               }
             }
           },
@@ -6457,6 +7353,22 @@
               "value": 2
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "operative",
+              "secondary": "engineer"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -6480,16 +7392,18 @@
         },
         "items": [
           {
-            "name": "T2 Precision Sniper Rifle",
+            "name": "T2 Laser Precision Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T2 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T2 playtest laser precision rifle. Values are provisional calibration content.</p>",
               "tier": 2,
               "traits": "Playtest profile",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "laser",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "3d6+1",
@@ -6518,11 +7432,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 8,
-                "max": 8
+                "current": 6,
+                "max": 6
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -6658,6 +7580,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "medtech",
+              "secondary": "envoy"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "medicine",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -6691,6 +7629,8 @@
               "traits": "Playtest profile",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "3d6",
@@ -6719,11 +7659,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 12,
                 "max": 12
+              },
+              "ammo": {
+                "standard": 2,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -6875,6 +7823,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -6908,6 +7872,8 @@
               "traits": "Playtest profile",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "3d6",
@@ -6936,11 +7902,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 12,
                 "max": 12
+              },
+              "ammo": {
+                "standard": 2,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -7076,6 +8050,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -7109,6 +8099,8 @@
               "traits": "Playtest profile",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "3d6+1",
@@ -7137,11 +8129,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 20,
-                "max": 20
+                "current": 30,
+                "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -7293,6 +8293,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "meleeWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -7326,6 +8342,8 @@
               "traits": "Playtest profile",
               "category": "meleeWeapons",
               "kind": "melee",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "meleeWeapons",
               "attribute": "str",
               "damage": "2d6+1",
@@ -7354,11 +8372,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 0,
                 "max": 0
+              },
+              "ammo": {
+                "standard": 0,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -7494,6 +8520,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -7517,16 +8559,18 @@
         },
         "items": [
           {
-            "name": "T2 Auto Support Gun",
+            "name": "T2 Light Machine Gun",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T2 playtest auto support gun. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T2 playtest light machine gun. Values are provisional calibration content.</p>",
               "tier": 2,
               "traits": "Auto test platform",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "3d6",
@@ -7554,12 +8598,20 @@
                 }
               },
               "modes": {
-                "standard": true,
-                "auto": true
+                "standard": false,
+                "auto": true,
+                "cone": false,
+                "suppressive": true
               },
               "magazine": {
                 "current": 60,
                 "max": 60
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 20
               }
             }
           },
@@ -7695,6 +8747,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -7718,16 +8786,18 @@
         },
         "items": [
           {
-            "name": "T2 Precision Sniper Rifle",
+            "name": "T2 Laser Precision Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T2 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T2 playtest laser precision rifle. Values are provisional calibration content.</p>",
               "tier": 2,
               "traits": "Playtest profile",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "laser",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "3d6+1",
@@ -7756,11 +8826,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 8,
-                "max": 8
+                "current": 6,
+                "max": 6
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -7896,6 +8974,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "program",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 16,
@@ -7919,16 +9013,18 @@
         },
         "items": [
           {
-            "name": "T2 Heavy Assault Rifle",
+            "name": "T2 Assault Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T2 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T2 playtest assault rifle. Values are provisional calibration content.</p>",
               "tier": 2,
-              "traits": "Playtest profile",
+              "traits": "Auto test platform",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "3d6",
@@ -7957,11 +9053,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 30,
                 "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -8097,10 +9201,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "engineer"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 9,
@@ -8120,16 +9240,18 @@
         },
         "items": [
           {
-            "name": "T3 Heavy Assault Rifle",
+            "name": "T3 Assault Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T3 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T3 playtest assault rifle. Values are provisional calibration content.</p>",
               "tier": 3,
-              "traits": "Playtest profile",
+              "traits": "Auto test platform",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "3d6+1",
@@ -8158,11 +9280,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 30,
                 "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -8298,10 +9428,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "operative",
+              "secondary": "soldier"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "stealth",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 8,
@@ -8331,6 +9477,8 @@
               "traits": "Auto test platform",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "3d6",
@@ -8359,11 +9507,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": true
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 30,
-                "max": 30
+                "current": 24,
+                "max": 24
+              },
+              "ammo": {
+                "standard": 4,
+                "auto": 12,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -8499,10 +9655,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "medtech"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "meleeWeapons",
+              "athletics",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 8,
@@ -8532,6 +9704,8 @@
               "traits": "Playtest profile",
               "category": "meleeWeapons",
               "kind": "melee",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "meleeWeapons",
               "attribute": "str",
               "damage": "2d6+2",
@@ -8560,11 +9734,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 0,
                 "max": 0
+              },
+              "ammo": {
+                "standard": 0,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -8700,10 +9882,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "envoy"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 8,
@@ -8723,16 +9921,18 @@
         },
         "items": [
           {
-            "name": "T3 Auto Support Gun",
+            "name": "T3 Light Machine Gun",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T3 playtest auto support gun. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T3 playtest light machine gun. Values are provisional calibration content.</p>",
               "tier": 3,
               "traits": "Auto test platform",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "3d6+1",
@@ -8760,12 +9960,20 @@
                 }
               },
               "modes": {
-                "standard": true,
-                "auto": true
+                "standard": false,
+                "auto": true,
+                "cone": false,
+                "suppressive": true
               },
               "magazine": {
                 "current": 60,
                 "max": 60
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 20
               }
             }
           },
@@ -8901,10 +10109,26 @@
               "value": 3
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "operative",
+              "secondary": "engineer"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 8,
@@ -8924,16 +10148,18 @@
         },
         "items": [
           {
-            "name": "T3 Precision Sniper Rifle",
+            "name": "T3 Laser Precision Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T3 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T3 playtest laser precision rifle. Values are provisional calibration content.</p>",
               "tier": 3,
               "traits": "Playtest profile",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "laser",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "4d6",
@@ -8962,11 +10188,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 8,
-                "max": 8
+                "current": 6,
+                "max": 6
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -9102,10 +10336,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "medtech",
+              "secondary": "envoy"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "medicine",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 12,
@@ -9135,6 +10385,8 @@
               "traits": "Playtest profile",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "3d6+1",
@@ -9163,11 +10415,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 12,
                 "max": 12
+              },
+              "ammo": {
+                "standard": 2,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -9319,10 +10579,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 9,
@@ -9352,6 +10628,8 @@
               "traits": "Playtest profile",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "3d6+1",
@@ -9380,11 +10658,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 12,
                 "max": 12
+              },
+              "ammo": {
+                "standard": 2,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -9520,10 +10806,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 12,
@@ -9553,6 +10855,8 @@
               "traits": "Playtest profile",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "4d6",
@@ -9581,11 +10885,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 20,
-                "max": 20
+                "current": 30,
+                "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -9737,10 +11049,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "meleeWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 8,
@@ -9770,6 +11098,8 @@
               "traits": "Playtest profile",
               "category": "meleeWeapons",
               "kind": "melee",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "meleeWeapons",
               "attribute": "str",
               "damage": "2d6+2",
@@ -9798,11 +11128,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 0,
                 "max": 0
+              },
+              "ammo": {
+                "standard": 0,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -9938,10 +11276,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 8,
@@ -9961,16 +11315,18 @@
         },
         "items": [
           {
-            "name": "T3 Auto Support Gun",
+            "name": "T3 Light Machine Gun",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T3 playtest auto support gun. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T3 playtest light machine gun. Values are provisional calibration content.</p>",
               "tier": 3,
               "traits": "Auto test platform",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "3d6+1",
@@ -9998,12 +11354,20 @@
                 }
               },
               "modes": {
-                "standard": true,
-                "auto": true
+                "standard": false,
+                "auto": true,
+                "cone": false,
+                "suppressive": true
               },
               "magazine": {
                 "current": 60,
                 "max": 60
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 20
               }
             }
           },
@@ -10139,10 +11503,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 8,
@@ -10162,16 +11542,18 @@
         },
         "items": [
           {
-            "name": "T3 Precision Sniper Rifle",
+            "name": "T3 Laser Precision Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T3 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T3 playtest laser precision rifle. Values are provisional calibration content.</p>",
               "tier": 3,
               "traits": "Playtest profile",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "laser",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "4d6",
@@ -10200,11 +11582,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 8,
-                "max": 8
+                "current": 6,
+                "max": 6
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -10340,10 +11730,26 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "program",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
-              "value": 18,
-              "max": 18
+              "value": 19,
+              "max": 19
             },
             "shield": {
               "value": 9,
@@ -10363,16 +11769,18 @@
         },
         "items": [
           {
-            "name": "T3 Heavy Assault Rifle",
+            "name": "T3 Assault Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T3 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T3 playtest assault rifle. Values are provisional calibration content.</p>",
               "tier": 3,
-              "traits": "Playtest profile",
+              "traits": "Auto test platform",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "3d6+1",
@@ -10401,11 +11809,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 30,
                 "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -10541,6 +11957,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "engineer"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -10564,16 +11996,18 @@
         },
         "items": [
           {
-            "name": "T4 Heavy Assault Rifle",
+            "name": "T4 Assault Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T4 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T4 playtest assault rifle. Values are provisional calibration content.</p>",
               "tier": 4,
-              "traits": "Playtest profile",
+              "traits": "Auto test platform",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "3d6+2",
@@ -10602,11 +12036,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 30,
                 "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -10742,6 +12184,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "operative",
+              "secondary": "soldier"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "stealth",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -10775,6 +12233,8 @@
               "traits": "Auto test platform",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "3d6+1",
@@ -10803,11 +12263,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": true
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 30,
-                "max": 30
+                "current": 24,
+                "max": 24
+              },
+              "ammo": {
+                "standard": 4,
+                "auto": 12,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -10943,6 +12411,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "medtech"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "meleeWeapons",
+              "athletics",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -10976,6 +12460,8 @@
               "traits": "Playtest profile",
               "category": "meleeWeapons",
               "kind": "melee",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "meleeWeapons",
               "attribute": "str",
               "damage": "3d6",
@@ -11004,11 +12490,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 0,
                 "max": 0
+              },
+              "ammo": {
+                "standard": 0,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -11144,6 +12638,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "soldier",
+              "secondary": "envoy"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -11167,16 +12677,18 @@
         },
         "items": [
           {
-            "name": "T4 Auto Support Gun",
+            "name": "T4 Light Machine Gun",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T4 playtest auto support gun. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T4 playtest light machine gun. Values are provisional calibration content.</p>",
               "tier": 4,
               "traits": "Auto test platform",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "3d6+2",
@@ -11204,12 +12716,20 @@
                 }
               },
               "modes": {
-                "standard": true,
-                "auto": true
+                "standard": false,
+                "auto": true,
+                "cone": false,
+                "suppressive": true
               },
               "magazine": {
                 "current": 60,
                 "max": 60
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 20
               }
             }
           },
@@ -11345,6 +12865,22 @@
               "value": 5
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "operative",
+              "secondary": "engineer"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -11368,16 +12904,18 @@
         },
         "items": [
           {
-            "name": "T4 Precision Sniper Rifle",
+            "name": "T4 Laser Precision Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T4 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T4 playtest laser precision rifle. Values are provisional calibration content.</p>",
               "tier": 4,
               "traits": "Playtest profile",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "laser",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "4d6",
@@ -11406,11 +12944,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 8,
-                "max": 8
+                "current": 6,
+                "max": 6
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -11546,6 +13092,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "medtech",
+              "secondary": "envoy"
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "medicine",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -11579,6 +13141,8 @@
               "traits": "Playtest profile",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "3d6+2",
@@ -11607,11 +13171,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 12,
                 "max": 12
+              },
+              "ammo": {
+                "standard": 2,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -11763,6 +13335,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "smallArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -11796,6 +13384,8 @@
               "traits": "Playtest profile",
               "category": "smallArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "smallArms",
               "attribute": "dex",
               "damage": "3d6+2",
@@ -11824,11 +13414,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 12,
                 "max": 12
+              },
+              "ammo": {
+                "standard": 2,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -11964,6 +13562,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -11997,6 +13611,8 @@
               "traits": "Playtest profile",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "4d6",
@@ -12025,11 +13641,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 20,
-                "max": 20
+                "current": 30,
+                "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -12181,6 +13805,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "meleeWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -12214,6 +13854,8 @@
               "traits": "Playtest profile",
               "category": "meleeWeapons",
               "kind": "melee",
+              "technology": "kinetic",
+              "handling": "oneHanded",
               "skill": "meleeWeapons",
               "attribute": "str",
               "damage": "3d6",
@@ -12242,11 +13884,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 0,
                 "max": 0
+              },
+              "ammo": {
+                "standard": 0,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -12382,6 +14032,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "heavyWeapons",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -12405,16 +14071,18 @@
         },
         "items": [
           {
-            "name": "T4 Auto Support Gun",
+            "name": "T4 Light Machine Gun",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T4 playtest auto support gun. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T4 playtest light machine gun. Values are provisional calibration content.</p>",
               "tier": 4,
               "traits": "Auto test platform",
               "category": "heavyWeapons",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "heavyWeapons",
               "attribute": "str",
               "damage": "3d6+2",
@@ -12442,12 +14110,20 @@
                 }
               },
               "modes": {
-                "standard": true,
-                "auto": true
+                "standard": false,
+                "auto": true,
+                "cone": false,
+                "suppressive": true
               },
               "magazine": {
                 "current": 60,
                 "max": 60
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 20
               }
             }
           },
@@ -12583,6 +14259,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "survival",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -12606,16 +14298,18 @@
         },
         "items": [
           {
-            "name": "T4 Precision Sniper Rifle",
+            "name": "T4 Laser Precision Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T4 playtest precision sniper rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T4 playtest laser precision rifle. Values are provisional calibration content.</p>",
               "tier": 4,
               "traits": "Playtest profile",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "laser",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "4d6",
@@ -12644,11 +14338,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": false,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
-                "current": 8,
-                "max": 8
+                "current": 6,
+                "max": 6
+              },
+              "ammo": {
+                "standard": 1,
+                "auto": 0,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },
@@ -12784,6 +14486,22 @@
               "value": 0
             }
           },
+          "progression": {
+            "roles": {
+              "primary": "",
+              "secondary": ""
+            },
+            "feats": [],
+            "backgroundSkills": [
+              "longArms",
+              "program",
+              "athletics"
+            ],
+            "attributeAdvances": {
+              "level5": "",
+              "level9": ""
+            }
+          },
           "resources": {
             "health": {
               "value": 20,
@@ -12807,16 +14525,18 @@
         },
         "items": [
           {
-            "name": "T4 Heavy Assault Rifle",
+            "name": "T4 Assault Rifle",
             "type": "weapon",
             "img": "icons/svg/pistol.svg",
             "system": {
               "schemaVersion": 1,
-              "description": "<p>Generic T4 playtest heavy assault rifle. Values are provisional calibration content.</p>",
+              "description": "<p>Generic T4 playtest assault rifle. Values are provisional calibration content.</p>",
               "tier": 4,
-              "traits": "Playtest profile",
+              "traits": "Auto test platform",
               "category": "longArms",
               "kind": "ranged",
+              "technology": "kinetic",
+              "handling": "twoHanded",
               "skill": "longArms",
               "attribute": "dex",
               "damage": "3d6+2",
@@ -12845,11 +14565,19 @@
               },
               "modes": {
                 "standard": true,
-                "auto": false
+                "auto": true,
+                "cone": false,
+                "suppressive": false
               },
               "magazine": {
                 "current": 30,
                 "max": 30
+              },
+              "ammo": {
+                "standard": 5,
+                "auto": 15,
+                "cone": 0,
+                "suppressive": 0
               }
             }
           },

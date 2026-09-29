@@ -5,6 +5,7 @@ class Field {
   constructor(options = {}) { this.options = options; }
 }
 class SchemaField extends Field {}
+class ArrayField extends Field {}
 class TypeDataModel { static defineSchema() { return {}; } prepareDerivedData() {} }
 class ActorDocument {}
 class ItemDocument {}
@@ -36,7 +37,8 @@ globalThis.foundry = {
     StringField: Field,
     BooleanField: Field,
     HTMLField: Field,
-    SchemaField
+    SchemaField,
+    ArrayField
   } },
   documents: { Actor: ActorDocument, Item: ItemDocument },
   applications: {

@@ -1,10 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  ammunitionCost,
+  availableFireModes,
   determineRangeBand,
   resolveAttack,
   resolveMeleeDamage,
-  resolveRangedDamage
+  resolveRangedDamage,
+  transformWeaponDamage,
+  weaponAblation
 } from "../module/combat-engine.mjs";
 
 test("attack resolves hit and miss against a DV", () => {
@@ -53,3 +57,18 @@ test("range bands use weapon-specific distances and DVs", () => {
   assert.equal(determineRangeBand(profile, 181).beyond, true);
 });
 
+test("weapon technologies and Auto convert only d6 dice while preserving flat modifiers", () => {
+  assert.equal(transformWeaponDamage("3d6+2", { technology: "kinetic", fireMode: "standard" }), "3d6+2");
+  assert.equal(transformWeaponDamage("3d6+2", { technology: "kinetic", fireMode: "auto" }), "3d4+2");
+  assert.equal(transformWeaponDamage("2d6 + 1d8 + 3", { technology: "shard" }), "2d4 + 1d8 + 3");
+  assert.equal(transformWeaponDamage("2d6+1", { technology: "laser" }), "2d8+1");
+});
+
+test("technology and mode determine Ablation, availability, and ammunition cost", () => {
+  const shard = { technology: "shard", ablation: 1, modes: { standard: true, auto: true }, ammo: { standard: 1, auto: 3 } };
+  assert.equal(weaponAblation(shard, "standard"), 2);
+  assert.deepEqual(availableFireModes(shard), ["standard"]);
+  assert.equal(ammunitionCost(shard, "standard"), 1);
+  assert.equal(weaponAblation({ technology: "laser", ablation: 1 }, "standard"), 0);
+  assert.equal(weaponAblation({ technology: "kinetic", ablation: 1 }, "auto"), 3);
+});
