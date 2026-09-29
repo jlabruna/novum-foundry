@@ -150,14 +150,15 @@ Planning and implementation should remain separated according to the Chat / Work
 - Former working title: **Afterlight**, now superseded. Use it only when a
   historical note requires provenance.
 - Standalone Foundry game-system ID: `novum`.
-- Current playtest build: **Novum Foundry v0.2.0**.
+- Current playtest build: **Novum Foundry v0.2.1**.
 - Current Foundry target: **v14.368**; do not silently target v15.
 - Preferred public repository: `jlabruna/novum-foundry`.
 - Distribution uses a browser-based GitHub workflow. Do not direct the user to
   PowerShell, Git CLI, GitHub Desktop, or terminal pushing unless requested.
 - Preferred manifest:
   `https://raw.githubusercontent.com/jlabruna/novum-foundry/main/system.json`
-- Preferred release asset: `novum.zip`.
+- Preferred release asset pattern: `novum-vX.Y.Z.zip`, with the manifest pinned
+  to the exact tagged asset for the current version.
 
 Current implemented playtest calibration:
 
@@ -173,6 +174,8 @@ Current implemented playtest calibration:
 - v0.2.0 adds persistent two-Role progression, placeholder selectable Feat
   trees, Skill/Attribute milestones, Kinetic/Shard/Laser behavior,
   ammunition/reloads, and the Close-only shared-roll Shotgun Cone.
+- v0.2.1 is a packaging-only correction that places `system.json` at the root
+  of the release ZIP; it does not change rules or gameplay behaviour.
 - Placeholder Feats and Role abilities have no automated effects. Suppressive
   Fire is visible as future data but unavailable.
 - Seeded Actors use separate full portraits and circular alpha-transparent

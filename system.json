@@ -2,10 +2,10 @@
   "id": "novum",
   "title": "Novum",
   "description": "A self-contained character-progression and combat playtest system for the Novum science-fiction tabletop roleplaying game.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "url": "https://github.com/jlabruna/novum-foundry",
   "manifest": "https://raw.githubusercontent.com/jlabruna/novum-foundry/main/system.json",
-  "download": "https://github.com/jlabruna/novum-foundry/releases/latest/download/novum.zip",
+  "download": "https://github.com/jlabruna/novum-foundry/releases/download/v0.2.1/novum-v0.2.1.zip",
   "compatibility": {
     "minimum": "14",
     "verified": "14.368",

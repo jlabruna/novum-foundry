@@ -1,7 +1,16 @@
-# Novum Foundry v0.2.0 — Progression, Feats, and Weapon Modes
+# Novum Foundry v0.2.1 — Release Packaging Correction
 
-Novum v0.2.0 turns the combat-calibration build into a usable Level 1–10
-character-progression playtest while preserving its Foundry v14.368 baseline.
+Novum v0.2.1 corrects the release archive used by Forge and Foundry. The
+archive now places `system.json` directly at its root instead of wrapping the
+system in an additional `novum` directory. No rules, seeded content, interface,
+or gameplay behaviour changed from v0.2.0.
+
+The release asset is now named `novum-v0.2.1.zip`, and the manifest points to
+that exact tagged asset so it cannot be confused with the broken v0.2.0 ZIP.
+
+The v0.2.0 feature set remains intact: it turns the combat-calibration build
+into a usable Level 1–10 character-progression playtest while preserving its
+Foundry v14.368 baseline.
 
 Characters now have dedicated Combat, Progression, Feats, Equipment, and Notes
 views. The Progression view tracks the current HP sequence, Skill budgets and

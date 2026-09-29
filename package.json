@@ -1,7 +1,7 @@
 {
   "name": "novum-foundry",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "Novum combat playtest game system for Foundry VTT v14.",
   "scripts": {

@@ -1,4 +1,7 @@
-# Novum Foundry v0.2.0 implementation report
+# Novum Foundry v0.2.1 implementation report
+
+v0.2.1 is a packaging-only correction. It preserves the complete v0.2.0
+implementation below and fixes the release ZIP so `system.json` is at its root.
 
 ## Implemented
 
@@ -46,6 +49,6 @@ and final cover/concealment mechanics remain future work.
 
 `npm run validate` regenerates content, validates the package, syntax-checks
 all JavaScript modules, and runs 34 tests. Release staging additionally checks
-that `novum.zip` contains exactly one root-level `system.json`. A licensed Foundry
-v14.368 runtime is not available in this workspace, so visual and interaction
-acceptance remains a manual smoke test.
+that `novum-v0.2.1.zip` contains exactly one root-level `system.json`. A licensed
+Foundry v14.368 runtime is not available in this workspace, so visual and
+interaction acceptance remains a manual smoke test.

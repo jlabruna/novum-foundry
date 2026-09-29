@@ -2841,7 +2841,7 @@ These numbers support the current level-1–10 design and builder tests; they ar
 
 A local Pathbuilder-style Novum character-builder prototype and a standalone
 Foundry v14 Novum game system now exist. The current Foundry playtest build is
-**Novum v0.2.0**, system ID `novum`, targeted at Foundry **v14.368**. It contains
+**Novum v0.2.1**, system ID `novum`, targeted at Foundry **v14.368**. It contains
 the combat engine, Character/NPC/Item sheets, 80 seeded gear Items, 48 pregens,
 two-Role progression, selectable nonfunctional placeholder Feat trees, Skill
 and Attribute milestone tooling, Kinetic/Shard/Laser modes, ammunition,
@@ -2849,7 +2849,7 @@ reloads, the shared-roll Shotgun Cone, separate full portraits and circular
 alpha-transparent prototype tokens, guarded multi-target Apply Result, and a
 coloured readied-weapon range overlay with Toggle/Hold controls. Attack
 measurement and overlay radii share one Scene-unit-aware metric conversion.
-Live v0.2.0 acceptance remains pending; implemented content values remain
+Live v0.2.1 acceptance remains pending; implemented content values remain
 provisional unless separately confirmed in this reference.
 
 Expected prototype fields and views: name, level, six Attributes, Background, two Roles, the locked 16 skills, skill-point spending/validation, derived HP, Initiative, passive Awareness **once its formula exists**, movement, Melee AC, current Ranged SP and Armour Floor, weapons, armour, shields, Role abilities, level-up logic, and attack breakdowns/probabilities where useful. Several derived formulas and equipment statistics are still TBD.

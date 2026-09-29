@@ -11,7 +11,7 @@ import * as combatEngine from "./module/combat-engine.mjs";
 import { hpForLevel, progressionState } from "./module/progression.mjs";
 
 Hooks.once("init", () => {
-  console.info("Novum | Initialising v0.2.0 for Foundry VTT v14.368");
+  console.info("Novum | Initialising v0.2.1 for Foundry VTT v14.368");
   CONFIG.NOVUM = NOVUM;
   registerDocumentClasses();
   registerTrackableAttributes();

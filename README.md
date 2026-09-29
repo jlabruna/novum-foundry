@@ -1,6 +1,6 @@
 # Novum for Foundry VTT
 
-Novum v0.2.0 is a self-contained Foundry VTT game system for structured
+Novum v0.2.1 is a self-contained Foundry VTT game system for structured
 character-progression and combat playtests of **Novum Combat Maths Baseline v1.0**.
 
 It is not an SWNR/CWN extension and has no system or module dependencies.
@@ -10,7 +10,7 @@ It is not an SWNR/CWN extension and has no system or module dependencies.
 - Target: Foundry Virtual Tabletop v14
 - Verified manifest build: **14.368 (Stable 10)**
 - System ID: `novum`
-- System version: `0.2.0`
+- System version: `0.2.1`
 
 The repository is intentionally dependency-free at runtime. Node is needed only
 to regenerate seeded content or run the automated validation suite.

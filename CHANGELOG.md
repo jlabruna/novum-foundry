@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.1 — 2026-09-29
+
+- Corrected the release archive layout so `system.json` is at the ZIP root,
+  allowing Forge and Foundry to install and update the system correctly.
+- Preserved all v0.2.0 rules, seeded content, progression, weapon modes, and
+  gameplay behaviour without changes.
+- Added release staging validation that rejects any archive without exactly
+  one root-level `system.json`.
+- Changed the release asset to the versioned filename `novum-v0.2.1.zip` and
+  pinned the manifest to that exact tagged asset to prevent stale-file mixups.
+
 ## 0.2.0 — 2026-09-29
 
 - Added persistent Character progression for Levels 1–10, including the test

@@ -1,10 +1,10 @@
-# Novum v0.2.0 browser-only GitHub and Forge release
+# Novum v0.2.1 browser-only GitHub and Forge release
 
 Repository: <https://github.com/jlabruna/novum-foundry>
 
 ## 1. Upload source
 
-Use `dist/novum-github-upload-v0.2.0.zip`, or the already extracted
+Use `dist/novum-github-upload-v0.2.1.zip`, or the already extracted
 `dist/browser-upload/novum-foundry` folder.
 
 1. Extract the browser-upload ZIP and open its `novum-foundry` folder.
@@ -18,19 +18,19 @@ Use `dist/novum-github-upload-v0.2.0.zip`, or the already extracted
 
 Commit title:
 
-`Release Novum v0.2.0`
+`Release Novum v0.2.1 packaging correction`
 
 Optional description:
 
-`Add character progression, placeholder Role Feats, weapon technologies, ammunition, reloads, and Shotgun Cone resolution.`
+`Correct the release ZIP root while preserving all v0.2.0 gameplay behaviour.`
 
-Open `system.json` on GitHub after the commit and confirm version `0.2.0`.
+Open `system.json` on GitHub after the commit and confirm version `0.2.1`.
 
 ## 2. Confirm workflow
 
 This repository has no GitHub Actions build/release workflow. There is no
 workflow file to upload separately and no Action that must turn green. The
-validated `dist/novum.zip` is the release asset.
+validated `dist/novum-v0.2.1.zip` is the release asset.
 
 ## 3. Test workflow
 
@@ -44,17 +44,21 @@ is the Foundry v14.368 manual smoke test listed below.
 ## 4. Create the GitHub release
 
 1. Open the repository's **Releases** page and choose **Draft a new release**.
-2. Create tag `v0.2.0` targeting `main`.
-3. Set the title to `Novum v0.2.0`.
+2. Create tag `v0.2.1` targeting `main`.
+3. Set the title to `Novum v0.2.1`.
 4. Paste the release notes below.
-5. Attach `dist/novum.zip` with that exact filename. Do not attach the
+5. Attach `dist/novum-v0.2.1.zip` with that exact filename. Do not attach the
    browser-source ZIP in its place.
 6. Leave **Set as a pre-release** disabled and publish the release.
 
 Copyable release notes:
 
 ```text
-Novum v0.2.0 adds the next character-building and combat-playtest layer.
+Novum v0.2.1 corrects the release package used by Forge and Foundry.
+
+- Places system.json directly at the root of novum-v0.2.1.zip so installation and updating work correctly.
+- Uses a versioned asset filename and exact tagged download URL to prevent stale-file mixups.
+- Preserves all v0.2.0 rules, content, progression, combat behaviour, and interface functionality.
 
 - Adds persistent two-Role selection and dedicated Combat, Progression, Feats, Equipment, and Notes tabs.
 - Adds all seven Role ability summaries and fourteen side-by-side placeholder Feat branches.
@@ -69,25 +73,24 @@ Novum v0.2.0 adds the next character-building and combat-playtest layer.
 ## Update and install links
 
 - Manifest: <https://raw.githubusercontent.com/jlabruna/novum-foundry/main/system.json>
-- Package: <https://github.com/jlabruna/novum-foundry/releases/latest/download/novum.zip>
+- Package: <https://github.com/jlabruna/novum-foundry/releases/download/v0.2.1/novum-v0.2.1.zip>
 
 After publishing, open both links in a private window. The manifest must show
-`0.2.0`; the package link must download `novum.zip`.
+`0.2.1`; the package link must download `novum-v0.2.1.zip`.
 
 For a fresh Forge installation, use **Install from Manifest**, choose **Game
 System** when asked, paste the manifest URL, and disable Bazaar lookup if Forge
 offers that option. For an existing installation, stop the world and use
 **Update / Check for Updates**. If Forge does not offer the custom-package
-update, install from the same manifest URL again. Confirm Novum `0.2.0` before
+update, install from the same manifest URL again. Confirm Novum `0.2.1` before
 opening a world.
 
-When an existing world opens, the GM is offered a v0.2.0 seeded-content
-refresh. Accepting refreshes flagged playtest gear and rebuilds embedded gear
-on flagged pregens; use a fresh world or copy customised pregens first.
+The seeded-content version remains v0.2.0 because v0.2.1 changes packaging
+only. Existing worlds should not receive another seeded-content refresh.
 
 ## Manual acceptance tests
 
-1. Confirm the Setup screen reports Novum `0.2.0` and a world opens in Foundry
+1. Confirm the Setup screen reports Novum `0.2.1` and a world opens in Foundry
    v14.368.
 2. Open a Character and move between all five tabs without losing edits.
 3. Choose two different Roles and confirm both Role panels and abilities.

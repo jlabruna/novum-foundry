@@ -6,8 +6,10 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const manifest = JSON.parse(await readFile(path.join(root, "system.json"), "utf8"));
 if (manifest.id !== "novum") throw new Error("system.json id must be novum");
-if (manifest.version !== "0.2.0") throw new Error("Unexpected system version");
+if (manifest.version !== "0.2.1") throw new Error("Unexpected system version");
 if (manifest.compatibility.verified !== "14.368") throw new Error("Verified Foundry build must be 14.368");
+const expectedDownload = `https://github.com/jlabruna/novum-foundry/releases/download/v${manifest.version}/novum-v${manifest.version}.zip`;
+if (manifest.download !== expectedDownload) throw new Error(`Unexpected download URL: ${manifest.download}`);
 
 const required = [
   "novum.mjs",
